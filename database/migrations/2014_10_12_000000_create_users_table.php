@@ -26,6 +26,9 @@ class CreateUsersTable extends Migration
             $table->integer('zip_code');
             $table->string('phone_number');
             $table->string('roles')->default('USER'); //user,admin
+            // $table->string('google_id')->nullable(); // auth google
+            $table->string('provider');
+            $table->string('provider_id')->nullable(); 
 
             $table->softDeletes();
             $table->rememberToken();

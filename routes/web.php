@@ -13,17 +13,20 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Route::get('redirect', 'Auth\GoogleController@redirect');
+// Route::get('callback', 'Auth\GoogleController@callback');
+// Route::get('/auth/{provider}', 'Auth\SocialiteController@redirectToProvider');
+// Route::get('/auth/{provider}/callback', 'Auth\SocialiteController@handleProvideCallback');
+// Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle');
+// Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback');
+Route::get('login/google', 'Auth\GoogleController@googleRedirect');
+Route::get('login/google/callback', 'Auth\GoogleController@loginWithGoogle');
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function () {
     return view('welcome');
 });
 
 // Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');
-
-
-
 
 // admin
 Route::prefix('admin')

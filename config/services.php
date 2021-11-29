@@ -30,4 +30,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'google' => [
+        'client_id' => ('717635541136-67a9vekbg38u7hpgmu419odra2ntmp07.apps.googleusercontent.com'),
+        'client_secret' => ('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'),
+        'redirect' => 'http://pesantrend.com/login/google/callback',
+    ],
+
 ];
