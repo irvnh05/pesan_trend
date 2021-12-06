@@ -16,10 +16,11 @@ class CreateProgramsTable extends Migration
         Schema::create('programs', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('category_programs_id');
+            $table->integer('kategori_programs_id');
             $table->string('nama');
             $table->longText('keterangan');
             $table->integer('harga');
+            $table->date('date');
             $table->string('slug');
             
             $table->softDeletes();

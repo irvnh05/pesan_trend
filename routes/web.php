@@ -28,7 +28,7 @@ Route::get('/', function () {
 
 // Auth::routes();
 
-// admin
+// admi
 Route::prefix('admin')
     ->namespace('Admin')
     // ->middleware('role:user');
@@ -36,6 +36,10 @@ Route::prefix('admin')
     ->group(function (){
         Route::get('/','DashboardController@index')
             ->name('dashboard');
+
+        Route::resource('kategori-program', 'KategoriProgramController');
+        Route::resource('galeri-program', 'GaleriProgramController');
+        Route::resource('program', 'ProgramController');
     });
 
 // user
@@ -46,6 +50,7 @@ Route::prefix('user')
     ->group(function (){
         Route::get('/','DashboardController@index')
             ->name('dashboard');
+
     });
 // Route::group(['middleware' => ['auth','user']], function () {
 

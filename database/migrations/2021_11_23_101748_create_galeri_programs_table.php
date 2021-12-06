@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGalleryProgramsTable extends Migration
+class CreateGaleriProgramsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateGalleryProgramsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gallery_programs', function (Blueprint $table) {
+        Schema::create('galeri_programs', function (Blueprint $table) {
             $table->id();
 
             $table->integer('programs_id');
