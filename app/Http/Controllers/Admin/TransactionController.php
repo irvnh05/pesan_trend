@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\GaleriProgramRequest;
-use App\GaleriProgram;
-use App\Program;
+use App\Http\Requests\Admin\TransactionsRequest;
+use App\Transaction;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+// use Illuminate\Support\Str;
 
-class GaleriProgramController extends Controller
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +17,11 @@ class GaleriProgramController extends Controller
      */
     public function index()
     {
-        $items = GaleriProgram::with(['program'])->get();
+        $items = Transaction::with([
+            'detail','user','program'
+        ])->get();
 
-        return view('pages.admin.program.galeri-program.index',[
+        return view('pages.admin.transaksi.reservasi.index',[
             'items' => $items
         ]);
     }
@@ -32,10 +33,10 @@ class GaleriProgramController extends Controller
      */
     public function create()
     {
-       $programs = Program::all();
-       return view('pages.admin.program.galeri-program.create',[
-           'programs' => $programs
-       ]);
+    //    $kategori_programs = KategoriProgram::all();
+    //    return view('pages.admin.transaksi.reservasi.create',[
+    //     'kategori_programs' => $kategori_programs
+    //    ]);
     }
 
     /**
@@ -44,15 +45,14 @@ class GaleriProgramController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(GaleriProgramRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->all();
-        $data['assets'] = $request->file('assets')->store(
-            'assets/galeri_program','public'
-        );
+        // $data = $request->all();
 
-        GaleriProgram::create($data);
-        return redirect()->route('galeri-program.index');
+        // $data['slug'] = Str::slug($request->nama);
+
+        // Transaction::create($data);
+        // return redirect()->route('transaction.index');
     }
 
     /**
@@ -63,7 +63,13 @@ class GaleriProgramController extends Controller
      */
     public function show($id)
     {
-        //
+        $item = Transaction::with([
+            'detail','user','program'
+        ])->findOrFail($id);
+
+        return view('pages.admin.transaksi.reservasi.detail',[
+            'item' => $item,
+        ]);
     }
 
     /**
@@ -74,13 +80,10 @@ class GaleriProgramController extends Controller
      */
     public function edit($id)
     {
-        
-        $item = GaleriProgram::findOrFail($id);
-        $programs = Program::all();
+        $item = Transaction::findOrFail($id);
 
-        return view('pages.admin.program.galeri-program.edit',[
+        return view('pages.admin.transaksi.reservasi.edit',[
             'item' => $item,
-            'programs' => $programs
         ]);
     }
 
@@ -91,18 +94,16 @@ class GaleriProgramController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(GaleriProgramRequest $request, $id)
+    public function update(TransactionsRequest $request, $id)
     {
         $data = $request->all();
-        $data['assets'] = $request->file('assets')->store(
-            'assets/galeri_program','public'
-        );
-        
-        $item = GaleriProgram::findOrFail($id);
+        // $data['slug'] = Str::slug($request->nama);
+
+        $item = Transaction::findOrFail($id);
     
         $item->update($data);
 
-        return redirect()->route('galeri-program.index');
+        return redirect()->route('transaction.index');
     }
 
     /**
@@ -113,9 +114,9 @@ class GaleriProgramController extends Controller
      */
     public function destroy($id)
     {
-        $item = GaleriProgram::findOrFail($id);
+        $item = Transaction::findOrFail($id);
         $item->delete();
 
-        return redirect()->route('galeri-program.index');
+        return redirect()->route('transaction.index');
     }
 }

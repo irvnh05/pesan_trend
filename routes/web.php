@@ -40,6 +40,7 @@ Route::prefix('admin')
         Route::resource('kategori-program', 'KategoriProgramController');
         Route::resource('galeri-program', 'GaleriProgramController');
         Route::resource('program', 'ProgramController');
+        Route::resource('transaction', 'TransactionController');
     });
 
 // user

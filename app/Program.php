@@ -10,7 +10,12 @@ class Program extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'kategori_programs_id','nama','keterangan','harga','date','slug'	
+        'kategori_programs_id',
+        'nama',
+        'keterangan',
+        'harga',
+        'date',
+        'slug'	
     ];
 
     protected $hidden = [

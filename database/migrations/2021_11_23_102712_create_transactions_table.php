@@ -17,9 +17,10 @@ class CreateTransactionsTable extends Migration
             $table->id();
 
             $table->integer('users_id');
+            $table->integer('programs_id');
             $table->string('status_transaction');
             $table->integer('total');
-            $table->string('code'); //kode unik pembeda
+            $table->string('no_transaction'); //resi
 
             $table->softDeletes();
             $table->timestamps();

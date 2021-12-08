@@ -33,3 +33,18 @@
  <script src="{{ asset('dashboard/dist/js/demo.js') }}"></script> 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
  <script src="{{ asset('dashboard/dist/js/pages/dashboard.js') }}"></script> 
+
+ <!-- DataTables  & Plugins -->
+ 
+ <script src="{{ asset('dashboard/plugins/datatables/jquery.dataTables.min.js') }}"></script> 
+ <script src="{{ asset('dashboard/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script> 
+ <script src="{{ asset('dashboard/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script> 
+ <script src="{{ asset('dashboard/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script> 
+ <script src="{{ asset('dashboard/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script> 
+ <script src="{{ asset('dashboard/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script> 
+ <script src="{{ asset('dashboard/plugins/jszip/jszip.min.js') }}"></script> 
+ <script src="{{ asset('dashboard/plugins/pdfmake/pdfmake.min.js') }}"></script> 
+ <script src="{{ asset('dashboard/plugins/pdfmake/vfs_fonts.js') }}"></script> 
+ <script src="{{ asset('dashboard/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script> 
+ <script src="{{ asset('dashboard/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script> 
+ <script src="{{ asset('dashboard/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script> 

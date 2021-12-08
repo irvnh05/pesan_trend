@@ -14,7 +14,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Home</a></li>
-              <li class="breadcrumb-item active">Tambah Kategori Program</li>
+              <li class="breadcrumb-item active">Edit  Transaksi  {{ $item->nama }}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,7 +30,7 @@
   <!-- /.card -->
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Tambah Kategori Program</h3>
+      <h3 class="card-title">Tambah  Transaksi</h3>
       </div>
       
       @if ($errors->any())
@@ -44,26 +44,26 @@
       @endif
 
       <!-- form start -->
-      <form action="{{ route('kategori-program.store') }}" method="POST">
-       @csrf
+      <form action="{{ route('transaction.update', $item->id) }}" method="POST">
+        @method('PUT')
+        @csrf
         <div class="card-body">
           <div class="form-group">
-            <label for="nama">Nama Kategori</label>
-            <input type="text" class="form-control" name="nama" placeholder="Nama" value="{{ old('nama') }}">
+            <label for="status_transaction">Kategori</label>
+            <select class="custom-select rounded-0 form-control" required name="status_transaction">
+              <option value="{{ $item->status_transaction }}">Jangan Diubah ({{ $item->status_transaction }})</option>
+                <option value="IN_CART">In Cart</option>
+                <option value="PENDING">Pending</option>
+                <option value="SUCCES">Succes</option>
+                <option value="CANCEL">Cancel</option>
+                <option value="FAILED">Failed</option>
+            </select>
           </div>
-          <div class="form-group">
-            <label for="keterangan">Keterangan</label>
-            <input type="text" class="form-control" name="keterangan" placeholder="Keterangan" value="{{ old('keterangan') }}">
-          </div>
-          {{-- <div class="form-group">
-            <label for="slug">Slug</label>
-            <input type="text" class="form-control" name="slug" placeholder="Url" value="{{ old('slug') }}">
-          </div> --}}
         </div>
         <!-- /.card-body -->
 
         <div class="card-footer">
-          <button type="submit" class="btn btn-primary">Simpan</button>
+          <button type="submit" class="btn btn-primary">Ubah</button>
         </div>
       </form>
     </div>

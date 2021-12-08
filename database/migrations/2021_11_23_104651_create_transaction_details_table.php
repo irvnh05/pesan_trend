@@ -16,12 +16,12 @@ class CreateTransactionDetailsTable extends Migration
         Schema::create('transaction_details', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('transactions_id');
-            $table->integer('programs_id');
+            $table->integer('transactions_id'); 
             $table->integer('nominal_programs');
-            $table->string('no_transaction'); //resi
-            $table->string('program_status'); //sukses,failed,pending
-            $table->string('code'); //kode unik pembeda
+            // $table->string('email'); 
+            // $table->string('whatsapp');
+
+
 
             $table->softDeletes();
             $table->timestamps();

@@ -14,7 +14,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Home</a></li>
-              <li class="breadcrumb-item active">Galeri Program</li>
+              <li class="breadcrumb-item active"> Transaksi</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,11 +30,11 @@
   <!-- /.card -->
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Galeri Program</h3>
+      <h3 class="card-title"> Transaksi</h3>
       <div class="card-tools">
         <ul class="pagination pagination-sm float-right">
-          <a href="{{ route('galeri-program.create') }}" class="btn-primary btn-sm">
-            <i class="fas fa-plus fa-sm text-white"> Tambah Galeri Program</i></a>
+          <a href="{{ route('transaction.create') }}" class="btn-primary btn-sm">
+            <i class="fas fa-plus fa-sm text-white"> Tambah  Transaksi</i></a>
         </ul>
       </div>
       </div>
@@ -42,12 +42,15 @@
     <!-- /.card-header -->
    <!-- /.card -->
     <div class="card-body">
-      <table id="example1" class="table table-bordered table-striped">
+      <table id="2" class="table table-bordered table-striped">
         <thead>
         <tr>
           <th>#</th>
+          <th>User</th>
           <th>Program</th>
-          <th>Assets</th>
+          <th>Status</th>
+          <th>Infaq</th>
+          <th>Resi</th>
           <th>Action</th>
         </tr>
         </thead>
@@ -55,16 +58,19 @@
           @forelse ($items as $item)
               <tr>
                 <td>{{ $item->id }}</td>
+                <td>{{ $item->user->name }}</td>
                 <td>{{ $item->program->nama }}</td>
+                <td>{{ $item->status_transaction }}</td>
+                <td>{{ $item->total }}</td>
+                <td>{{ $item->no_transaction }}</td>
                 <td>
-                  <img src="{{ Storage::url($item->assets) }}" alt="" style="width: 150px" class="img-thumbnail">
-                </td>
-
-                <td>
-                  <a href="{{ route('galeri-program.edit', $item->id) }}" class="btn btn-info">
+                  <a href="{{ route('transaction.show', $item->id) }}" class="btn btn-primary">
+                    <i class="fa fa-eye"></i>
+                  </a>
+                  <a href="{{ route('transaction.edit', $item->id) }}" class="btn btn-info">
                     <i class="fa fa-pencil-alt"></i>
                   </a>
-                  <form action="{{ route('galeri-program.destroy', $item->id) }}" method="POST" class="d-inline">
+                  <form action="{{ route('transaction.destroy', $item->id) }}" method="POST" class="d-inline">
                     @csrf
                     @method('delete')
                     <button class="btn btn-danger">
@@ -97,6 +103,43 @@
   <!-- /.content-wrapper -->
     
 @endsection
-@push('scripts')
 
+@push('scripts')
+<script type="text/javascript">
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 @endpush
+{{-- 
+@push('addon-script')
+<script type="text/javascript">
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+@endpush --}}

@@ -52,9 +52,9 @@
             <label for="programs_id">Program</label>
             <select class=" form-control" required name="programs_id">
               <option value="{{ $item->programs_id }}">Jangan Diubah</option>
-              @foreach ($kategori_programs as $kategori_program)
-                <option value="{{ $kategori_program->id }}">
-                  {{ $kategori_program->nama }}
+              @foreach ($programs as $program)
+                <option value="{{ $program->id }}">
+                  {{ $program->nama }}
                 </option>
               @endforeach
             </select>
