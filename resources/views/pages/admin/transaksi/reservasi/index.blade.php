@@ -42,7 +42,7 @@
     <!-- /.card-header -->
    <!-- /.card -->
     <div class="card-body">
-      <table id="2" class="table table-bordered table-striped">
+      <table id="crudTable" class="table table-bordered table-striped">
         <thead>
         <tr>
           <th>#</th>
@@ -55,7 +55,7 @@
         </tr>
         </thead>
         <tbody>
-          @forelse ($items as $item)
+          {{-- @forelse ($items as $item)
               <tr>
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->user->name }}</td>
@@ -79,13 +79,13 @@
                   </form>
                 </td>
               </tr>
-          @empty
+          @empty --}}
               <tr>
                 <td colspan="7" class="text-center">
                   Data Kosong
                 </td>
               </tr>
-          @endforelse
+          {{-- @endforelse  --}}
         </tbody>
       </table>
     </div>
@@ -104,42 +104,32 @@
     
 @endsection
 
-@push('scripts')
-<script type="text/javascript">
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
-@endpush
-{{-- 
 @push('addon-script')
-<script type="text/javascript">
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
-@endpush --}}
+    <script>
+        // AJAX DataTable
+        var datatable = $('#crudTable').DataTable({
+            processing: true,
+            serverSide: true,
+            ordering: true,
+            
+            ajax: {
+                url: '{!! url()->current() !!}',
+            },
+            columns: [
+                { data: 'id', name: 'id' },
+                { data: 'user.name', name: 'user.name' },
+                { data: 'program.nama', name: 'program.nama' },
+                { data: 'status_transaction', name: 'status_transaction' },
+                { data: 'total', name: 'total' },
+                { data: 'no_transaction', name: 'no_transaction' },
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: false,
+                    searchable: false,
+                    width: '15%'
+                },
+            ]
+        });
+    </script>
+@endpush

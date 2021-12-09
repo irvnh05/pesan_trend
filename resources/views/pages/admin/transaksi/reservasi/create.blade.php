@@ -14,7 +14,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Home</a></li>
-              <li class="breadcrumb-item active">Tambah  Program</li>
+              <li class="breadcrumb-item active">Tambah  Transaksi</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,7 +30,7 @@
   <!-- /.card -->
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Tambah  Program</h3>
+      <h3 class="card-title">Tambah  Transaksi</h3>
       </div>
       
       @if ($errors->any())
@@ -44,40 +44,31 @@
       @endif
 
       <!-- form start -->
-      <form action="{{ route('program.store') }}" method="POST">
+      <form action="{{ route('transaction.store') }}" method="POST">
        @csrf
         <div class="card-body">
-          <div class="form-group">
-            <label for="kategori_programs_id">Kategori</label>
-            <select class="custom-select rounded-0 form-control" required name="kategori_programs_id">
-              <option value="">Pilih Program</option>
-              @foreach ($kategori_programs as $kategori_program)
-                <option value="{{ $kategori_program->id }}">
-                  {{ $kategori_program->nama }}
-                </option>
-              @endforeach
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="nama">Nama</label>
-            <input type="text" class="form-control" name="nama" placeholder="nama" value="{{ old('nama') }}">
-          </div>
-          <div class="form-group">
-            <label for="harga">Harga</label>
-            <input type="number" class="form-control" name="harga" placeholder="harga" value="{{ old('harga') }}">
-          </div>
-          <div class="form-group">
-            <label for="date">Tanggal Mulai Program</label>
-            <input type="date" class="form-control" name="date" placeholder="date" value="{{ old('date') }}">
-          </div>
-          <div class="form-group">
-            <label for="keterangan">Keterangan</label>
-            <input type="text" class="form-control" name="keterangan" placeholder="Keterangan" value="{{ old('keterangan') }}">
-          </div>
-          {{-- <div class="form-group">
-            <label for="slug">Slug</label>
-            <input type="text" class="form-control" name="slug" placeholder="Url" value="{{ old('slug') }}">
-          </div> --}}
+          <table class="table table-bordered">
+                <th>Program</th>
+                 <td>
+                <select class="custom-select rounded-0 form-control" required name="programs_id">
+                  <option value="">Pilih Program</option>
+                  @foreach ($program as $program)
+                    <option value="{{ $program->id }}">
+                      {{ $program->nama }}
+                    </option>
+                  @endforeach
+                </select>
+              </td>
+            {{-- </tr>
+                <th>Catatan</th>
+                 <td>{{ $item->program->nama }}</td> 
+          </tr>         --}}
+        
+                        </table>
+                    </td>
+                </th>
+            </tr>
+        </table>
         </div>
         <!-- /.card-body -->
 

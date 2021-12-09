@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -58,3 +59,31 @@ Route::prefix('user')
 // });
 
 Auth::routes(['verify' => true]);
+
+
+// route transaksi
+
+// // proses transaksi
+// Route::post('/checkout/{id}','CheckoutController@process')
+//     ->name('checkout-process')
+//     ->middleware(['auth','Verified']); 
+
+// // page informasi 
+// Route::get('/checkout/{id}','CheckoutController@index')
+//     ->name('checkout')
+//     ->middleware(['auth','Verified']);
+
+// // proses menambah jumlah orang
+// Route::post('/checkout/create/{detail_id}','CheckoutController@create')
+//     ->name('checkout-create')
+//     ->middleware(['auth','Verified']);
+
+// // proses mengurangi jumlah orang
+// Route::get('/checkout/remove/{detail_id}','CheckoutController@remove')
+//     ->name('checkout-remove')
+//     ->middleware(['auth','Verified']);
+
+// // proses update status 
+// Route::get('/checkout/confirm/{id}','CheckoutController@success')
+//     ->name('checkout-success')
+//     ->middleware(['auth','Verified']);

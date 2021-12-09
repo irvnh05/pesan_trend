@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\TransactionsRequest;
 use App\Transaction;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
+use App\Program;
+use Illuminate\Support\Facades\Auth;
 // use Illuminate\Support\Str;
 
 class TransactionController extends Controller
@@ -17,13 +20,57 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $items = Transaction::with([
-            'detail','user','program'
-        ])->get();
+        if (request()->ajax()) {
+            $query = Transaction::with([
+                'program',
+                'user',
+                'detail'
+                ]);
 
-        return view('pages.admin.transaksi.reservasi.index',[
-            'items' => $items
-        ]);
+            return Datatables::of($query)
+                ->addColumn('action', function ($item) {
+                    return '
+                        <div class="btn-group">
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle mr-1 mb-1" 
+                                    type="button" id="action' .  $item->id . '"
+                                        data-toggle="dropdown" 
+                                        aria-haspopup="true"
+                                        aria-expanded="false">
+                                        Aksi
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="action' .  $item->id . '">
+                                    <a class="dropdown-item" href="' . route('transaction.show', $item->id) . '">
+                                        Detail
+                                    </a>
+                                    <a class="dropdown-item" href="' . route('transaction.edit', $item->id) . '">
+                                        Sunting
+                                    </a>
+                                    <form action="' . route('transaction.destroy', $item->id) . '" method="POST">
+                                        ' . method_field('delete') . csrf_field() . '
+                                        <button type="submit" class="dropdown-item text-danger">
+                                            Hapus
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                    </div>';
+                })
+                ->rawColumns(['action'])
+                ->make();
+        }
+        
+        // $programs = Program::all();
+        // $lowongans = Lowongan::all();
+
+        return view('pages.admin.transaksi.reservasi.index');
+        // $items = Transaction::with([
+        //     'detail','user','program'
+        // ])->get();
+
+        // return view('pages.admin.transaksi.reservasi.index',[
+        //     'items' => $items
+        // ]);
     }
 
     /**
@@ -33,10 +80,15 @@ class TransactionController extends Controller
      */
     public function create()
     {
-    //    $kategori_programs = KategoriProgram::all();
-    //    return view('pages.admin.transaksi.reservasi.create',[
-    //     'kategori_programs' => $kategori_programs
-    //    ]);
+        // $kategori = KategoriProgram::all();
+        $program = Program::all();
+        $item = Transaction::all();
+
+       return view('pages.admin.transaksi.reservasi.create',[
+        'item' => $item,
+        'program' => $program,
+        // 'kategori' => $kategori
+       ]);
     }
 
     /**
@@ -48,11 +100,17 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         // $data = $request->all();
-
-        // $data['slug'] = Str::slug($request->nama);
+        $program = Program::where('id', '=', $request->programs_id)->first();
 
         // Transaction::create($data);
-        // return redirect()->route('transaction.index');
+        $item = Transaction::create([
+            'users_id' => Auth::user()->id,
+            'programs_id' =>$request->programs_id,
+            'total' =>$program->harga,
+            'status_transaction' => 'Review',
+            'no_transaction' => '0'
+            ]);
+        return redirect()->route('transaction.index');
     }
 
     /**

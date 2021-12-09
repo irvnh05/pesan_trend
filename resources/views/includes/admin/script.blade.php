@@ -1,4 +1,4 @@
-
+@stack('prepend-script')
 <!-- jQuery -->
 <script src="{{ asset('dashboard/plugins/jquery/jquery.min.js') }}"></script> 
 <!-- jQuery UI 1.11.4 -->
@@ -47,4 +47,6 @@
  <script src="{{ asset('dashboard/plugins/pdfmake/vfs_fonts.js') }}"></script> 
  <script src="{{ asset('dashboard/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script> 
  <script src="{{ asset('dashboard/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script> 
- <script src="{{ asset('dashboard/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script> 
+ <script src="{{ asset('dashboard/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+ 
+  @stack('addon-script')
