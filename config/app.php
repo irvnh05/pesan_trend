@@ -163,7 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
-
+        TelegramNotifications\TelegramServiceProvider::class,    
         /*
          * Package Service Providers...
          */
