@@ -83,12 +83,12 @@ class TransactionController extends Controller
         // $kategori = KategoriProgram::all();
         $program = Program::all();
         $item = Transaction::all();
-
-       return view('pages.admin.transaksi.reservasi.create',[
-        'item' => $item,
-        'program' => $program,
-        // 'kategori' => $kategori
-       ]);
+            return view('pages.admin.transaksi.reservasi.create',[
+                'item' => $item,
+                'program' => $program,
+                // 'kategori' => $kategori
+            ]);
+        // }
     }
 
     /**

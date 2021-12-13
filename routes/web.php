@@ -23,9 +23,44 @@ use Illuminate\Support\Facades\Route;
 Route::get('login/google', 'Auth\GoogleController@googleRedirect');
 Route::get('login/google/callback', 'Auth\GoogleController@loginWithGoogle');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', function () {
-    return view('welcome');
+
+Route::post('/checkout/{id}', 'CheckoutController@process')
+    ->name('checkout_process');
+    // ->middleware(['auth','verified']);
+
+Route::get('/checkout/{id}', 'CheckoutController@index')
+    ->name('checkout');
+    // ->middleware(['auth','verified']);
+
+Route::get('/', 'LandingController@index')
+    ->name('landing');
+
+    
+Route::get('/detail/{slug}', 'DetailController@index')
+    ->name('detail');
+
+
+// Route::get('/', function () {
+//     return view('app');
+// });
+
+Route::get('/detail', function () {
+    return view('detail');
 });
+
+Route::get('/checkout', function () {
+    return view('checkout-alternate');
+});
+
+Route::get('/sukses', function () {
+    return view('sukses');
+});
+
+Route::get('/soon', function () {
+    return view('soon');
+});
+
+
 
 // Auth::routes();
 

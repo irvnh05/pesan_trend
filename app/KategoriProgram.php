@@ -19,5 +19,7 @@ class KategoriProgram extends Model
        
     ];
 
- 
+     public function galeri_kategori(){
+        return $this->hasMany(GaleriKategori::class, 'kategori_id','id');
+    }
 }

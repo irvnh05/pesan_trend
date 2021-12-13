@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesan_Trend</title>
+    <link 
+        rel="stylesheet" 
+        href="frontend/libraries/bootstrap/css/bootstrap.css"
+        />
+      <!-- BS Stepper -->
+    <link rel="stylesheet" href="frontend/libraries/plugins/bs-stepper/css/bs-stepper.min.css">      
+    <link rel="stylesheet" href="frontend/styles/main.css">
+</head>
+<body>
+ <!-- navbar -->
+     <section>
+      <div class="container mt-2 ">
+        <nav class="row navbar navbar-expand-lg navbar-light bg-transparent  ">
+          <a href="#" class="navbar-brand">
+            <img src="frontend/images/logo.png" alt="">
+          </a>
+          <button 
+          class="navbar-toggler navbar-toggler-right"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navb"
+          >
+          <span class="navbar-toggler-icon">
+          </span>
+          </button>
+
+          <!-- menu -->
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav  mx-auto">
+              <li class="nav-item mx-md-2">
+                <a href="#" class="nav-link active">
+                  Home
+                </a>
+              </li>
+               <li class="nav-item mx-md-2">
+                <a href="#" class="nav-link">
+                  Program
+                </a>
+              </li>
+               <li class="nav-item mx-md-2">
+                <a href="#" class="nav-link">
+                  Event
+                </a>
+              </li>
+               <li class="nav-item mx-md-2">
+                <a href="#" class="nav-link">
+                  Artikel
+                </a>
+              </li>
+               <li class="nav-item mx-md-2">
+                <a href="#" class="nav-link">
+                  About
+                </a>
+              </li>
+            </ul>
+
+            <!-- mobile button -->
+            <form class="form-inline d-sm-block d-md-none">
+              <button class="btn btn-login my-2 my-sm-0">
+                Masuk
+              </button>
+            </form>
+            <!-- dekstrop buttonlogin -->
+            <form class="form-inline my-2 my-lg-0 d-none d-md-block">
+              <button class="btn btn-login mr-2">
+                Login
+              </button>
+            </form>
+            <form class="form-inline my-2 my-lg-0 d-none d-md-block">
+              <button class="btn btn-regis mr-2">
+                Regis
+              </button>
+            </form>
+          </div>
+        </nav>
+      </div>
+    </section>
+
+<!-- br -->
+  <section >
+
+        <div class="container mt-3">
+          <div class="row">
+            <div class="col-12">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item "><a class="text-black-100"href="#">Home</a></li>
+                  <li class="breadcrumb-item "><a class="text-black-100"href="#">Program Detail</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    Checkout
+                  </li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </section>
+
+  <!--form  -->
+  <section>
+  <!-- Page Content -->
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-10">
+              <h2>
+                Dapatkan konten-konten (audio) penyemangat hidup, <br>
+                mengupas problematika hidup sehari-hari </h3>
+              </h2>
+              <form class="mt-3">
+                 <div class="form-group">
+                  <label>Nama Lengkap</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="nama" 
+                    placeholder="Nama Lengkap"
+                    >
+                </div>
+                <div class="form-group">
+                  <label>Tgl Lahir</label>
+                    <input 
+                    type="date" 
+                    class="form-control" 
+                    id="tgl-lahir" 
+                    placeholder="Tanggal Lahir"
+                    >
+                </div>    
+                <div class="form-group">
+                  <label>Alamat</label>
+                    <input 
+                    type="alamat" 
+                    class="form-control" 
+                    id="alamat" 
+                    placeholder="Alamat Contoh (Jl.Awibitung no.1)"
+                    >
+                </div>
+                <div class="form-group">
+                  <label>Kecamatan</label>
+                     <select class="custom-select form-control-border" id="exampleSelectBorder">
+                     <option value="" selected disabled>Pilih Kecamatan</option>
+                     <option>Value 1</option>
+                     <option>Value 2</option>
+                     <option>Value 3</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Kabupaten/Kota</label>
+                     <select class="custom-select form-control-border" id="exampleSelectBorder" disabled>
+                     <option value="" selected disabled>Pilih Kabupaten/Kota</option>
+                     <option>Value 1</option>
+                     <option>Value 2</option>
+                     <option>Value 3</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Provinsi</label>
+                     <select class="custom-select form-control-border" id="exampleSelectBorder" disabled>
+                     <option value="" selected disabled>Pilih Provinsi</option>
+                     <option>Value 1</option>
+                     <option>Value 2</option>
+                     <option>Value 3</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Negara</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="negara" 
+                    placeholder="Negara (indonesia)"
+                    >
+                </div>                
+                <div class="form-group">
+                  <label>Kode Pos</label>
+                    <input 
+                    type="kodepos" 
+                    class="form-control" 
+                    id="kodepos" 
+                    placeholder="Kode Pos Contoh (40234)"
+                    >
+                </div>
+                <div class="form-group">
+                         <label>Email</label>
+                          <input 
+                          type="email" 
+                          class="form-control" 
+                          id="email" 
+                          placeholder="Email"
+                          >
+                              <div>    
+                              <div class="form-group">
+                                <label>Nomor HP</label>
+                                  <input 
+                                  type="nohp" 
+                                  class="form-control" 
+                                  id="nohp" 
+                                  placeholder="No Hp Contoh (082199038375)"
+                                  >
+                              </div>  
+                <button type="submit" class="btn btn-login btn-block mt-4">
+                  Sign Up Now
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+  </section>
+
+   <section class="footer-cs">
+        <div class="container-fluid">
+        <div class="row border-top justify-content-center align-items-center py-3">
+          <div class="col-auto text-white font-weight-light ">
+            2021 Copyright Pesan_Trend. All Rights Reserved.
+          </div>
+        </div>
+      </div>
+      </section>
+
+    <!-- BS-Stepper -->
+    <script src="frontend/libraries/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="frontend/libraries/bootstrap/js/bootstrap.js"></script>
+    <script src="frontend/libraries/jquery/jquery-3.6.0.min.js"></script>
+
+<script>
+ document.addEventListener('DOMContentLoaded', function () {
+    window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+  })
+</script>
+</body>
+</html>

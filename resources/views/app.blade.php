@@ -1,86 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesan_Trend</title>
-    <link 
-        rel="stylesheet" 
-        href="frontend/libraries/bootstrap/css/bootstrap.css"
-        />
-    <link rel="stylesheet" href="frontend/styles/main.css">
-</head>
-<body>
-  <!-- navbar -->
-    <section>
-      <div class="container mt-2 ">
-        <nav class="row navbar navbar-expand-lg navbar-light bg-transparent  ">
-          <a href="#" class="navbar-brand">
-            <img src="frontend/images/logo.png" alt="">
-          </a>
-          <button 
-          class="navbar-toggler navbar-toggler-right"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navb"
-          >
-          <span class="navbar-toggler-icon">
-          </span>
-          </button>
+@extends('layouts.home')
 
-          <!-- menu -->
-          <div class="collapse navbar-collapse">
-            <ul class="navbar-nav  mx-auto">
-              <li class="nav-item mx-md-2">
-                <a href="#" class="nav-link active">
-                  Home
-                </a>
-              </li>
-               <li class="nav-item mx-md-2">
-                <a href="#" class="nav-link">
-                  Program
-                </a>
-              </li>
-               <li class="nav-item mx-md-2">
-                <a href="#" class="nav-link">
-                  Event
-                </a>
-              </li>
-               <li class="nav-item mx-md-2">
-                <a href="#" class="nav-link">
-                  Artikel
-                </a>
-              </li>
-               <li class="nav-item mx-md-2">
-                <a href="#" class="nav-link">
-                  About
-                </a>
-              </li>
-            </ul>
+@section('title')
+Pesan_Trend
+@endsection
 
-            <!-- mobile button -->
-            <form class="form-inline d-sm-block d-md-none">
-              <button class="btn btn-login my-2 my-sm-0">
-                Masuk
-              </button>
-            </form>
-            <!-- dekstrop buttonlogin -->
-            <form class="form-inline my-2 my-lg-0 d-none d-md-block">
-              <button class="btn btn-login mr-2">
-                Login
-              </button>
-            </form>
-            <form class="form-inline my-2 my-lg-0 d-none d-md-block">
-              <button class="btn btn-regis mr-2">
-                Regis
-              </button>
-            </form>
-          </div>
-        </nav>
-      </div>
-    </section>
-
+@section('content')
 <!-- caraousel -->
       <section>
        <div class="mt-4">
@@ -130,13 +54,13 @@
                       </p>
                       <div class="row">
                         <div class="d-flex ml-3">
-                          <img src="frontend/images/Calendar.svg" alt="">
+                          <img src="pesantrend-template/frontend/images/Calendar.svg" alt="">
                             <a href="#" class="ml-1 disabled text-black">
                               Schedule Your Time
                             </a>
                         </div>
                         <div class="d-flex ml-3">
-                          <img src="frontend/images/Heart.svg" alt="">
+                          <img src="pesantrend-template/frontend/images/Heart.svg" alt="">
                             <a href="#" class="ml-1 disabled text-black">
                               Living With Nature
                             </a>
@@ -147,7 +71,7 @@
                            <div class="row col-11  mr-4">
                         <div class="col-12 col-lg-4  ">
                             <label class="mt-3">
-                              <img src="frontend/images/Search.svg" alt="">
+                              <img src="pesantrend-template/frontend/images/Search.svg" alt="">
                               Looking For Program
                             </label>
                             </div>
@@ -168,7 +92,7 @@
                     </div> 
                     <div class="col-lg-6 mt-3">
                         <picture>
-                                <img class="d-block w-100"  src="frontend/images/header-1.png" alt="Sukses Tanpa Batas dengan Hosting Indonesia">
+                                <img class="d-block w-100"  src="pesantrend-template/frontend/images/header-1.png" alt="">
                              </picture>
                     </div>
                   </div>
@@ -187,7 +111,7 @@
           <div class="row">
             <div class="col-lg-6 mt-2">
               <picture>
-                <img class="d-block w-100 "  src="frontend/images/about.png" alt="">
+                <img class="d-block w-100 "  src="pesantrend-template/frontend/images/about.png" alt="">
               </picture>
             </div>
             <div class="col-lg-6">
@@ -260,21 +184,23 @@
                 Yang Kami Sediakan
               </h3>
               <div class="mt-5 row course-categories">
+              {{-- @foreach($items as $item) 
                 <div class="col-lg-4 col-sm-6 col-12">
                   <div class="item-category">
-                    <img src="frontend/images/program.svg" class="icon" alt="">
+                    <img src="#"  class="icon " alt="">
                     <div class="mt-4">
                       <a href="#">
                         <h2 class="categories-text">
-                          Program
+                          {{  $category->name }}
                         </h2>
                       </a>
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-4 col-sm-6 col-12">
+              @endforeach --}}
+                {{-- <div class="col-lg-4 col-sm-6 col-12">
                   <div class="item-category">
-                    <img src="frontend/images/event.svg" class="icon" alt="">
+                    <img src="pesantrend-template/frontend/images/event.svg" class="icon" alt="">
                     <div class="mt-4">
                       <a href="#">
                         <h2 class="categories-text">
@@ -286,7 +212,7 @@
                 </div>
                 <div class="col-lg-4 col-sm-6 col-12">
                   <div class="item-category">
-                    <img src="frontend/images/visit.svg" class="icon" alt="">
+                    <img src="pesantrend-template/frontend/images/visit.svg" class="icon" alt="">
                     <div class="mt-4">
                       <a href="#">
                         <h2 class="categories-text">
@@ -295,12 +221,12 @@
                       </a>
                     </div>
                   </div>
-                </div>
+                </div> --}}
               </div>
             </div>
               <div class="col-lg-6 mt-3">
                 <picture>
-                  <img class="d-block w-100"  src="frontend/images/hourse.png" alt="Sukses Tanpa Batas dengan Hosting Indonesia">
+                  <img class="d-block w-100"  src="pesantrend-template/frontend/images/hourse.png" alt="Sukses Tanpa Batas dengan Hosting Indonesia">
                 </picture>
               </div>
           </div>
@@ -332,29 +258,38 @@
           </div>
             <div class="card-body">
               <div class="row">
+                 @forelse ($programs as $program)
                 <div class="col-md-12 col-lg-6 col-xl-4">
                   <div class="card mb-2 bg-gradient-dark">
-                    <img class="card-img-top" src="frontend/images/study.png" alt="">
+                    <img class="card-img-top" src="pesantrend-template/frontend/images/study.png" alt="">
                       <div class="card-body kategori-card ">
                       <!-- <div class="d-sm-block"> -->
                         <button class="btn btn-block btn-card  btn-xs disabled">
-                            Study          
+                            {{ $program->kategori_program->nama }}          
                         </button>
                         <p class="card-title text-black h5 font-weight-bold">
-                          Post votum promissa
+                            {{ $program->nama }}    
                         </p>
                         <p class="card-text text-black h6 text-justify mr-2 mb-3">
-                          Neque porro quisquam est qui dolorem 
-                          ipsum quia dolor sit amet Neque porro 
-                          quisquam est qui dolorem  ipsum quia dolor.
+                           {!!strlen($program->keterangan) > 500 ? substr($program->keterangan,0,500) : $program->keterangan!!}
                         </p>
-                        <a href="#" class="seal-brown">lihat selengkapnya</a>
+                        <a href="{{ route('detail', $program->slug) }}" class="seal-brown">lihat selengkapnya</a>
+                        {{-- {{ route('pengumuman', $pengumuman->id) }} --}}
                       </div>
                     </div>   
                   </div>
-                 <div class="col-md-12 col-lg-6 col-xl-4">
+                      @empty
+                        <div
+                                class="col-12 text-center py-5"
+                                data-aos="fade-up"
+                                data-aos-delay="100"
+                            >
+                                No Program Found
+                            </div>
+                    @endforelse
+                 {{-- <div class="col-md-12 col-lg-6 col-xl-4">
                   <div class="card mb-2 bg-gradient-dark">
-                    <img class="card-img-top" src="frontend/images/study.png" alt="">
+                    <img class="card-img-top" src="pesantrend-template/frontend/images/study.png" alt="">
                       <div class="card-body kategori-card ">
                       <!-- <div class="d-sm-block"> -->
                         <button type="button" class="btn btn-block btn-card  btn-xs disabled">
@@ -374,7 +309,7 @@
                   </div>
                     <div class="col-md-12 col-lg-6 col-xl-4">
                       <div class="card mb-2 bg-gradient-dark">
-                        <img class="card-img-top" src="frontend/images/study.png" alt="">
+                        <img class="card-img-top" src="pesantrend-template/frontend/images/study.png" alt="">
                           <div class="card-body kategori-card ">
                           <!-- <div class="d-sm-block"> -->
                             <button class="btn btn-block btn-card  btn-xs disabled">
@@ -391,7 +326,7 @@
                             <a href="#" class="seal-brown">lihat selengkapnya</a>
                           </div>
                         </div>   
-                      </div>
+                      </div> --}}
                     </div>
                   </div>
                 </div>
@@ -400,115 +335,4 @@
         </div>
       </section>
 
-<!-- footer -->
-      <section class="footer-cs">
-        <div class="container">
-          <div class="row">
-            <div class="footer col-lg-3 col-10 mt-5">
-              <img src="frontend/images/Logo-footer.svg" width="150" height="70" alt="logo pesantrend">
-              <p class="mt-3 tagline text-justify text-white ">
-                Neque porro quisquam est qui dolorem 
-                ipsum quia dolor sit amet Neque porroquisquam 
-                est qui dolorem  ipsum quia dolor sit amet Neque 
-                porro quisquam est qui dolorem  ipsum quia dolor sit 
-                amet quia dolor sit amet
-              </p>
-              <div class="icon-sosmed">
-                <div class="row">
-                  <div class="col-3">
-                    <a href="#">
-                      <img src="frontend/images/ig.svg" alt="">
-                    </a>
-                  </div>
-                  <div class="col-3">
-                    <a href="#">
-                      <img src="frontend/images/fb.svg" alt="">
-                    </a>
-                  </div>
-                  <div class="col-3">
-                    <a href="#">
-                      <img src="frontend/images/yt.svg" alt="">
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="footer col-lg-1 col-12">
-            </div>
-            <div class="col-lg-8 col-12">
-              <div class="row">
-                <div class="footer col-md-4 col-6">
-                  <p class="header-category">
-                    Support
-                  </p>
-                  <ul>
-                    <li><a href="#">Donasi</a></li>
-                    <li><a href="#">Merch</a></li>
-                  </ul>
-                </div>
-                <div class="footer col-md-4 col-6">
-                  <p class="header-category">
-                   Useful Link
-                  </p>
-                  <ul>
-                    <li><a href="#">Privacy & Policy</a></li>
-                    <li><a href="#">Term & Condition</a></li>
-                  </ul>
-                </div>
-                <div class="footer col-md-4 col-6">
-                  <p class="header-category">
-                    Artikel
-                  </p>
-                  <ul>
-                    <li><a href="#">Artikel 1</a></li>
-                    <li><a href="#">Artikel 2</a></li>
-                  </ul>
-                </div>               
-                <div class="footer col-md-4 col-6">
-                  <p class="header-category">
-                   Event
-                  </p>
-                  <ul>
-                    <li><a href="#">Shift Ulin</a></li>
-                    <li><a href="#">Sharesimle</a></li>
-                  </ul>
-                </div>   
-                <div class="footer col-md-4 col-6">
-                  <p class="header-category">
-                    Program
-                  </p>
-                  <ul>
-                    <li><a href="#">Berkuda</a></li>
-                    <li><a href="#">Memanah</a></li>
-                  </ul>
-                </div>   
-                <div class="footer col-md-4 col-6">
-                  <p class="header-category">
-                    Office
-                  </p>
-                  <ul>
-                    <p>Jl. Pasang No.9, Cihapit, Kec. Bandung Wetan, Kota Bandung, Jawa Barat 40114</p>
-                  </ul>
-                </div>   
-                </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container-fluid">
-        <div class="row border-top justify-content-center align-items-center py-3">
-          <div class="col-auto text-white font-weight-light ">
-            2021 Copyright Pesan_Trend. All Rights Reserved.
-          </div>
-        </div>
-      </div>
-      </section>
-
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="frontend/libraries/bootstrap/js/bootstrap.js"></script>
-    <script src="frontend/libraries/jquery/jquery-3.6.0.min.js"></script>
-</body>
-</html>
+@endsection
