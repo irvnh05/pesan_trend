@@ -9,7 +9,7 @@ Pesan_Trend
       <section>
        <div class="mt-4">
          <div class="row">
-           <div class="col-lg-12" data-aos="zoom-in">
+           <div class="col-lg-12">
              <div 
              id="pesantrendCarousel"
              class="carousel-slide"
@@ -38,7 +38,7 @@ Pesan_Trend
                   <div class="row">
                     <div class="col-lg-6 mt-2">
                       <h1 class="cocogoose display2">
-                        Find next
+                          Find next
                         <span class="text-black">
                           program
                         </span>
@@ -67,15 +67,15 @@ Pesan_Trend
                         </div>
                       </div>
                        <!-- <pre>     -->
-                      <div class="booking flex-row flex-wrap   d-flex  justify-content-center " >
-                           <div class="row col-11  mr-4">
-                        <div class="col-12 col-lg-4  ">
+                      <div class="booking flex-row flex-wrap d-none d-xl-block   justify-content-center " >
+                           <div class="row col-11 ">
+                        <div class="col-11 col-lg-5  ">
                             <label class="mt-3">
                               <img src="pesantrend-template/frontend/images/Search.svg" alt="">
                               Looking For Program
                             </label>
                             </div>
-                            <div class="col-12 col-lg-4 mt-2">
+                            <div class="col-11 col-lg-5 mt-2">
                                 <select class="custom-select bg-transparent form-control" id="#">
                                   <option value="" selected disabled>Enter Your Program</option>
                                   <option>Value 1</option>
@@ -83,16 +83,16 @@ Pesan_Trend
                                   <option>Value 3</option>
                                 </select>
                               </div>
-                              <div class="col-12 col-lg-4">  
+                              <div class="col-11 col-lg-2">  
                             <button type="button" class="btn btn-booking ">Reservasi!</button>
                           </div> 
                         </div>
                       </div>
                     <!-- </pre>  -->
                     </div> 
-                    <div class="col-lg-6 mt-3">
+                    <div class="col-lg-6 mt-3 ">
                         <picture>
-                                <img class="d-block w-100"  src="pesantrend-template/frontend/images/header-1.png" alt="">
+                                <img class="d-none d-xl-block w-100"  src="pesantrend-template/frontend/images/header-1.png" alt="">
                              </picture>
                     </div>
                   </div>
@@ -114,7 +114,7 @@ Pesan_Trend
                 <img class="d-block w-100 "  src="pesantrend-template/frontend/images/about.png" alt="">
               </picture>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 mt-3">
               <h2 class="cocogoose font-wight-normal">
                 <span class="text-black">
                   Take The Best
@@ -184,20 +184,26 @@ Pesan_Trend
                 Yang Kami Sediakan
               </h3>
               <div class="mt-5 row course-categories">
-              {{-- @foreach($items as $item) 
+              @php $incrementCategory = 0 @endphp
+              @forelse($kategori as $kategori) 
                 <div class="col-lg-4 col-sm-6 col-12">
                   <div class="item-category">
-                    <img src="#"  class="icon " alt="">
+                    <img src="{{  Storage::url($kategori->assets) }}"  class="icon " alt="">
                     <div class="mt-4">
                       <a href="#">
                         <h2 class="categories-text">
-                          {{  $category->name }}
+                          {{-- {{  $programs->$kategori_program->name }} --}}
+                          {{  $kategori->nama }}
                         </h2>
                       </a>
                     </div>
                   </div>
                 </div>
-              @endforeach --}}
+                @empty
+                  <div class="col-12 text-center py-5">
+                     No Category Found
+                  </div>
+              @endforelse
                 {{-- <div class="col-lg-4 col-sm-6 col-12">
                   <div class="item-category">
                     <img src="pesantrend-template/frontend/images/event.svg" class="icon" alt="">
@@ -250,18 +256,18 @@ Pesan_Trend
                 </span>
               </h3>
             </div>
-            <div class="col-lg-2 col-12 d-none d-sm-block offset-lg-4 ">
+            {{-- <div class="col-lg-2 col-12 d-none d-sm-block offset-lg-4 ">
               <button class="btn btn-login ml-5">
                 All Program
               </button>
-            </div>
+            </div> --}}
           </div>
             <div class="card-body">
               <div class="row">
                  @forelse ($programs as $program)
                 <div class="col-md-12 col-lg-6 col-xl-4">
                   <div class="card mb-2 bg-gradient-dark">
-                    <img class="card-img-top" src="pesantrend-template/frontend/images/study.png" alt="">
+                    <img class="card-img-top w-100" src="{{ $program->galeri_program->count() ? Storage::url($program->galeri_program->first()->assets) : '' }}" alt="">
                       <div class="card-body kategori-card ">
                       <!-- <div class="d-sm-block"> -->
                         <button class="btn btn-block btn-card  btn-xs disabled">

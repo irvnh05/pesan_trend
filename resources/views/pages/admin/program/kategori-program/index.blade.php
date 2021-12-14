@@ -60,6 +60,9 @@
                 <td>{{ $item->keterangan }}</td>
                 <td>{{ $item->slug }}</td>
                 <td>
+                  <img src="{{ Storage::url($item->assets) }}" alt="" style="width: 150px" class="img-thumbnail">
+                </td>
+                <td>
                   <a href="{{ route('kategori-program.edit', $item->id) }}" class="btn btn-info">
                     <i class="fa fa-pencil-alt"></i>
                   </a>

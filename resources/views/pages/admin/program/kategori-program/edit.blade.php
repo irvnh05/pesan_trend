@@ -44,7 +44,7 @@
       @endif
 
       <!-- form start -->
-      <form action="{{ route('kategori-program.update', $item->id) }}" method="POST">
+      <form action="{{ route('kategori-program.update', $item->id) }}" method="POST" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         <div class="card-body">
@@ -55,6 +55,10 @@
           <div class="form-group">
             <label for="keterangan">Keterangan</label>
             <input type="text" class="form-control" name="keterangan" placeholder="Keterangan" value="{{ $item->keterangan }}">
+          </div>
+          <div class="form-group">
+            <label for="assets">Assets</label>
+            <input type="file" class="form-control" name="assets" placeholder="Assets">
           </div>
           {{-- <div class="form-group">
             <label for="slug">Slug</label>

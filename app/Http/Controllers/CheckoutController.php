@@ -13,7 +13,7 @@ class CheckoutController extends Controller
 {
     public function index(Request $request, $id)
     {
-        //   $cek = Transaction::with(['detail','program','user'])->findOrFail($id);
+         $item = Transaction::with(['detail','program','user'])->findOrFail($id);
          $cek = Transaction::with(['detail','program','user'])
         ->where('id',$id)
         ->whereHas('program', function($program){
@@ -23,8 +23,8 @@ class CheckoutController extends Controller
 
         if($cek){
             return view('checkout-alternate',[
-                    // 'item' => $item
-                ]);
+                    'item' => $item
+        ]);
         }else{    
             return view('soon',[
             // 'item' => $item
@@ -35,25 +35,39 @@ class CheckoutController extends Controller
     public function process(Request $request, $id)
     {
         $program = Program::findOrFail($id);
+        $cek = Program::where('id',$id)
+        ->where('nama', 'Proyek Langit')
+        ->first();  
 
-         $transaction = Transaction::create([
-            'users_id' => Auth::user()->id,
-            'programs_id' => $id,
-            // 'additional_visa' => 0,
-            // 'transaction_total' => $program->price,
-            'status_transaction	' => 'IN_CART'
-        ]);
-        //  dd($transaction);
-   
-        TransactionDetail::create([
-            'transactions_id' => $transaction->id,
-            // 'username' => Auth::user()->username,
-            // 'nationality' => 'ID',
-            // 'is_visa' => false,
-            // 'doe_passport' => Carbon::now()->addYears(5)
-        ]);
+        if($cek){
+            $transaction = Transaction::create([
+                // 'users_id' => Auth::user()->id,
+                'programs_id' => $id,
+                'status_transaction' => 'CART',
+                // 'additional_visa' => 0,
+                // 'transaction_total' => $program->price,
+           
+            ]);
 
-        return redirect()->route('checkout', $transaction->id);
+    
+            TransactionDetail::create([
+                'transactions_id' => $transaction->id,
+                // 'username' => Auth::user()->username,
+                // 'nationality' => 'ID',
+                // 'is_visa' => false,
+                // 'doe_passport' => Carbon::now()->addYears(5)
+            ]);
+
+            return redirect()->route('checkout', $transaction->id);
+             echo "sukses";
+
+        }else{    
+
+            return view('soon',[
+            // 'item' => $item
+             ]);
+        }
+        
     }
 
     public function remove(Request $request, $detail_id)
@@ -107,11 +121,11 @@ class CheckoutController extends Controller
 
     public function success(Request $request, $id)
     {
-        // $transaction = Transaction::findOrFail($id);
-        // $transaction->transaction_status = 'PENDING';
+        $transaction = Transaction::findOrFail($id);
+        $transaction->status_transaction = 'PENDING';
 
-        // $transaction->save();
+        $transaction->save();
 
-        // return view('pages.success');
+        return view('sukses');
     }
 }

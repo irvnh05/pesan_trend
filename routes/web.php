@@ -28,6 +28,10 @@ Route::post('/checkout/{id}', 'CheckoutController@process')
     ->name('checkout_process');
     // ->middleware(['auth','verified']);
 
+Route::get('/checkout/confirm/{id}', 'CheckoutController@success')
+    ->name('checkout-success');
+    // ->middleware(['auth','verified']);
+
 Route::get('/checkout/{id}', 'CheckoutController@index')
     ->name('checkout');
     // ->middleware(['auth','verified']);

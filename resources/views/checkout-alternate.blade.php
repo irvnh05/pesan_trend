@@ -1,4 +1,7 @@
-@extends('layouts.home-alternate')
+{{-- @extends('layouts.home-alternate')  --}}
+
+@extends('layouts.none') 
+
 
 @section('title')
 Pesan_Trend
@@ -6,7 +9,7 @@ Pesan_Trend
 
 @section('content')
 <!-- br -->
-  <section >
+  {{-- <section >
 
         <div class="container mt-3">
           <div class="row">
@@ -23,17 +26,16 @@ Pesan_Trend
             </div>
           </div>
         </div>
-      </section>
+      </section> --}}
 
   <!--form  -->
-  <section>
-  <section>
+  
   <!-- Page Content -->
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-lg-10">
-              <h2>
-                Dapatkan konten-konten (audio) penyemangat hidup, <br>
+            <div class="col-lg-5 mt-5 mb-4">
+              <h2 class="text-justify ">
+                Dapatkan konten-konten (audio) penyemangat hidup,
                 mengupas problematika hidup sehari-hari </h3>
               </h2>
               <form class="mt-3">
@@ -127,9 +129,12 @@ Pesan_Trend
                                   placeholder="No Hp Contoh (082199038375)"
                                   >
                               </div>  
-                <button type="submit" class="btn btn-login btn-block mt-4">
+                {{-- <button type="submit" class="btn btn-login btn-block mt-4">
                   Sign Up Now
-                </button>
+                </button> --}}
+                  <a href="{{ route('checkout-success', $item->id) }}" class="btn btn-login btn-block mt-4">
+               Sign Up Now
+            </a>
               </form>
             </div>
           </div>

@@ -26,6 +26,7 @@ class KategoriProgramRequest extends FormRequest
         return [
             'nama'=> 'required | max:255',
             'keterangan'=> 'required | max:255',
+            'assets'=> 'required | mimes:svg',
             // 'slug'=> 'required | max:255'
         ];
     }

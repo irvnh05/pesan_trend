@@ -26,14 +26,14 @@ Pesan_Trend
           </div>
         </div>
          @if($programs->galeri_program->count() > 0)
-        <div class="container gallery">
+        <div class="container ">
           <div class="row">
-            <div class="col-lg-8" data-aos="zoom-in">
+            <div class="col-lg-8 gallery">
               <div class="xzoom-container">
                 <img
                   src="{{ Storage::url($programs->galeri_program->first()->assets) }}"
                   xoriginal="{{ Storage::url($programs->galeri_program->first()->assets) }}"
-                  class="w-50 xzoom"
+                  class="xzoom"
                   id="xzoom-default"
                   alt=""
                 />
@@ -163,3 +163,5 @@ Pesan_Trend
     </section>
 
 @endsection
+
+

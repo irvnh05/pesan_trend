@@ -18,6 +18,7 @@ class CreateKategoriProgramsTable extends Migration
 
             $table->string('nama');
             $table->string('keterangan');
+            $table->string('assets');
             $table->string('slug');
             // $table->string('foto'); opsi untuk icon kategori
 

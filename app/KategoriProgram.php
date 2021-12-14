@@ -12,14 +12,15 @@ class KategoriProgram extends Model
     protected $fillable = [
         'nama',
         'keterangan',
-        'slug'
+        'slug',
+        'assets'
     ];
 
     protected $hidden = [
        
     ];
 
-     public function galeri_kategori(){
-        return $this->hasMany(GaleriKategori::class, 'kategori_id','id');
-    }
+    //  public function galeri_kategori(){
+    //     return $this->hasMany(GaleriKategori::class, 'kategori_id','id');
+    // }
 }

@@ -24,7 +24,7 @@ class GaleriProgramRequest extends FormRequest
     public function rules()
     {
         return [
-            'programs_id'=> 'required | integer | exists:galeri_programs,id',
+            'programs_id'=> 'required | integer | exists:programs,id',
             'assets'=> 'required | image',
             // 'slug'=> 'required | max:255'
         ];

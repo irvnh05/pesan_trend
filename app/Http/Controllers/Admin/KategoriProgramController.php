@@ -43,6 +43,7 @@ class KategoriProgramController extends Controller
     public function store(KategoriProgramRequest $request)
     {
         $data = $request->all();
+        $data['assets'] = $request->file('assets')->store('assets/galeri_kategori', 'public');
         $data['slug'] = Str::slug($request->nama);
 
         KategoriProgram::create($data);
@@ -82,9 +83,11 @@ class KategoriProgramController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(KategoriProgramRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
+
+        $data['assets'] = $request->file('assets')->store('assets/galeri_kategori', 'public');
         $data['slug'] = Str::slug($request->nama);
 
         $item = KategoriProgram::findOrFail($id);
