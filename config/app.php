@@ -164,6 +164,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         TelegramNotifications\TelegramServiceProvider::class,    
+        // AzisHapidin\IndoRegion\IndoRegionServiceProvider::class,
         /*
          * Package Service Providers...
          */

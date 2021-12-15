@@ -279,7 +279,14 @@ Pesan_Trend
                         <p class="card-text text-black h6 text-justify mr-2 mb-3">
                            {!!strlen($program->keterangan) > 500 ? substr($program->keterangan,0,500) : $program->keterangan!!}
                         </p>
-                        <a href="{{ route('detail', $program->slug) }}" class="seal-brown">lihat selengkapnya</a>
+                          <form action="{{ route('checkout-create', $id) }}" method="post">
+                  @csrf
+                  <button class="btn btn-login ml-1 nav-link px-4 text-white btn-block mb-3" type="submit">
+                      Join Now
+                  </button>
+                  {{-- @method('PUT') --}}
+              </form>
+                        {{-- <a href="{{ route('detail', $program->slug) }}" class="seal-brown">lihat selengkapnya</a> --}}
                         {{-- {{ route('pengumuman', $pengumuman->id) }} --}}
                       </div>
                     </div>   

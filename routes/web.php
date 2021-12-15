@@ -24,11 +24,25 @@ Route::get('login/google', 'Auth\GoogleController@googleRedirect');
 Route::get('login/google/callback', 'Auth\GoogleController@loginWithGoogle');
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/checkout/{id}', 'CheckoutController@process')
-    ->name('checkout_process');
+Route::get('/provinces', 'LocationController@provinces')->name('provinces');
+// Route::post('/regencies', 'CheckoutController@regencies')->name('regencies');
+Route::post('regencies', 'LocationController@regencies')
+    ->name('regencies');
+
+Route::post('districts', 'LocationController@districts')
+    ->name('districts');
+
+Route::post('/checkout/create/process/{id}', 'CheckoutController@store')
+    ->name('checkout-store');
+
+Route::post('/checkout/create/{id}', 'CheckoutController@create')
+    ->name('checkout-create');
+
+// Route::post('/checkout', 'CheckoutController@process')
+//     ->name('checkout_process');
     // ->middleware(['auth','verified']);
 
-Route::get('/checkout/confirm/{id}', 'CheckoutController@success')
+Route::get('/checkout/confirm', 'CheckoutController@success')
     ->name('checkout-success');
     // ->middleware(['auth','verified']);
 
