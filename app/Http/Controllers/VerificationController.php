@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Program;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class VerificationController extends Controller
 {
     /**
      * Create a new controller instance.

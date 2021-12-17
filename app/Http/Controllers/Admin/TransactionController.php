@@ -58,19 +58,8 @@ class TransactionController extends Controller
                 })
                 ->rawColumns(['action'])
                 ->make();
-        }
-        
-        // $programs = Program::all();
-        // $lowongans = Lowongan::all();
-
+        }  
         return view('pages.admin.transaksi.reservasi.index');
-        // $items = Transaction::with([
-        //     'detail','user','program'
-        // ])->get();
-
-        // return view('pages.admin.transaksi.reservasi.index',[
-        //     'items' => $items
-        // ]);
     }
 
     /**
@@ -80,15 +69,12 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        // $kategori = KategoriProgram::all();
         $program = Program::all();
         $item = Transaction::all();
             return view('pages.admin.transaksi.reservasi.create',[
                 'item' => $item,
                 'program' => $program,
-                // 'kategori' => $kategori
             ]);
-        // }
     }
 
     /**
@@ -99,10 +85,7 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        // $data = $request->all();
         $program = Program::where('id', '=', $request->programs_id)->first();
-
-        // Transaction::create($data);
         $item = Transaction::create([
             'users_id' => Auth::user()->id,
             'programs_id' =>$request->programs_id,
@@ -155,8 +138,6 @@ class TransactionController extends Controller
     public function update(TransactionsRequest $request, $id)
     {
         $data = $request->all();
-        // $data['slug'] = Str::slug($request->nama);
-
         $item = Transaction::findOrFail($id);
     
         $item->update($data);

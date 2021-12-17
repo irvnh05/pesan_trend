@@ -20,6 +20,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'roles',
+        'district_id',
+        'provinves_id',
+        'regency_id', 
+        'phone_number',
+        'zip_code',  
+        'alamat',     
         // 'provider', 'provider_id', 
         'google_id'
     ];
@@ -42,5 +48,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    
+    public function districts(){
+        return $this->belongsTo(District::class, 'district_id','id');
+    }
+    public function province(){
+        return $this->belongsTo(Province::class, 'provinves_id','id');
+    }
+    public function regency(){
+        return $this->belongsTo(Regency::class, 'regency_id','id');
+    }
+
 }

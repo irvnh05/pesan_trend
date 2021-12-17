@@ -3,7 +3,7 @@
         <div class="container">
           <div class="row">
             <div class="footer col-lg-3 col-10 mt-5">
-              <img src="pesantrend-template/frontend/images/Logo-footer.svg" width="150" height="70" alt="logo pesantrend">
+              <img src="pesantrend-template/frontend/images/Logo-footer.svg" width="150" height="100" alt="logo pesantrend">
               <p class="mt-3 tagline text-justify text-white ">
                 Neque porro quisquam est qui dolorem 
                 ipsum quia dolor sit amet Neque porroquisquam 
@@ -14,17 +14,17 @@
               <div class="icon-sosmed">
                 <div class="row">
                   <div class="col-3">
-                    <a href="#">
+                    <a href="{{ route('cooming-soon') }}">
                       <img src="pesantrend-template/frontend/images/ig.svg" alt="">
                     </a>
                   </div>
                   <div class="col-3">
-                    <a href="#">
+                    <a href="{{ route('cooming-soon') }}">
                       <img src="pesantrend-template/frontend/images/fb.svg" alt="">
                     </a>
                   </div>
                   <div class="col-3">
-                    <a href="#">
+                    <a href="{{ route('cooming-soon') }}">
                       <img src="pesantrend-template/frontend/images/yt.svg" alt="">
                     </a>
                   </div>
@@ -40,8 +40,8 @@
                     Support
                   </p>
                   <ul>
-                    <li><a href="#">Donasi</a></li>
-                    <li><a href="#">Merch</a></li>
+                    <li><a href="{{ route('cooming-soon') }}">Donasi</a></li>
+                    <li><a href="{{ route('cooming-soon') }}">Merch</a></li>
                   </ul>
                 </div>
                 <div class="footer col-md-4 col-6">
@@ -49,8 +49,8 @@
                    Useful Link
                   </p>
                   <ul>
-                    <li><a href="#">Privacy & Policy</a></li>
-                    <li><a href="#">Term & Condition</a></li>
+                    <li><a href="{{ route('cooming-soon') }}">Privacy & Policy</a></li>
+                    <li><a href="{{ route('cooming-soon') }}">Term & Condition</a></li>
                   </ul>
                 </div>
                 <div class="footer col-md-4 col-6">
@@ -58,8 +58,8 @@
                     Artikel
                   </p>
                   <ul>
-                    <li><a href="#">Artikel 1</a></li>
-                    <li><a href="#">Artikel 2</a></li>
+                    <li><a href="{{ route('cooming-soon') }}">Artikel 1</a></li>
+                    <li><a href="{{ route('cooming-soon') }}">Artikel 2</a></li>
                   </ul>
                 </div>               
                 <div class="footer col-md-4 col-6">
@@ -67,8 +67,8 @@
                    Event
                   </p>
                   <ul>
-                    <li><a href="#">Shift Ulin</a></li>
-                    <li><a href="#">Sharesimle</a></li>
+                    <li><a href="{{ route('cooming-soon') }}">Shift Ulin</a></li>
+                    <li><a href="{{ route('cooming-soon') }}">Sharesimle</a></li>
                   </ul>
                 </div>   
                 <div class="footer col-md-4 col-6">
@@ -76,8 +76,8 @@
                     Program
                   </p>
                   <ul>
-                    <li><a href="#">Berkuda</a></li>
-                    <li><a href="#">Memanah</a></li>
+                    <li><a href="{{ route('cooming-soon') }}">Berkuda</a></li>
+                    <li><a href="{{ route('cooming-soon') }}">Memanah</a></li>
                   </ul>
                 </div>   
                 <div class="footer col-md-4 col-6">

@@ -45,12 +45,11 @@
       <table id="crudTable" class="table table-bordered table-striped">
         <thead>
         <tr>
-          <th>#</th>
-          <th>User</th>
+          <th>No Transaksi</th>
+          <th>Nama</th>
           <th>Program</th>
           <th>Status</th>
           <th>Infaq</th>
-          <th>Resi</th>
           <th>Action</th>
         </tr>
         </thead>
@@ -107,21 +106,24 @@
 @push('addon-script')
     <script>
         // AJAX DataTable
-        var datatable = $('#crudTable').DataTable({
+        var datatable = $('#crudTable').DataTable({       
             processing: true,
             serverSide: true,
-            ordering: true,
-            
+            searching:false,
+
+            dom: 'Bfrtip',
+            buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+
             ajax: {
                 url: '{!! url()->current() !!}',
             },
             columns: [
-                { data: 'id', name: 'id' },
+                { data: 'no_transaction', name: 'no_transaction' },
                 { data: 'user.name', name: 'user.name' },
                 { data: 'program.nama', name: 'program.nama' },
                 { data: 'status_transaction', name: 'status_transaction' },
                 { data: 'total', name: 'total' },
-                { data: 'no_transaction', name: 'no_transaction' },
+                // { data: 'no_transaction', name: 'no_transaction' },
                 {
                     data: 'action',
                     name: 'action',

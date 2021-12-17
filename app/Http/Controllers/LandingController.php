@@ -20,10 +20,14 @@ class LandingController extends Controller
         $programs = Program::with('galeri_program','kategori_program')->take(3)->get();
         // $programs = Program::with(['kategori_program','galeri_program'])->get();
         // dd($id);
-        return view('app',[
+        return view('app-option',[ //app option
             'programs' => $programs,
             'kategori' => $kategori,
             'id' => $id
         ]);
+    }
+
+    public function soon(){
+        return view('soon');
     }
 }

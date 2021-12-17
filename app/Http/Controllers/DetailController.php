@@ -21,4 +21,9 @@ class DetailController extends Controller
             'programs' => $programs
         ]);
     }
+
+    public function detail( )
+    {
+        return view('detail');
+    }
 }

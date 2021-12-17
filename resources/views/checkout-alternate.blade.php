@@ -61,28 +61,27 @@ Pesan_Trend
                 <div class="form-group">
                   <label>Alamat</label>
                     <input 
-                    type="alamat" 
+                    type="text" 
                     class="form-control" 
-                    id="alamat" 
+                    name="alamat" 
                     placeholder="Alamat Contoh (Jl.Awibitung no.1)"
                     >
                 </div>
                 <div class="form-group">
                   <label>Kecamatan</label>
-                        <select class="custom-select form-control-border" name="districts" id="districts" >
+                        <select class="custom-select form-control-border" name="district_id" id="districts" >
                        <option value="">-- pilih Kecamatan --</option>
                   </select>
-                  </select>
                 </div>
-                <div class="form-group">
-                  <label>Kabupaten/Kota</label>
-                     <select class="custom-select form-control-border regencies" name="city" id="city">
-                         <option value="">-- pilih kota asal --</option>
+                 <div class="form-group">
+                  <label>Kab/Kots</label>
+                        <select class="custom-select form-control-border regencies" name="regency_id" id="city" >
+                       <option value="">-- pilih kab/kota --</option>
                   </select>
-                </div>
+                </div>              
                 <div class="form-group">
                   <label>Provinsi</label>
-                     <select class="custom-select form-control-border" id="province" name="province">
+                     <select class="custom-select form-control-border" name="provinves_id" id="province" >
                       <option value="">== Select Province ==</option>
                       @foreach ($provinces as $id => $name)
                           <option value="{{ $id }}">{{ $name }}</option>
@@ -101,9 +100,9 @@ Pesan_Trend
                 <div class="form-group">
                   <label>Kode Pos</label>
                     <input 
-                    type="kodepos" 
+                    type="text" 
                     class="form-control" 
-                    id="kodepos" 
+                    name="zip_code" 
                     placeholder="Kode Pos Contoh (40234)"
                     >
                 </div>

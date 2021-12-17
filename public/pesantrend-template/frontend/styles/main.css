@@ -104,7 +104,11 @@ body {
 }
 
 .display2 {
-    font-size: 55px;
+    font-size: 45px;
+}
+
+.display3 {
+    font-size: 50px;
 }
 
 .cocogoose {
@@ -148,6 +152,25 @@ body {
     color: #fff;
     padding: 5px 20px;
 }
+
+
+.lahan {
+    width: 585px;
+    padding-left: 0px;
+    margin-left: 0px;
+
+}
+
+.btn-gabung {
+    background-color: #93916d;
+    color: #fff;
+    padding: 15px 80px;
+}
+
+.btn-gabung:hover {
+    color: #d4d3c4;
+}
+
 
 .btn-login:hover {
     color: #d4d3c4;
