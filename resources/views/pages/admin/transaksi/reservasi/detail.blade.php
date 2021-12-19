@@ -46,10 +46,10 @@
       <div class="card shadow">
         <div class="card-body">
             <table class="table table-bordered">
-                <th>ID</th>
-                <td>{{ $item->id }}</td>
+                <th>Email</th>
+                <td>{{ $item->user->email }}</td>
                 <tr>
-                    <th>User</th>
+                    <th>Nama Lengkap</th>
                      <td>{{ $item->user->name }}</td>
                 </tr>
                 <tr>
@@ -69,30 +69,30 @@
                      <td>{{ $item->no_transaction }}</td>
                 </tr>
                 <tr>
-                    <th>Pembelian
+                    {{-- <th>Pembelian
                         <td>
                             <table class="table table-bordered">
                                 <tr>
                                     <th>Transaksi ID</th>
-                                    <th>Total</th>
+                                    <th>Total</th> --}}
                                     {{-- <th>ID</th>
                                     <th>User</th>
                                     <th>Program</th>
                                     <th>Status</th>
                                     <th>Infaq</th> --}}
-                                </tr>
+                                {{-- </tr>
                                 @foreach ($item->detail as $detail)
                                     <tr>
                                         <td>{{ $detail->transactions_id	 }}</td>
-                                        <td>{{ $detail->nominal_programs }}</td>
+                                        <td>{{ $detail->nominal_programs }}</td> --}}
                                         {{-- <td>{{ $detail->email }}</td>
                                         <td>{{ $detail->whatsapp }}</td>                                        --}}
-                                    </tr>
+                                    {{-- </tr>
                                 @endforeach
                             </table>
                         </td>
                     </th>
-                </tr>
+                </tr> --}}
             </table>
 
         </div>

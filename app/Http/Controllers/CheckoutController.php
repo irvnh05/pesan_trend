@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Admin\CheckoutRequest;
 use App\Program;
 use App\Transaction;
 use App\TransactionDetail;
@@ -53,7 +54,7 @@ class CheckoutController extends Controller
         return view('sukses');
     }
 
-      public function store(Request $request , $id)
+      public function store(CheckoutRequest $request , $id)
     {                   
             $user = User::create([
                 'name' => $request->name,
@@ -70,7 +71,7 @@ class CheckoutController extends Controller
 
              $transaction = Transaction::create([
                 'users_id' => $user->id,
-                'status_transaction' => 'TEST',
+                'status_transaction' => 'KONFIRMASI',
                 'programs_id' => $id,
                 'no_transaction' => $trx
             ]);

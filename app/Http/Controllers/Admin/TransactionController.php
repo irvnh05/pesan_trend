@@ -10,6 +10,7 @@ use Yajra\DataTables\Facades\DataTables;
 use App\Program;
 use Illuminate\Support\Facades\Auth;
 // use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class TransactionController extends Controller
 {
@@ -20,14 +21,28 @@ class TransactionController extends Controller
      */
     public function index()
     {
+
         if (request()->ajax()) {
             $query = Transaction::with([
                 'program',
-                'user',
-                'detail'
-                ]);
+                'user.province',
+                'user.regency',
+                'user.districts',
+                'detail', 
+            ]); 
 
-            return Datatables::of($query)
+            //filter tanggal
+            if (request()->start_date || request()->end_date) {
+                 $start_date = Carbon::parse(request()->start_date)->format('Y-m-d') . ' 00:00:01';
+                 $end_date = Carbon::parse(request()->end_date)->format('Y-m-d') . ' 23:59:59';
+                 $query->whereBetween('created_at',[$start_date,$end_date])->get();
+            } else {
+                 $query->latest()->get();
+            }
+
+            $posts =$query->select('*');
+
+            return Datatables::of($posts)
                 ->addColumn('action', function ($item) {
                     return '
                         <div class="btn-group">
@@ -57,7 +72,7 @@ class TransactionController extends Controller
                     </div>';
                 })
                 ->rawColumns(['action'])
-                ->make();
+                ->make(true);
         }  
         return view('pages.admin.transaksi.reservasi.index');
     }

@@ -38,6 +38,15 @@ Pesan_Trend
                 Dapatkan konten-konten (audio) penyemangat hidup,
                 mengupas problematika hidup sehari-hari </h3>
               </h2>
+                @if ($errors->any())
+                  <div class="alert alert-danger">
+                    <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                    </ul>
+                  </div>
+                @endif
                 <form action="{{ route('checkout-store',$cek) }}" method="POST" enctype="multipart/form-data " >
                       @csrf
                  <div class="form-group">
@@ -66,28 +75,28 @@ Pesan_Trend
                     name="alamat" 
                     placeholder="Alamat Contoh (Jl.Awibitung no.1)"
                     >
+                </div>       
+                <div class="form-group">
+                  <label>Provinsi</label>
+                     <select class="custom-select form-control-border" name="provinves_id" id="province" >
+                      <option value="">== Pilih Provinsi ==</option>
+                      @foreach ($provinces as $id => $name)
+                          <option value="{{ $id }}">{{ $name }}</option>
+                      @endforeach
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Kab/Kota</label>
+                        <select class="custom-select form-control-border regencies" name="regency_id" id="city" >
+                       <option value="">-- pilih Kab/Kota --</option>
+                  </select>
                 </div>
                 <div class="form-group">
                   <label>Kecamatan</label>
                         <select class="custom-select form-control-border" name="district_id" id="districts" >
                        <option value="">-- pilih Kecamatan --</option>
                   </select>
-                </div>
-                 <div class="form-group">
-                  <label>Kab/Kots</label>
-                        <select class="custom-select form-control-border regencies" name="regency_id" id="city" >
-                       <option value="">-- pilih kab/kota --</option>
-                  </select>
-                </div>              
-                <div class="form-group">
-                  <label>Provinsi</label>
-                     <select class="custom-select form-control-border" name="provinves_id" id="province" >
-                      <option value="">== Select Province ==</option>
-                      @foreach ($provinces as $id => $name)
-                          <option value="{{ $id }}">{{ $name }}</option>
-                      @endforeach
-                  </select>
-                </div>
+                </div>       
                 <div class="form-group">
                   <label>Negara</label>
                     <input 

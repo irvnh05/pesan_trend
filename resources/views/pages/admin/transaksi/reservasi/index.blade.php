@@ -42,18 +42,33 @@
     <!-- /.card-header -->
    <!-- /.card -->
     <div class="card-body">
-      <table id="crudTable" class="table table-bordered table-striped">
+                      <div class="my-2">
+                    {{-- <form action="{{ route('transaction.index') }}" method="GET">
+                      @csrf --}}
+                        <div class="input-group mb-3">
+                            <input type="date" class="form-control" id="start_date" name="start_date">
+                            <input type="date" class="form-control" id="end_date" name="end_date">
+                            <button id="btnFiterSubmitSearch"  class="btn btn-primary" type="submit">GET</button>
+                        </div>
+                    {{-- </form> --}}
+                </div>
+      <table id="crudTable" class="table table-bordered table-striped" >
         <thead>
         <tr>
           <th>No Transaksi</th>
           <th>Nama</th>
-          <th>Program</th>
+          <th>Alamat</th>        
+          <th>Provinsi</th>         
+          <th>Kab/Kota</th>            
+          <th>Kecamatan</th>            
+          <th>No HP</th>
           <th>Status</th>
-          <th>Infaq</th>
+          {{-- <th>Infaq</th> --}}
           <th>Action</th>
         </tr>
         </thead>
         <tbody>
+          
           {{-- @forelse ($items as $item)
               <tr>
                 <td>{{ $item->id }}</td>
@@ -105,33 +120,75 @@
 
 @push('addon-script')
     <script>
+              $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         // AJAX DataTable
         var datatable = $('#crudTable').DataTable({       
+
             processing: true,
             serverSide: true,
             searching:false,
 
             dom: 'Bfrtip',
-            buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+            // buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+                buttons: [
+            {
+                extend: 'copyHtml5',
+                exportOptions: {
+                    columns: [ 0, ':visible' ]
+                }
+            },
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                exportOptions: {
+                      columns: ':visible'
+                }
+            },
+            'colvis'
+        ],
 
             ajax: {
-                url: '{!! url()->current() !!}',
+                url: "{!! url()->current() !!}",
+                type: 'GET',
+                data: function (d) {
+                d.start_date = $('#start_date').val();
+                d.end_date = $('#end_date').val();
+                }
             },
+
             columns: [
                 { data: 'no_transaction', name: 'no_transaction' },
                 { data: 'user.name', name: 'user.name' },
-                { data: 'program.nama', name: 'program.nama' },
+                { data: 'user.alamat', name: 'user.alamat' },
+                { data: 'user.province.name', name: 'user.province.name' },
+                { data: 'user.regency.name', name: 'user.regency.name' },
+                { data: 'user.districts.name', name: 'user.districts.name' },
+                { data: 'user.phone_number', name: 'user.phone_number' },
                 { data: 'status_transaction', name: 'status_transaction' },
-                { data: 'total', name: 'total' },
+                // { data: 'total', name: 'total' },
                 // { data: 'no_transaction', name: 'no_transaction' },
                 {
+
                     data: 'action',
                     name: 'action',
                     orderable: false,
-                    searchable: false,
-                    width: '15%'
+                    searchable: false,           
                 },
             ]
         });
+
+        
+$('#btnFiterSubmitSearch').click(function(){
+     $('#crudTable').DataTable().draw(true);
+}); 
     </script>
 @endpush

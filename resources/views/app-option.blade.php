@@ -37,7 +37,7 @@ Pesan_Trend
                   <div class="container ">
                     <div class="row mr-5 mb-2">
                       <div class="col-lg-8 mt-4 p-0 ">
-                        <h1 class="cocogoose display3 p-0">
+                        <h1 class="cocogoose display3 p-0 col-12">
                           (Audio) Penyemangat hidup, mengupas 
                           <span class="text-black">
                             problematika 
@@ -46,7 +46,7 @@ Pesan_Trend
                             hidup sehari-hari
                           </span>
                         </h2>
-                        <p class="text-black mt-5 h4 text-justify col-10 pl-0 mb-5">
+                        <p class="text-black mt-5 h4 text-justify col-10 p-0 mb-5">
                           Ada yang mau tiap minggu ikutan live 
                           streaming bersama ustadz @hanan_attaki ? 
                           Dan tiap malam dapet konten booster ustadz 
@@ -77,11 +77,11 @@ Pesan_Trend
       <section>
         <div class="container mt-5 col ">
           <div class="row">
-            <div class="container-fluid col-lg-2 lahan ">
-                <img class="d-none d-sm-block" width="620"  src="pesantrend-template/frontend/images/lahan.png" alt="">
+            <div class="container-fluid col-lg-5 lahan ">
+                <img class="d-none d-sm-block img-fluid"  src="pesantrend-template/frontend/images/lahan.png" alt="">
             </div>
-            <div class="col-lg-7 mt-4 ">
-              <h1 class="cocogoose font-wight-normal ml-3">
+            <div class="col-lg-7 mt-1 ">
+              <h1 class="cocogoose  ml-3">
                 <span class="text-black ">
                   Kawasan 
                   <span class="artichoke"> 
@@ -89,8 +89,8 @@ Pesan_Trend
                   </span>
                 </span>
               </h1>
-             <div class="mt-4 col-lg-11">
-                <h3 class="text-justify text-black">
+             <div class="mt-4 col-lg-12 ">
+                <h4 class="text-justify text-black col-12 p-0">
                   Pesan Trend Pemuda adalah sebuah fasilitas 
                   yang kita siapkan untuk menjadi bi'ah solihah 
                   atau lingkungan yang baik. Sehingga, fasilitas 
@@ -107,7 +107,13 @@ Pesan_Trend
                   tetapi sayangnya masih sangat sedikit sekali yang mencoba 
                   untuk lebih serius menyediakan fasilitas-fasilitas pendidikan 
                   non formal (bi'ah solihah). 
-                </h3>
+                </h4>
+             {{-- <form action="#" method="post"> --}}
+               {{-- @csrf --}}
+                <button href="#" class="btn btn-gabung mt-4 " type="submit">
+                  Selengkapnya tentang Pesan_Trend
+                </button>
+              {{-- </form> --}}
              </div>
             </div>
           </div>
