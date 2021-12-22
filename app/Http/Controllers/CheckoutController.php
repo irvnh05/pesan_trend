@@ -13,8 +13,7 @@ use App\Models\Province;
 use App\Models\Regency;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
-use GuzzleHttp;
-use Exception;
+use Illuminate\Support\Facades\Hash;
 
 class CheckoutController extends Controller
 {
@@ -24,9 +23,11 @@ class CheckoutController extends Controller
          $cek = Transaction::with(['detail','program','user'])
         ->where('id',$id)
         ->whereHas('program', function($program){
-            $program->where('nama', 'Proyek Langit');
+            $program->where('tipe', 'NO');
         })
         ->first();  
+
+        dd($cek);
 
         if($cek){
             return view('checkout-alternate',[
@@ -38,11 +39,12 @@ class CheckoutController extends Controller
         }
     }
 
-    public function create(Request $request,$id)
+    public function create(Request $request,$slug)
     {
-        $cek = Program::findOrFail($id);
+        $cek = Program::where('slug', $slug)->firstOrFail();
+        // $cek = Program::findOrFail($id);
         $provinces = Province::pluck('name', 'id');
-
+        
         return view('checkout-alternate',[
             'cek' => $cek,
             'provinces' => $provinces,
@@ -60,13 +62,17 @@ class CheckoutController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'phone_number' => $request->phone_number,
-                'roles' => 'CALON',        
+                'roles' => 'CALON',   
+                'tgl_lahir' => $request->tgl_lahir,
+                'negara' => 'INDONESIA',     
+                'password' => Hash::make($request['phone_number']),               
                 'district_id'=> $request->district_id,
                 'provinves_id'=> $request->provinves_id,
                 'regency_id'=> $request->regency_id,
                 'zip_code'=> $request->zip_code,      
                 'alamat' => $request->alamat,    
             ]);
+            
              $trx = 'PesanTrend-' . mt_rand(0000,9999);
 
              $transaction = Transaction::create([
@@ -111,7 +117,7 @@ class CheckoutController extends Controller
             $request_data = json_encode($request_param,JSON_PRETTY_PRINT );
             $res = $client->get(
                 'https://wa.me/6287724499324?text=' 
-                .($request_data) . '%20' ,
+                .($request_data) 
             ); 
             //  echo "Nama : ".$request['name'];               
             return $res->getBody()->getContents();

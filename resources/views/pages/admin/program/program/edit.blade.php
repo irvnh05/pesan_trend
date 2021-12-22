@@ -72,6 +72,14 @@
             <input type="date" class="form-control" name="date" placeholder="date"  value="{{ $item->date }}">
           </div>
           <div class="form-group">
+            <label for="tipe">Tipe Form</label>
+            <select class="custom-select rounded-0 form-control" required name="tipe">
+              <option value="{{ $item->tipe }}">Jangan Diubah</option>
+              <option value="NO">TANPA PEMBAYARAN</option>
+              <option value="YES">PEMBAYARAN</option>
+            </select>
+          </div>          
+          <div class="form-group">
             <label for="keterangan">Keterangan</label>
             <input type="text" class="form-control" name="keterangan" placeholder="Keterangan"  value="{{ $item->Keterangan }}">
           </div>

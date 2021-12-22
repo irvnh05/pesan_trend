@@ -15,7 +15,7 @@ class LandingController extends Controller
      */
     public function index()
     {
-        $id = Program::where('id', 5)->first();
+        $id = Program::where('tipe', 'NO')->first();
         $kategori = KategoriProgram::take(3)->get();
         $programs = Program::with('galeri_program','kategori_program')->take(3)->get();
         // $programs = Program::with(['kategori_program','galeri_program'])->get();
@@ -30,4 +30,9 @@ class LandingController extends Controller
     public function soon(){
         return view('soon');
     }
+
+    public function about(){
+        return view('about');
+    }
+
 }

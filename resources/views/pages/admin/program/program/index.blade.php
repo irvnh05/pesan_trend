@@ -51,6 +51,7 @@
           <th>Harga</th>
           <th>Keterangan</th>
           <th>Tanggal Mulai Program</th>
+          <th>Tipe Form</th>          
           <th>Slug </th>
           <th>Action</th>
         </tr>
@@ -64,6 +65,7 @@
                 <td>{{ $item->harga }}</td>
                 <td>{{ $item->keterangan }}</td>
                 <td>{{ $item->date }}</td>
+                <td>{{ $item->tipe }}</td>
                 <td>{{ $item->slug }}</td>
                 <td>
                   <a href="{{ route('program.edit', $item->id) }}" class="btn btn-info">

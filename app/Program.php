@@ -15,7 +15,8 @@ class Program extends Model
         'keterangan',
         'harga',
         'date',
-        'slug'	
+        'slug',
+        'tipe',	    
     ];
 
     protected $hidden = [

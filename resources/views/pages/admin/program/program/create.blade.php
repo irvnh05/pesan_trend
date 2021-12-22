@@ -74,10 +74,14 @@
             <label for="keterangan">Keterangan</label>
             <input type="text" class="form-control" name="keterangan" placeholder="Keterangan" value="{{ old('keterangan') }}">
           </div>
-          {{-- <div class="form-group">
-            <label for="slug">Slug</label>
-            <input type="text" class="form-control" name="slug" placeholder="Url" value="{{ old('slug') }}">
-          </div> --}}
+          <div class="form-group">
+            <label for="tipe">Tipe Form</label>
+             <select class="custom-select rounded-0 form-control" required name="tipe">
+              <option value="">Pilih Tipe</option>
+              <option value="NO">Tanpa Pembayaran</option>
+              <option value="YES">Pembayaran</option>               
+            </select>
+          </div>
         </div>
         <!-- /.card-body -->
 

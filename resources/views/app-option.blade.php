@@ -45,20 +45,22 @@ Pesan_Trend
                           <span class="text-black">
                             hidup sehari-hari
                           </span>
-                        </h2>
+                        </h1>
                         <p class="text-black mt-5 h4 text-justify col-10 p-0 mb-5">
                           Ada yang mau tiap minggu ikutan live 
                           streaming bersama ustadz @hanan_attaki ? 
                           Dan tiap malam dapet konten booster ustadz 
                           Hanan Attaki dg durasi lebih panjang (5 - 20 menit)?
                         </p>
-                        <form action="{{ route('checkout-create', $id) }}" method="post">
+                        {{-- <form action="{{ route('checkout-create', $id) }}" method="post">
                           @csrf
                           <button class="btn btn-gabung mt-4" type="submit">
                               Bergabung Sekarang
                           </button>
-                        </form>
-                        {{-- <button href="#" class="btn btn-gabung mt-3">Bergabung Sekarang</button> --}}
+                        </form> --}}
+                        <div>
+                          <a class="btn btn-gabung mt-4" href="{{ route('checkout-create', $id->slug) }}">Bergabung Sekarang</a>
+                        </div>
                       </div> 
                       <div class="col-4 mb-4 p-0 ">
                             <img class="d-none d-xl-block " width="480";  src="pesantrend-template/frontend/images/Ust-UHA.png" alt="" >
@@ -75,9 +77,9 @@ Pesan_Trend
 
 <!-- about -->
       <section>
-        <div class="container mt-5 col ">
+        <div class="container mt-5 p-0">
           <div class="row">
-            <div class="container-fluid col-lg-5 lahan ">
+            <div class="container-fluid col-lg-5 p-0 ">
                 <img class="d-none d-sm-block img-fluid"  src="pesantrend-template/frontend/images/lahan.png" alt="">
             </div>
             <div class="col-lg-7 mt-1 ">
@@ -89,7 +91,7 @@ Pesan_Trend
                   </span>
                 </span>
               </h1>
-             <div class="mt-4 col-lg-12 ">
+             <div class="mt-4 col-lg-12 col-sm-10">
                 <h4 class="text-justify text-black col-12 p-0">
                   Pesan Trend Pemuda adalah sebuah fasilitas 
                   yang kita siapkan untuk menjadi bi'ah solihah 
@@ -110,10 +112,11 @@ Pesan_Trend
                 </h4>
              {{-- <form action="#" method="post"> --}}
                {{-- @csrf --}}
-                <button href="#" class="btn btn-gabung mt-4 " type="submit">
+                {{-- <button href="#" class="btn btn-gabung mt-4 " type="submit">
                   Selengkapnya tentang Pesan_Trend
-                </button>
+                </button> --}}
               {{-- </form> --}}
+               <a class="btn btn-gabung mt-4 " href="{{ route('about') }}">Selengkapnya tentang Pesan_Trend</a>
              </div>
             </div>
           </div>

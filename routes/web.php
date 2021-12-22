@@ -46,6 +46,8 @@ Route::get('/', 'LandingController@index')
     ->name('landing');
 Route::get('/cooming-soon', 'LandingController@soon')
     ->name('cooming-soon');    
+Route::get('/tentang-kami', 'LandingController@about')
+    ->name('about');  
 Route::get('/detail/{slug}', 'DetailController@index')
     ->name('detail');
     
@@ -60,16 +62,17 @@ Route::post('regencies', 'LocationController@regencies')
     ->name('regencies');
 Route::post('districts', 'LocationController@districts')
     ->name('districts');
-
+    
 //  transaksi
-Route::post('/checkout/detail/process/{id}', 'CheckoutController@store')
+Route::put('/checkout/detail/process/{slug}', 'CheckoutController@store')
     ->name('checkout-store');
-Route::post('/checkout/detail/{slug}', 'CheckoutController@create')
+Route::get('/checkout/detail/{slug}', 'CheckoutController@create')
     ->name('checkout-create');
 Route::get('/checkout/confirm', 'CheckoutController@success')
     ->name('checkout-success');
 Route::get('/checkout/{slug}', 'CheckoutController@index')
     ->name('checkout');
+
 
 // verif
 Auth::routes(['verify' => true]);

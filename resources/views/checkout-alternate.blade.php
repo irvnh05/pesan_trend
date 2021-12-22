@@ -42,14 +42,15 @@ Pesan_Trend
                   <div class="alert alert-danger">
                     <ul>
                       @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
+                        <li>{{ $error }}</li>
                       @endforeach
-                    </ul>
-                  </div>
+                     </ul>
+                   </div>
                 @endif
-                <form action="{{ route('checkout-store',$cek) }}" method="POST" enctype="multipart/form-data " >
-                      @csrf
-                 <div class="form-group">
+              <form action="{{ route('checkout-store', $cek->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <div class="form-group">
                   <label>Nama Lengkap</label>
                     <input 
                     type="text" 
@@ -58,15 +59,21 @@ Pesan_Trend
                     placeholder="Nama Lengkap"
                     >
                 </div>
-                {{-- <div class="form-group">
+                <div class="form-group">
                   <label>Tgl Lahir</label>
                     <input 
                     type="date" 
                     class="form-control" 
-                    id="tgl-lahir" 
+                    name="tgl_lahir" 
                     placeholder="Tanggal Lahir"
                     >
-                </div>     --}}
+                </div>    
+                <div class="form-group">
+                  <label>Negara</label>
+                   <select class="form-control" name="negara" style="width: 100%; "  type="text"  disabled>
+                    <option value="INDONESIA"  name="negara" >INDONESIA</option>
+                  </select>
+                </div> 
                 <div class="form-group">
                   <label>Alamat</label>
                     <input 
@@ -96,16 +103,7 @@ Pesan_Trend
                         <select class="custom-select form-control-border" name="district_id" id="districts" >
                        <option value="">-- pilih Kecamatan --</option>
                   </select>
-                </div>       
-                <div class="form-group">
-                  <label>Negara</label>
-                    <input 
-                    type="text" 
-                    class="form-control" 
-                    id="negara" 
-                    placeholder="Negara (indonesia)"
-                    >
-                </div>                
+                </div>                      
                 <div class="form-group">
                   <label>Kode Pos</label>
                     <input 
@@ -133,12 +131,12 @@ Pesan_Trend
                                   placeholder="No Hp Contoh (082199038375)"
                                   >
                               </div>  
-                <button type="submit" class="btn btn-login btn-block mt-4">
-                  Sign Up Now
-                </button>
-                  {{-- <a href="{{ route('checkout-store') }}" class="btn btn-login btn-block mt-4">
-               Sign Up Now
-            </a> --}}
+               
+                <div>
+                  <button type="submit" class="btn btn-login btn-block mt-4">
+                    Daftar Sekarang
+                  </button>
+                </div>
               </form>
             </div>
           </div>
