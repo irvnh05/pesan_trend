@@ -165,6 +165,7 @@ body {
     background-color: #93916d;
     color: #fff;
     padding: 15px 80px;
+    /* width: 240px; */
 }
 
 .btn-gabung:hover {
@@ -255,6 +256,11 @@ header .btn-get-started {
 
 header .btn-get-started:hover {
     color: #fff;
+}
+
+.header-ust {
+    /* padding-right: 40px; */
+    margin-left: 70px;
 }
 
 .section-stats {

@@ -32,12 +32,12 @@ Pesan_Trend
               >
               </li>
             </ol>
-              <div class="carousel-inner">
-                <div class="carousel-item active ">
+              <div class="">
+                <div class=" ">
                   <div class="container ">
                     <div class="row mr-5 mb-2">
                       <div class="col-lg-8 mt-4 p-0 ">
-                        <h1 class="cocogoose display3 p-0 col-12">
+                        <h1 class="cocogoose display3 p-0 col-12 mt-2">
                           (Audio) Penyemangat hidup, mengupas 
                           <span class="text-black">
                             problematika 
@@ -59,11 +59,11 @@ Pesan_Trend
                           </button>
                         </form> --}}
                         <div>
-                          <a class="btn btn-gabung mt-4" href="{{ route('checkout-create', $id->slug) }}">Bergabung Sekarang</a>
+                          <a class="btn btn-gabung mt-1" href="{{ route('checkout-create', $id->slug) }}">Bergabung Sekarang</a>
                         </div>
                       </div> 
-                      <div class="col-4 mb-4 p-0 ">
-                            <img class="d-none d-xl-block " width="480";  src="pesantrend-template/frontend/images/Ust-UHA.png" alt="" >
+                      <div class="col-4 mb-4 p-0 mt-4">
+                            <img class="d-none d-xl-block header-ust" width="370";  src="pesantrend-template/frontend/images/ust.png" alt="" >
                       </div>
                     </div>
                   </div>
@@ -74,50 +74,85 @@ Pesan_Trend
          </div>
        </div>
       </section>
+      
+<!-- galeri -->
+      <section>
+            <div class="container mt-5">
+            <!--Carousel Wrapper-->
+              <div id="carousel-example-1z" class="carousel slide carousel-fade d-none d-xl-block" data-ride="carousel">
+                <!--Indicators-->
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+                  <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+                </ol>
+                <!--/.Indicators-->
+                <!--Slides-->
+                <div class="carousel-inner" role="listbox">
+                  <!--First slide-->
+                  <div class="carousel-item active">
+                    <img class="d-block w-100 img-fluid" style="height: 600px;" src="pesantrend-template/frontend/images/1.jpg"
+                      alt="First slide">
+                  </div>
+                  <!--/First slide-->
+                  <!--Second slide-->
+                  <div class="carousel-item">
+                    <img class="d-block w-100 img-fluid" style="height: 600px;" src="pesantrend-template/frontend/images/3.jpg"
+                      alt="Second slide">
+                  </div>
+                  <!--/Second slide-->
+                  <!--Third slide-->
+                  <div class="carousel-item">
+                    <img class="d-block w-100 img-fluid" style="height: 600px;" src="pesantrend-template/frontend/images/4.jpg"
+                      alt="Third slide">
+                  </div>
+                  <!--/Third slide-->
+                </div>
+                <!--/.Slides-->
+                <!--Controls-->
+                <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+                <!--/.Controls-->
+              </div>
+              <!--/.Carousel Wrapper-->
+            </div>
+      </section>
 
 <!-- about -->
       <section>
-        <div class="container mt-5 p-0">
+        <div class="container mt-5">
           <div class="row">
-            <div class="container-fluid col-lg-5 p-0 ">
-                <img class="d-none d-sm-block img-fluid"  src="pesantrend-template/frontend/images/lahan.png" alt="">
+            <div class="col-lg-5 mt-2">
+              <picture>
+                <img class="d-none d-xl-block w-100 img-fluid"  src="pesantrend-template/frontend/images/about.png" alt="">
+              </picture>
             </div>
-            <div class="col-lg-7 mt-1 ">
-              <h1 class="cocogoose  ml-3">
+            <div class=" col-sm-7 mt-4">
+              <h2 class="cocogoose">
                 <span class="text-black ">
                   Kawasan 
                   <span class="artichoke"> 
                     Pesan_Trend
                   </span>
                 </span>
-              </h1>
-             <div class="mt-4 col-lg-12 col-sm-10">
-                <h4 class="text-justify text-black col-12 p-0">
-                  Pesan Trend Pemuda adalah sebuah fasilitas 
-                  yang kita siapkan untuk menjadi bi'ah solihah 
-                  atau lingkungan yang baik. Sehingga, fasilitas 
-                  ini menjadi tempat berkumpulnya anak muda dalam 
-                  belajar Islam, belajar dakwah, dan membentuk Life 
-                  Skill mereka untuk bisa berkarya bagi bangsa dan agama.
-                  Kebutuhan akan bi'ah solihah atau lingkungan yang baik 
-                  ini adalah sesuatu yang sangat penting dalam pendidikan 
-                  pendidikan non formal. maka sesungguhnya lingkungan inilah 
-                  yang paling berpengaruh dalam membentuk prilaku (behaviour) 
-                  dan juga karakter para pemuda. Selama ini kita sangat antuasias 
-                  dalam membangun fasilitas-fasilitas pendidikan formal untuk 
-                  memenuhi kebutuhan akademis dan wawasan anak muda Indonesia 
-                  tetapi sayangnya masih sangat sedikit sekali yang mencoba 
-                  untuk lebih serius menyediakan fasilitas-fasilitas pendidikan 
-                  non formal (bi'ah solihah). 
-                </h4>
-             {{-- <form action="#" method="post"> --}}
-               {{-- @csrf --}}
-                {{-- <button href="#" class="btn btn-gabung mt-4 " type="submit">
-                  Selengkapnya tentang Pesan_Trend
-                </button> --}}
-              {{-- </form> --}}
-               <a class="btn btn-gabung mt-4 " href="{{ route('about') }}">Selengkapnya tentang Pesan_Trend</a>
-             </div>
+              </h2>
+              <p class="text-justify text-black mt-4 pr-4">
+               Pesan Trend Pemuda adalah sebuah fasilitas yang kita 
+               siapkan untuk menjadi bi'ah solihah atau lingkungan 
+               yang baik. Sehingga, fasilitas ini menjadi tempat 
+               berkumpulnya anak muda dalam belajar Islam, belajar
+               dakwah, dan membentuk Life Skill mereka untuk bisa
+               berkarya bagi bangsa dan agama. Kebutuhan akan bi'ah 
+               solihah atau lingkungan yang baik ini adalah sesuatu 
+               yang sangat penting dalam pendidikan pendidikan non formal.  
+              </p>
+               <a class="btn btn-gabung mt-3 " href="{{ route('about') }}">Selengkapnya</a>
             </div>
           </div>
         </div>

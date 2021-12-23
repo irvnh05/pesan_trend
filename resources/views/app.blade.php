@@ -92,8 +92,8 @@ Pesan_Trend
                     </div> 
                     <div class="col-lg-6 mt-3 ">
                         <picture>
-                                <img class="d-none d-xl-block w-100"  src="pesantrend-template/frontend/images/header-1.png" alt="">
-                             </picture>
+                          <img class="d-none d-xl-block w-100 "  src="pesantrend-template/frontend/images/header-1.png" alt="">
+                        </picture>
                     </div>
                   </div>
                 </div>
