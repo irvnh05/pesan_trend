@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\District;
 use App\Http\Requests\Admin\CheckoutRequest;
 use App\Program;
 use App\Transaction;
@@ -11,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Province;
 use App\Models\Regency;
+use App\Regency as AppRegency;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Hash;
@@ -44,8 +46,12 @@ class CheckoutController extends Controller
         $cek = Program::where('slug', $slug)->firstOrFail();
         // $cek = Program::findOrFail($id);
         $provinces = Province::pluck('name', 'id');
+        $regency = Regency::pluck('name', 'id');
+        $district = District::pluck('name', 'id');
         
         return view('checkout-alternate',[
+            'district' => $district,
+            'regency' => $regency,
             'cek' => $cek,
             'provinces' => $provinces,
         ]);
@@ -114,11 +120,17 @@ class CheckoutController extends Controller
                 // 'Nama'     => $request['name'] ,                     
             ];
             
-            $request_data = json_encode($request_param,JSON_PRETTY_PRINT );
+           $request_data = json_encode($request_param,JSON_PRETTY_PRINT );
             $res = $client->get(
-                'https://wa.me/6287724499324?text=' 
-                .($request_data) 
+                'https://chat.whatsapp.com/Bny9B32hU19AHiME6FIjst' 
             ); 
+
+            
+//            $request_data = json_encode($request_param,JSON_PRETTY_PRINT );
+//            $res = $client->get(
+//                'https://wa.me/62816609990?text=' 
+//                .($request_data) 
+//            ); 
             //  echo "Nama : ".$request['name'];               
             return $res->getBody()->getContents();
             // $res->getBody()->getContents();   

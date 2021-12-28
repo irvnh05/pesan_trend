@@ -33,7 +33,7 @@ class CheckoutRequest extends FormRequest
           'district_id'=> 'required | integer ',
           'provinves_id'=> 'required | integer',
           'regency_id'=> 'required | integer', 
-          'zip_code'=> 'required | integer',
+          // 'zip_code'=> 'integer',
           'alamat' => 'required | max:255', 
         ];
     }
