@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "Aileron";
+    src: url('https://pesantrend.id/public/pesantrend-template/frontend/font/Aileron-Regular.otf');
+}
+
+/* @font-face {
+    font-family: "Cocogoose";
+    src: url('https://pesantrend.id/public/pesantrend-template/frontend/font/Cocogoose Pro-trial.ttf');
+} */
+
 body {
     background: url("/pesantrend-template/frontend/images/circle_navbar.svg") no-repeat center center;
     webkit-background-size: cover;
@@ -6,6 +16,12 @@ body {
     background-attachment: scroll;
     background-color: #fff;
     font-family: "Aileron";
+    /* font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: 0em;
+    text-align: justified; */
     color: #93916d;
 }
 
@@ -100,19 +116,36 @@ body {
 }
 
 .text-black {
-    color: black !important;
+    color: rgba(28, 20, 12, 1);
+}
+
+.text-black-90 {
+    color: rgba(15, 7, 0, 1);
 }
 
 .display2 {
-    font-size: 45px;
+    /* font-size: 45px; */
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 51px;
+    letter-spacing: 0em;
+    text-align: left;
 }
 
 .display3 {
-    font-size: 50px;
+    font-size: 49px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 59px;
+    letter-spacing: 0em;
+    text-align: left;
+
 }
 
 .cocogoose {
     font-family: "Cocogoose";
+    /* font-size: 39px; */
 }
 
 .navbar-brand img {
@@ -162,10 +195,10 @@ body {
 }
 
 .btn-gabung {
-    background-color: #93916d;
+    background-color: #93916D;
     color: #fff;
-    padding: 15px 80px;
-    /* width: 240px; */
+    padding: 10px 0px;
+    width: 240px;
 }
 
 .btn-gabung:hover {

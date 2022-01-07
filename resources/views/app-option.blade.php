@@ -37,15 +37,15 @@ Pesan_Trend
                   <div class="container ">
                     <div class="row mr-5 mb-2">
                       <div class="col-lg-8 mt-4 p-0 ">
-                        <h1 class="cocogoose display3 p-0 col-12 mt-2">
+                        <p class="cocogoose display3 p-0 col-12 mt-2">
                           (Audio) Penyemangat hidup, mengupas 
-                          <span class="text-black">
+                          <span class="text-black-90 ">
                             problematika 
                           </span>
-                          <span class="text-black">
+                          <span class="text-black-90 ">
                             hidup sehari-hari
                           </span>
-                        </h1>
+                        </p>
                         <p class="text-black mt-5 h4 text-justify col-10 p-0 mb-5">
                           Ada yang mau tiap minggu ikutan live 
                           streaming bersama ustadz @hanan_attaki ? 
@@ -79,7 +79,7 @@ Pesan_Trend
       <section>
             <div class="container mt-5">
             <!--Carousel Wrapper-->
-              <div id="carousel-example-1z" class="carousel slide carousel-fade d-none d-xl-block" data-ride="carousel">
+              <div id="carousel-example-1z" class="carousel slide carousel-fade " data-ride="carousel">
                 <!--Indicators-->
                 <ol class="carousel-indicators">
                   <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
@@ -91,19 +91,19 @@ Pesan_Trend
                 <div class="carousel-inner" role="listbox">
                   <!--First slide-->
                   <div class="carousel-item active">
-                    <img class="d-block w-100 img-fluid" style="height: 600px;" src="pesantrend-template/frontend/images/1.jpg"
+                    <img class="d-block w-100 img-fluid" style="height: 550px;" src="pesantrend-template/frontend/images/1.jpg"
                       alt="First slide">
                   </div>
                   <!--/First slide-->
                   <!--Second slide-->
                   <div class="carousel-item">
-                    <img class="d-block w-100 img-fluid" style="height: 600px;" src="pesantrend-template/frontend/images/3.jpg"
+                    <img class="d-block w-100 img-fluid" style="height: 550px;" src="pesantrend-template/frontend/images/3.jpg"
                       alt="Second slide">
                   </div>
                   <!--/Second slide-->
                   <!--Third slide-->
                   <div class="carousel-item">
-                    <img class="d-block w-100 img-fluid" style="height: 600px;" src="pesantrend-template/frontend/images/4.jpg"
+                    <img class="d-block w-100 img-fluid" style="height: 550px;" src="pesantrend-template/frontend/images/4.jpg"
                       alt="Third slide">
                   </div>
                   <!--/Third slide-->
@@ -134,15 +134,15 @@ Pesan_Trend
               </picture>
             </div>
             <div class=" col-sm-7 mt-4">
-              <h2 class="cocogoose">
-                <span class="text-black ">
+              <p class="font-weight-bold cocogoose display2">
+                <span class="text-black-90  ">
                   Kawasan 
                   <span class="artichoke"> 
                     Pesan_Trend
                   </span>
                 </span>
-              </h2>
-              <p class="text-justify text-black mt-4 pr-4">
+              </p>
+              <p class="text-justify text-black h5 mt-4 pr-4">
                Pesan Trend Pemuda adalah sebuah fasilitas yang kita 
                siapkan untuk menjadi bi'ah solihah atau lingkungan 
                yang baik. Sehingga, fasilitas ini menjadi tempat 

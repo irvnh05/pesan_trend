@@ -15,18 +15,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// admim
+// admin
 Route::prefix('admin')
     ->namespace('Admin')
     ->middleware(['auth','admin'])
     ->group(function (){
         Route::get('/','DashboardController@index')
             ->name('dashboard');
-
+        // fitur program
         Route::resource('kategori-program', 'KategoriProgramController');
         Route::resource('galeri-program', 'GaleriProgramController');
         Route::resource('program', 'ProgramController');
         Route::resource('transaction', 'TransactionController');
+        // fitur artikel
+        Route::resource('artikel', 'ArtikelController');
+        Route::post('artike-post', 'ArtikelController@upload')
+        ->name('upload');    
+        // Route::get('autocomplete', 'ArtikelController@autocomplete')
+        // ->name('autocomplete');
+        Route::get('cari','ArtikelController@autoComplete') 
+        ->name('cari');
     });
 
 // user
@@ -50,6 +58,10 @@ Route::get('/tentang-kami', 'LandingController@about')
     ->name('about');  
 Route::get('/detail/{slug}', 'DetailController@index')
     ->name('detail');
+Route::get('/artikel', 'LandingController@artikel')
+    ->name('artikel');  
+Route::get('/artikel-detail', 'LandingController@artikeldetail')
+    ->name('artikel-detail');  
     
 // google auth
 Route::get('login/google', 'Auth\GoogleController@googleRedirect');

@@ -34,6 +34,8 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
  <script src="{{ asset('dashboard/dist/js/pages/dashboard.js') }}"></script> 
 
+<script src="//cdn.ckeditor.com/4.17.1/full/ckeditor.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
  <!-- DataTables  & Plugins -->
  
  <script src="{{ asset('dashboard/plugins/datatables/jquery.dataTables.min.js') }}"></script> 

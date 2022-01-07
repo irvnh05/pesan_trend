@@ -116,7 +116,10 @@ Pesan_Trend
                 <div class="form-group">
                   <label>Kab/Kota</label>
                         <select class="custom-select form-control-border regencies @error('regency_id') is-invalid @enderror" name="regency_id" id="city" >
-                        <option value="">-- pilih Kab/Kota --</option>
+                        <option value="" >-- pilih Kab/Kota --</option>
+                        @foreach ($regency as $id => $name)
+                          <option value="{{ $id }}" {{old('regency_id') == $id ? "selected" : "" }}>{{ $name }} </option>
+                        @endforeach
                   </select>
                     @error('regency_id')
                       <span class="invalid-feedback" role="alert">
@@ -128,6 +131,9 @@ Pesan_Trend
                   <label>Kecamatan</label>
                         <select class="custom-select form-control-border @error('district_id') is-invalid @enderror" name="district_id" id="districts" >
                        <option value="">-- pilih Kecamatan --</option>
+                       @foreach ($district as $id => $name)
+                          <option value="{{ $id }}" {{old('district_id') == $id ? "selected" : "" }}>{{ $name }} </option>
+                       @endforeach
                   </select>
                     @error('district_id')
                       <span class="invalid-feedback" role="alert">
@@ -224,6 +230,7 @@ Pesan_Trend
             url: '{{ route('regencies') }}',
             method: 'POST',
             data: {id: $(this).val() , _token: '{{csrf_token()}}'},
+            
 
             success: function (response) {
                 $('#city').empty();

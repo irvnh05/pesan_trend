@@ -19,27 +19,27 @@
           <div class="collapse navbar-collapse" id="test">
             <ul class="navbar-nav h5 offset-md-7">
               <li class="nav-item mx-md-2">
-                <a href="{{ route('landing') }}" class="nav-link active">
+                <a href="{{ route('landing') }}" class="nav-link active font-weight-bold h6">
                   Home
                 </a>
               </li>
                <li class="nav-item mx-md-2">
-                <a href="{{ route('cooming-soon') }}" class="nav-link">
+                <a href="{{ route('cooming-soon') }}" class="nav-link font-weight-bold h6">
                   Program
                 </a>
               </li>
                <li class="nav-item mx-md-2">
-                <a href="{{ route('cooming-soon') }}" class="nav-link">
+                <a href="{{ route('cooming-soon') }}" class="nav-link font-weight-bold h6">
                   Event
                 </a>
               </li>
                <li class="nav-item mx-md-2">
-                <a href="{{ route('cooming-soon') }}" class="nav-link">
+                <a href="{{ route('artikel') }}" class="nav-link font-weight-bold h6">
                   Artikel
                 </a>
               </li>
                <li class="nav-item mx-md-2">
-                <a href="{{ route('cooming-soon') }}" class="nav-link">
+                <a href="{{ route('about') }}" class="nav-link font-weight-bold h6">
                   About
                 </a>
               </li>
