@@ -31,6 +31,8 @@ Route::prefix('admin')
         Route::resource('artikel', 'ArtikelController');
         Route::post('artike-post', 'ArtikelController@upload')
         ->name('upload');    
+        Route::post('search', 'ArtikelController@search')
+        ->name('search');    
         // Route::get('autocomplete', 'ArtikelController@autocomplete')
         // ->name('autocomplete');
         Route::get('cari','ArtikelController@autoComplete') 
@@ -60,7 +62,7 @@ Route::get('/detail/{slug}', 'DetailController@index')
     ->name('detail');
 Route::get('/artikel', 'LandingController@artikel')
     ->name('artikel');  
-Route::get('/artikel-detail', 'LandingController@artikeldetail')
+Route::get('/artikel-detail/{id}', 'LandingController@artikeldetail')
     ->name('artikel-detail');  
     
 // google auth

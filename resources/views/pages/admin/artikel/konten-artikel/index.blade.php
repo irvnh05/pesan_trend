@@ -15,13 +15,13 @@
               <li class="breadcrumb-item active"> Transaksi</li>
             </ol>
           </div><!-- /.col -->
-        </div><!-- /.row -->
-        {{-- <input type="text" name="search" id="search" class="form-control" placeholder="Search Customer Data" /> --}}
-        <form action="{{ route('cari') }}" method="GET">
-		{{ @csrf_field() }}
-		<input type="text" name="nama" placeholder="Ingin mencari apa ?" class="form-control"><br>
-		<input type="submit" class="btn btn-md btn-outline-primary" >
-    	</form>
+        </div><!-- /.row -->  
+         <form action="">
+          <div class="form-group">
+            <input type="text" name="search" placeholder="Find or Search Members...!" class="form-control mb-2"/>
+            <input type="submit" class="btn btn-primary" value="Search"/>
+          </div>
+         </form>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -47,7 +47,7 @@
         
     <!-- /.card -->
     <div class="card-body"><span id="total_records"></span>
-        <table id="crudTable" class="table table-bordered table-striped" >
+        <table id="crudTable" class="table table-bordered table-striped  table-inverse table-responsive d-table" >
             <thead>
         <tr>
             <th>Id</th>
@@ -59,13 +59,15 @@
         </tr>
         </thead>
         <tbody>
-              @forelse ($items as $item)
+              @forelse ($data  as $item)
               
               <tr>
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->nama }}</td>
                 <td>{!! Str::limit($item->keterangan, 300) !!}</td>
-                <td>{{ $item->assets }}</td>
+                <td>
+                  <img src="{{ Storage::url($item->assets) }}" alt="" style="width: 200px" class="img-thumbnail">
+                </td>
                 <td>{{ $item->created_at }}</td>
                 <td>
                   <a href="{{ route('artikel.edit', $item->id) }}" class="btn btn-info">
@@ -89,7 +91,9 @@
           @endforelse
         </tbody>
         </table>
-        {{ $categories->links() }}
+        <div class="mt-2">
+            {{ $data->links() }}
+        </div>
     </div>
         <!-- /.card-body -->
     </div>
@@ -100,5 +104,5 @@
 @endsection
 
 @push('addon-script')
- 
+
 @endpush

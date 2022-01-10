@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Article;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Str;
-use DB;
 
 class ArtikelController extends Controller
 {
@@ -18,32 +17,31 @@ class ArtikelController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = Article::paginate(2);
-        $items = Article::all();
-        
-        return view('pages.admin.artikel.konten-artikel.index',[
-            'categories' => $categories,
-            'items' => $items
-        ]);
+
+        // $categories = Article::paginate(2);
+        // $items = Article::all();
+        $search =  $request->input('search');
+        if($search!=""){
+            $artikel = Article::where(function ($query) use ($search){
+                $query->where('nama', 'like', '%'.$search.'%');
+                    // ->orWhere('keterangan', 'like', '%'.$search.'%');
+            })
+            ->paginate(2);
+            $artikel->appends(['search' => $search]);
+        }
+        else{
+            $artikel = Article::paginate(5);
+        }
+
+        return View('pages.admin.artikel.konten-artikel.index')->with('data',$artikel);
+        // dd($artikel);
+        // return view('pages.admin.artikel.konten-artikel.index',[
+        //     'categories' => $categories,
+        //     'items' => $items,
+        //     'artikel' => $artikel
+        // ]);
     }
 
-    public function autoComplete(Request $request)
-    {
-     if($request->ajax())
-     {
-      $sort_by = $request->get('sortby');
-      $sort_type = $request->get('sorttype');
-            $query = $request->get('query');
-            $query = str_replace(" ", "%", $query);
-      $data = DB::table('articles')
-                    ->where('id', 'like', '%'.$query.'%')
-                    ->orWhere('nama', 'like', '%'.$query.'%')
-                    ->orWhere('keterangan', 'like', '%'.$query.'%')
-                    ->orderBy($sort_by, $sort_type)
-                    ->paginate(5);
-      return view('pagination_data', compact('data'))->render();
-     }
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -95,7 +93,7 @@ class ArtikelController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        // $data['assets'] = $request->file('assets')->store('assets/galeri_kategori', 'public');
+        $data['assets'] = $request->file('assets')->store('assets/galeri_artikel', 'public');
         // $data['slug'] = Str::slug($request->nama);
 
         Article::create($data);

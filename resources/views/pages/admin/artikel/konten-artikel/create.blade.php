@@ -44,10 +44,14 @@
       @endif
 
       <!-- form start -->
-      <form action="{{ route('artikel.store') }}" method="POST">
+      <form action="{{ route('artikel.store') }}"  method="POST" enctype="multipart/form-data">
        @csrf
         <div class="card-body">
         <table class="table table-bordered">
+          <div class="form-group">
+            <label for="assets">Foto</label>
+            <input type="file" name="assets" placeholder="Foto" class="form-control" required />
+          </div>
           <div class="form-group">
             <label for="nama">Judul</label>
             <input type="text" class="form-control" name="nama" placeholder="nama" value="{{ old('nama') }}">

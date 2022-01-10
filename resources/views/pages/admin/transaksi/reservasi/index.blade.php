@@ -130,7 +130,7 @@
 
             processing: true,
             serverSide: true,
-            searching:false,
+            searching: true,
 
             dom: 'Bfrtip',
             // buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],

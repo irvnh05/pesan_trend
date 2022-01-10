@@ -7,6 +7,7 @@ use App\Program;
 use App\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 class LandingController extends Controller
 {
     /**
@@ -36,8 +37,14 @@ class LandingController extends Controller
         return view('about');
     }
 
-    public function artikeldetail(){
-        return view('artikel-detail');
+    public function artikeldetail($id){
+        $artikel = Article::findOrFail($id);
+
+        // dd($artikel);
+        return view('artikel-detail', [
+            'artikel' => $artikel
+        ]);
+    
     }
 
     public function artikel(Request $request){
@@ -52,12 +59,12 @@ class LandingController extends Controller
                 // $html.='<div class="mt-5"><h1>'.$artikel->nama.'</h1><p>'.$artikel->keterangan.'</p></div>';
                   $html.='<div class="col-md-4 col-sm-12 mb-3">
                                 <div class="card">
-                                    <img src="pesantrend-template/frontend/images/study.png"  class="card-img-top p-3" alt="...">
+                                    <img  src="' . Storage::url($artikel->assets) . '"  class="card-img-top p-3 img-fluid w-100" style="max-height: 280px;" alt="...">
                         
                                     <div class="card-body">
                                         <div class="card-title"><h4>'.$artikel->nama.'</h4></div>
                                         '.Str::limit($artikel->keterangan, 50).'
-                                        <a href=".{{ route("artikeldetail", '.$artikel->id.') }}.">link</a>  
+                                        <a class="main-btn" href=/artikel-detail/'.$artikel->id.'>Lihat Selengkapnya</a>  
                                     </div>
                                 </div>
                             </div>';
