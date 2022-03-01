@@ -56,6 +56,10 @@ class CheckoutController extends Controller
             'provinces' => $provinces,
         ]);
     }
+    public function createalternate(Request $request)
+    {
+        return view('checkout');
+    }
 
     public function success(Request $request, $id)
     {
@@ -77,6 +81,74 @@ class CheckoutController extends Controller
                 'regency_id'=> $request->regency_id,
                 'zip_code'=> $request->zip_code,      
                 'alamat' => $request->alamat,    
+            ]);
+            
+             $trx = 'PesanTrend-' . mt_rand(0000,9999);
+
+             $transaction = Transaction::create([
+                'users_id' => $user->id,
+                'status_transaction' => 'KONFIRMASI',
+                'programs_id' => $id,
+                'no_transaction' => $trx
+            ]);
+
+             TransactionDetail::create([
+                'transactions_id' => $transaction->id,
+                'nominal_programs' => '0'
+            ]);
+            
+            $client = new Client(['headers' => ['X-Client-Code' => env('KEY_CODE')]]);
+
+            $cek = Transaction::with(['program','user','detail'])
+                    ->where('no_transaction',$transaction->no_transaction)
+                    ->first();
+        
+            // $request_param = [
+            //     'No Transaksi' => $transaction->no_transaction,
+            //     'Nama' => $request->name,
+            //     'email' => $request->email,
+            //     'alamat' => $request->alamat,
+            //     'provinsi' => $cek->user->province->name,
+            //     'Kab/Kota' => $cek->user->regency->name,
+            //     'Kecamatan' => $cek->user->districts->name,                 
+
+            // ];
+            $request_param = [
+                "No Transaksi" => $transaction->no_transaction,
+                "Nama" => $request->name,
+                "Email" => $request->email,
+                "Alamat" => $request->alamat,
+                "Provinsi" => $cek->user->province->name,
+                "Kab/Kota" => $cek->user->regency->name,
+                "Kecamatan" => $cek->user->districts->name,  
+                // 'Nama'     => $request['name'] ,                     
+            ];
+            
+           $request_data = json_encode($request_param,JSON_PRETTY_PRINT );
+            $res = $client->get(
+                'https://chat.whatsapp.com/Bny9B32hU19AHiME6FIjst' 
+            ); 
+
+            
+//            $request_data = json_encode($request_param,JSON_PRETTY_PRINT );
+//            $res = $client->get(
+//                'https://wa.me/62816609990?text=' 
+//                .($request_data) 
+//            ); 
+            //  echo "Nama : ".$request['name'];               
+            return $res->getBody()->getContents();
+            // $res->getBody()->getContents();   
+    }
+
+     public function checkout(Request $request , $id)
+    {                   
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone_number' => $request->phone_number,
+                'roles' => 'CALON',   
+                'negara' => 'INDONESIA',     
+                'password' => Hash::make($request['phone_number']),                
             ]);
             
              $trx = 'PesanTrend-' . mt_rand(0000,9999);

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProgramsTable extends Migration
+class CreateKategoriPackagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,14 @@ class CreateProgramsTable extends Migration
      */
     public function up()
     {
-        Schema::create('programs', function (Blueprint $table) {
+        Schema::create('kategori_packages', function (Blueprint $table) {
             $table->id();
-
-            $table->integer('kategori_programs_id');
+            $table->integer('packages_id');
             $table->string('nama');
             $table->longText('keterangan');
             $table->integer('harga');
-            $table->date('date');
-            $table->string('tipe');           
+            $table->string('assets');
             $table->string('slug');
-            
-            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -36,6 +32,6 @@ class CreateProgramsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('programs');
+        Schema::dropIfExists('kategori_packages');
     }
 }

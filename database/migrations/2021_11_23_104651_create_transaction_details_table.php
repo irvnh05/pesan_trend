@@ -15,13 +15,15 @@ class CreateTransactionDetailsTable extends Migration
     {
         Schema::create('transaction_details', function (Blueprint $table) {
             $table->id();
-
             $table->integer('transactions_id'); 
             $table->integer('nominal_programs');
-            // $table->string('email'); 
-            // $table->string('whatsapp');
-
-
+            $table->string('name'); 
+            $table->string('gender');
+            $table->string('status'); 
+            $table->string('usia');
+            $table->string('jenis_kendaraan'); 
+            $table->string('tipe_kendaraan');
+            $table->string('plat_no');
 
             $table->softDeletes();
             $table->timestamps();

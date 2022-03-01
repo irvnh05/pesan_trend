@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Petugas;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -32,10 +32,10 @@ class ArtikelController extends Controller
         else{
             $artikel = Article::paginate(5);
         }
-        
-        return View('pages.admin.artikel.konten-artikel.index')->with('data',$artikel);
+
+        return View('pages.petugas.artikel.konten-artikel.index')->with('data',$artikel);
         // dd($artikel);
-        // return view('pages.admin.artikel.konten-artikel.index',[
+        // return view('pages.petugas.artikel.konten-artikel.index',[
         //     'categories' => $categories,
         //     'items' => $items,
         //     'artikel' => $artikel
@@ -50,7 +50,7 @@ class ArtikelController extends Controller
     public function create()
     {
         $item = Article::all();
-            return view('pages.admin.artikel.konten-artikel.create',[
+            return view('pages.petugas.artikel.konten-artikel.create',[
                 'item' => $item,
             ]);
     }
@@ -97,7 +97,7 @@ class ArtikelController extends Controller
         // $data['slug'] = Str::slug($request->nama);
 
         Article::create($data);
-        return redirect()->route('artikel.index');
+        return redirect()->route('article.index');
     }
 
     /**
@@ -121,7 +121,7 @@ class ArtikelController extends Controller
     {
         $item = Article::findOrFail($id);
 
-        return view('pages.admin.artikel.konten-artikel.edit',[
+        return view('pages.petugas.artikel.konten-artikel.edit',[
             'item' => $item,
         ]);
     }
@@ -142,7 +142,7 @@ class ArtikelController extends Controller
     
         $item->update($data);
 
-        return redirect()->route('artikel.index');
+        return redirect()->route('article.index');
     }
 
     /**
@@ -156,6 +156,6 @@ class ArtikelController extends Controller
         $item = Article::findOrFail($id);
         $item->delete();
 
-        return redirect()->route('artikel.index');
+        return redirect()->route('article.index');
     }
 }

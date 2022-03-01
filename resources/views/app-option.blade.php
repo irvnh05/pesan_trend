@@ -5,8 +5,7 @@ Pesan_Trend
 @endsection
 
 @section('content')
-<!-- caraousel -->
-      <section>
+     <section>
        <div class="container mt-4 ">
          <div class="row">
            <div class="col-lg-12">
@@ -35,35 +34,30 @@ Pesan_Trend
               <div class="">
                 <div class=" ">
                   <div class="container ">
-                    <div class="row mr-5 mb-2">
+                    <div class="row mb-2">
                       <div class="col-lg-8 mt-4 p-0 ">
-                        <p class="cocogoose display3 p-0 col-12 mt-2">
+                        <span class="cocogoose display3 p-0 mt-3">
                           (Audio) Penyemangat hidup, mengupas 
-                          <span class="text-black-90 ">
+                          <span class="text-black">
                             problematika 
                           </span>
-                          <span class="text-black-90 ">
+                          <span class="text-black">
                             hidup sehari-hari
                           </span>
-                        </p>
-                        <p class="text-black mt-5 h4 text-justify col-10 p-0 mb-5">
+                        </span>
+                        <p class="text-black mt-5 h4 text-justify col-sm-12 col-lg-8 p-0 mb-5">
                           Ada yang mau tiap minggu ikutan live 
-                          streaming bersama ustadz @hanan_attaki ? 
+                          streaming bersama ustadz @hanan_attaki  ? 
                           Dan tiap malam dapet konten booster ustadz 
                           Hanan Attaki dg durasi lebih panjang (5 - 20 menit)?
                         </p>
-                        {{-- <form action="{{ route('checkout-create', $id) }}" method="post">
-                          @csrf
-                          <button class="btn btn-gabung mt-4" type="submit">
-                              Bergabung Sekarang
-                          </button>
-                        </form> --}}
+                        
                         <div>
-                          <a class="btn btn-gabung mt-1" href="{{ route('checkout-create', $id->slug) }}">Bergabung Sekarang</a>
+                             <a class="btn btn-gabung mt-1 col-lg-5 w-100" href="{{ route('checkout-create', $id->slug) }}">Bergabung Sekarang</a>
                         </div>
                       </div> 
                       <div class="col-4 mb-4 p-0 mt-4">
-                            <img class="d-none d-xl-block header-ust" width="370";  src="pesantrend-template/frontend/images/ust.png" alt="" >
+                        <img class="d-none d-xl-block header-ust" width="370";  src="pesantrend-template/frontend/images/ust.png" alt="" >
                       </div>
                     </div>
                   </div>
@@ -79,7 +73,7 @@ Pesan_Trend
       <section>
             <div class="container mt-5">
             <!--Carousel Wrapper-->
-              <div id="carousel-example-1z" class="carousel slide carousel-fade " data-ride="carousel">
+              <div id="carousel-example-1z" class="carousel slide carousel-fade d-none d-xl-block" data-ride="carousel">
                 <!--Indicators-->
                 <ol class="carousel-indicators">
                   <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
@@ -128,21 +122,21 @@ Pesan_Trend
       <section>
         <div class="container mt-5">
           <div class="row">
-            <div class="col-lg-5 mt-2">
+            <div class="col-lg-5 mt-1">
               <picture>
-                <img class="d-none d-xl-block w-100 img-fluid"  src="pesantrend-template/frontend/images/about.png" alt="">
+                <img class=" w-100 img-fluid"   src="pesantrend-template/frontend/images/about.png" alt="">
               </picture>
             </div>
-            <div class=" col-sm-7 mt-4">
-              <p class="font-weight-bold cocogoose display2">
-                <span class="text-black-90  ">
+            <div class="col-lg-7 mt-4">
+              <h2 class="cocogoose">
+                <span class="text-black ">
                   Kawasan 
                   <span class="artichoke"> 
                     Pesan_Trend
                   </span>
                 </span>
-              </p>
-              <p class="text-justify text-black h5 mt-4 pr-4">
+              </h2>
+              <p class="text-justify text-black h5 mt-3">
                Pesan Trend Pemuda adalah sebuah fasilitas yang kita 
                siapkan untuk menjadi bi'ah solihah atau lingkungan 
                yang baik. Sehingga, fasilitas ini menjadi tempat 
@@ -152,9 +146,10 @@ Pesan_Trend
                solihah atau lingkungan yang baik ini adalah sesuatu 
                yang sangat penting dalam pendidikan pendidikan non formal.  
               </p>
-               <a class="btn btn-gabung mt-3 " href="{{ route('about') }}">Selengkapnya</a>
+               <a class="col-lg-5 btn btn-gabung mt-3 w-100 " href="http://demo.pemudahijrah.id/tentang-kami">Selengkapnya</a>
             </div>
           </div>
         </div>
       </section>
+
 @endsection

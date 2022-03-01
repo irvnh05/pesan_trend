@@ -31,6 +31,6 @@ class CreateGaleriProgramsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gallery_programs');
+        Schema::dropIfExists('galeri_programs');
     }
 }

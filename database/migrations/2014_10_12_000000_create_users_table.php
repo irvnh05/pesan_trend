@@ -19,12 +19,15 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            
-            $table->longText('alamat');
-            $table->integer('provinves_id');
-            $table->integer('regencies_id');
-            $table->integer('zip_code');
-            $table->string('phone_number');
+            $table->date('tgl_lahir')->nullable();
+            $table->string('negara')->nullable();
+            $table->longText('alamat')->nullable();
+            $table->integer('regency_id')->nullable();
+            $table->integer('provinves_id')->nullable();
+            $table->integer('regencies_id')->nullable();
+            $table->integer('district_id')->nullable();
+            $table->integer('zip_code')->nullable();
+            $table->string('phone_number')->nullable();
             $table->string('roles')->default('USER'); //user,admin
             $table->string('google_id')->nullable(); // auth google
             // $table->string('provider');

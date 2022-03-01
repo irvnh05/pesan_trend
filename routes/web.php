@@ -27,14 +27,14 @@ Route::prefix('admin')
         Route::resource('galeri-program', 'GaleriProgramController');
         Route::resource('program', 'ProgramController');
         Route::resource('transaction', 'TransactionController');
+         // fitur manage user
+        Route::resource('user', 'UserController');
         // fitur artikel
         Route::resource('artikel', 'ArtikelController');
         Route::post('artike-post', 'ArtikelController@upload')
         ->name('upload');    
         Route::post('search', 'ArtikelController@search')
         ->name('search');    
-        // Route::get('autocomplete', 'ArtikelController@autocomplete')
-        // ->name('autocomplete');
         Route::get('cari','ArtikelController@autoComplete') 
         ->name('cari');
     });
@@ -46,6 +46,22 @@ Route::prefix('user')
     ->group(function (){
         Route::get('/','DashboardController@index')
             ->name('dashboard');
+
+    });
+
+// petugas
+Route::prefix('petugas')
+    ->namespace('Petugas')
+    ->middleware(['auth','petugas'])
+    ->group(function (){
+        Route::get('/','DashboardController@index')
+            ->name('dashboard');
+    // fitur artikel
+        Route::resource('article', 'ArtikelController');
+        Route::post('artikel-post', 'ArtikelController@upload')
+        ->name('upload');    
+        Route::post('search', 'ArtikelController@search')
+        ->name('search');  
 
     });
 
@@ -78,14 +94,18 @@ Route::post('districts', 'LocationController@districts')
     ->name('districts');
     
 //  transaksi
+// sedekah subuh
 Route::put('/checkout/detail/process/{slug}', 'CheckoutController@store')
     ->name('checkout-store');
-Route::get('/checkout/detail/{slug}', 'CheckoutController@create')
+Route::get('/checkout/{slug}', 'CheckoutController@create')
     ->name('checkout-create');
 Route::get('/checkout/confirm', 'CheckoutController@success')
     ->name('checkout-success');
-Route::get('/checkout/{slug}', 'CheckoutController@index')
-    ->name('checkout');
+// Route::get('/checkout/{slug}', 'CheckoutController@index')
+//     ->name('checkout');
+// tahajud camp
+ Route::get('/detail', 'CheckoutController@createalternate')
+       ->name('checkout-alternate');
 
 
 // verif
