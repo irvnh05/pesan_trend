@@ -26,7 +26,9 @@ Route::prefix('admin')
         Route::resource('kategori-program', 'KategoriProgramController');
         Route::resource('galeri-program', 'GaleriProgramController');
         Route::resource('program', 'ProgramController');
-        Route::resource('transaction', 'TransactionController');
+        // fitur package
+        Route::resource('kategori-package', 'KategoriPackageController');
+        Route::resource('package', 'PackageController');
          // fitur manage user
         Route::resource('user', 'UserController');
         // fitur artikel
@@ -37,6 +39,8 @@ Route::prefix('admin')
         ->name('search');    
         Route::get('cari','ArtikelController@autoComplete') 
         ->name('cari');
+        // transaksi
+        Route::resource('transaction', 'TransactionController');
     });
 
 // user
