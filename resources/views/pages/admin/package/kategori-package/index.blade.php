@@ -14,7 +14,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Home</a></li>
-              <li class="breadcrumb-item active">Kategori Program</li>
+              <li class="breadcrumb-item active">Kategori Package</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,11 +30,11 @@
   <!-- /.card -->
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Kategori Program</h3>
+      <h3 class="card-title">Kategori Package</h3>
       <div class="card-tools">
         <ul class="pagination pagination-sm float-right">
-          <a href="{{ route('kategori-program.create') }}" class="btn-primary btn-sm">
-            <i class="fas fa-plus fa-sm text-white"> Tambah Kategori Program</i></a>
+          <a href="{{ route('kategori-package.create') }}" class="btn-primary btn-sm">
+            <i class="fas fa-plus fa-sm text-white"> Tambah Kategori Package</i></a>
         </ul>
       </div>
       </div>
@@ -46,7 +46,9 @@
         <thead>
         <tr>
           <th>#</th>
-          <th>Nama</th>
+          <th>Package</th>
+          <th>Kategori</th>
+          <th>Harga</th>
           <th>Keterangan</th>
           <th>Slug</th>
           <th>Action</th>
@@ -56,17 +58,19 @@
           @forelse ($items as $item)
               <tr>
                 <td>{{ $item->id }}</td>
+                <td>{{ $item->package->nama }}</td>
                 <td>{{ $item->nama }}</td>
                 <td>{{ $item->keterangan }}</td>
+                <td>{{ $item->harga }}</td>
                 <td>{{ $item->slug }}</td>
                 <td>
                   <img src="{{ Storage::url($item->assets) }}" alt="" style="width: 150px" class="img-thumbnail">
                 </td>
                 <td>
-                  <a href="{{ route('kategori-program.edit', $item->id) }}" class="btn btn-info">
+                  <a href="{{ route('kategori-package.edit', $item->id) }}" class="btn btn-info">
                     <i class="fa fa-pencil-alt"></i>
                   </a>
-                  <form action="{{ route('kategori-program.destroy', $item->id) }}" method="POST" class="d-inline">
+                  <form action="{{ route('kategori-package.destroy', $item->id) }}" method="POST" class="d-inline">
                     @csrf
                     @method('delete')
                     <button class="btn btn-danger">

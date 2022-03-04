@@ -48,17 +48,17 @@
         @method('PUT')
         @csrf
         <div class="card-body">
-          {{-- <div class="form-group">
-            <label for="kategori_programs_id">Kategori</label>
-            <select class="custom-select rounded-0 form-control" required name="kategori_programs_id">
-              <option value="{{ $item->kategori_programs_id }}">Jangan Diubah</option>
-              @foreach ($kategori_programs as $kategori_program)
-                <option value="{{ $kategori_program->id }}">
-                  {{ $kategori_program->nama }}
+          <div class="form-group">
+            <label for="programs_id">Kategori</label>
+            <select class="custom-select rounded-0 form-control" required name="programs_id">
+              <option value="{{ $item->programs_id }}">Jangan Diubah</option>
+              @foreach ($programs as $program)
+                <option value="{{ $program->id }}">
+                  {{ $program->nama }}
                 </option>
               @endforeach
             </select>
-          </div> --}}
+          </div>
           <div class="form-group">
             <label for="nama">Nama</label>
             <input type="text" class="form-control" name="nama" placeholder="nama"  value="{{ $item->nama }}">
@@ -71,10 +71,6 @@
             <label for="keterangan">Keterangan</label>
             <input type="text" class="form-control" name="keterangan" placeholder="Keterangan"  value="{{ $item->keterangan	 }}">
           </div>
-          {{-- <div class="form-group">
-            <label for="slug">Slug</label>
-            <input type="text" class="form-control" name="slug" placeholder="Url" value="{{ old('slug') }}">
-          </div> --}}
         </div>
         <!-- /.card-body -->
 

@@ -14,7 +14,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Home</a></li>
-              <li class="breadcrumb-item active">Edit Kategori Program  {{ $item->nama }}</li>
+              <li class="breadcrumb-item active">Edit Kategori Package  {{ $item->nama }}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,7 +30,7 @@
   <!-- /.card -->
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Tambah Kategori Program</h3>
+      <h3 class="card-title">Tambah Kategori Package</h3>
       </div>
       
       @if ($errors->any())
@@ -44,10 +44,21 @@
       @endif
 
       <!-- form start -->
-      <form action="{{ route('kategori-program.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('kategori-package.update', $item->id) }}" method="POST" >
         @method('PUT')
         @csrf
         <div class="card-body">
+          <div class="form-group">
+            <label for="packages_id">Package</label>
+            <select class="custom-select rounded-0 form-control" required name="packages_id">
+              <option value="{{ $item->packages_id	 }}">Jangan Diubah</option>
+              @foreach ($package as $package)
+                <option value="{{ $package->id }}">
+                  {{ $package->nama }}
+                </option>
+              @endforeach
+            </select>
+          </div>
           <div class="form-group">
             <label for="nama">Nama Kategori</label>
             <input type="text" class="form-control" name="nama" placeholder="Nama" value="{{ $item->nama }}">
@@ -60,10 +71,10 @@
             <label for="assets">Assets</label>
             <input type="file" class="form-control" name="assets" placeholder="Assets">
           </div>
-          {{-- <div class="form-group">
-            <label for="slug">Slug</label>
-            <input type="text" class="form-control" name="slug" placeholder="Url" value="{{ old('slug') }}">
-          </div> --}}
+          <div class="form-group">
+            <label for="harga">Harga</label>
+            <input type="text" class="form-control" name="harga" placeholder="Harga" value="{{ $item->harga }}">
+          </div>
         </div>
         <!-- /.card-body -->
 

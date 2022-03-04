@@ -19,8 +19,8 @@ class KategoriPackage extends Model
        
     ];
 
-    public function packages(){
-        return $this->belongsTo(KategoriPackage::class, 'packages_id','id');
+    public function package(){
+        return $this->belongsTo(Package::class, 'packages_id','id');
     }
 
 

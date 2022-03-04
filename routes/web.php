@@ -84,6 +84,11 @@ Route::get('/artikel', 'LandingController@artikel')
     ->name('artikel');  
 Route::get('/artikel-detail/{id}', 'LandingController@artikeldetail')
     ->name('artikel-detail');  
+// forest camp
+Route::get('/forest-camp', 'LandingController@forestcamp')
+    ->name('forestcamp');
+Route::get('/family', 'LandingController@family')
+    ->name('family');
     
 // google auth
 Route::get('login/google', 'Auth\GoogleController@googleRedirect');

@@ -14,7 +14,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Home</a></li>
-              <li class="breadcrumb-item active">Tambah Kategori Program</li>
+              <li class="breadcrumb-item active">Tambah Kategori Package</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,7 +30,7 @@
   <!-- /.card -->
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Tambah Kategori Program</h3>
+      <h3 class="card-title">Tambah Kategori Package</h3>
       </div>
       
       @if ($errors->any())
@@ -44,9 +44,20 @@
       @endif
 
       <!-- form start -->
-      <form action="{{ route('kategori-program.store') }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('kategori-package.store') }}" method="POST" enctype="multipart/form-data">
        @csrf
         <div class="card-body">
+          <div class="form-group">
+            <label for="packages_id">Package</label>
+            <select class="custom-select rounded-0 form-control" required name="packages_id">
+              <option value="">Pilih Package</option>
+              @foreach ($items as $kategori_package)
+                <option value="{{ $kategori_package->id }}">
+                  {{ $kategori_package->nama }}
+                </option>
+              @endforeach
+            </select>
+          </div>
           <div class="form-group">
             <label for="nama">Nama Kategori</label>
             <input type="text" class="form-control" name="nama" placeholder="Nama" value="{{ old('nama') }}">
@@ -55,14 +66,14 @@
             <label for="keterangan">Keterangan</label>
             <input type="text" class="form-control" name="keterangan" placeholder="Keterangan" value="{{ old('keterangan') }}">
           </div>
+          <div class="form-group">
+            <label for="harga">Harga</label>
+            <input type="text" class="form-control" name="harga" placeholder="harga" value="{{ old('harga') }}">
+          </div>
            <div class="form-group">
             <label for="assets">Assets</label>
-            <input type="file" class="form-control" name="assets" placeholder="Assets" required/>
+            <input type="file" class="form-control" name="assets" placeholder="Assets"/>
           </div>
-          {{-- <div class="form-group">
-            <label for="slug">Slug</label>
-            <input type="text" class="form-control" name="slug" placeholder="Url" value="{{ old('slug') }}">
-          </div> --}}
         </div>
         <!-- /.card-body -->
 

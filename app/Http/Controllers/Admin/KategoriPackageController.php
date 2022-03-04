@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\KategoriPackage;
+use App\Package;
 use Illuminate\Support\Str;
 
 class KategoriPackageController extends Controller
@@ -16,8 +17,8 @@ class KategoriPackageController extends Controller
      */
     public function index()
     {
-        $items = KategoriPackage::all();
-
+        $items = KategoriPackage::with(['package'])->get();
+        // dd($items);
         return view('pages.admin.package.kategori-package.index',[
             'items' => $items
         ]);
@@ -30,7 +31,10 @@ class KategoriPackageController extends Controller
      */
     public function create()
     {
-       return view('pages.admin.package.kategori-package.create');
+    $items = Package::all(); 
+       return view('pages.admin.package.kategori-package.create',[
+           'items' => $items
+       ]);
     }
 
     /**
@@ -42,7 +46,7 @@ class KategoriPackageController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['assets'] = $request->file('assets')->store('assets/galeri_kategori', 'public');
+        // $data['assets'] = $request->file('assets')->store('assets/galeri_kategoripackage', 'public');
         $data['slug'] = Str::slug($request->nama);
 
         KategoriPackage::create($data);
@@ -69,9 +73,11 @@ class KategoriPackageController extends Controller
     public function edit($id)
     {
         $item = KategoriPackage::findOrFail($id);
+        $package = Package::all();
 
         return view('pages.admin.package.kategori-package.edit',[
-            'item' => $item
+            'item' => $item,
+            'package' => $package
         ]);
     }
 
@@ -86,7 +92,7 @@ class KategoriPackageController extends Controller
     {
         $data = $request->all();
 
-        $data['assets'] = $request->file('assets')->store('assets/galeri_kategori', 'public');
+        // $data['assets'] = $request->file('assets')->store('assets/galeri_kategoripackage', 'public');
         $data['slug'] = Str::slug($request->nama);
 
         $item = KategoriPackage::findOrFail($id);

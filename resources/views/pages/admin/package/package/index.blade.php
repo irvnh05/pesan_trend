@@ -46,6 +46,7 @@
         <thead>
         <tr>
           <th>#</th>
+          <th>Program</th>
           <th>Package</th>
           <th>Harga</th>
           <th>Keterangan</th>   
@@ -58,6 +59,7 @@
           @forelse ($items as $item)
               <tr>
                 <td>{{ $item->id }}</td>
+                <td>{{ $item->programs->nama }}</td>
                 <td>{{ $item->nama }}</td>
                 <td>{{ $item->harga }}</td>
                 <td>{{ $item->keterangan }}</td>

@@ -19,7 +19,7 @@ class PackageController extends Controller
      */
     public function index()
     {
-        $items = Package::all();
+        $items = Package::with('programs')->get();
 
         return view('pages.admin.package.package.index',[
             'items' => $items
@@ -34,8 +34,11 @@ class PackageController extends Controller
     public function create()
     {
        $package = Package::all();
+       $program = Program::all();
+       
        return view('pages.admin.package.package.create',[
-        'package' => $package
+        'package' => $package,
+        'program' => $program
        ]);
     }
 
@@ -48,7 +51,6 @@ class PackageController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-
         $data['slug'] = Str::slug($request->nama);
 
         Package::create($data);

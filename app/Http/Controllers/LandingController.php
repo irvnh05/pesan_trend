@@ -79,6 +79,12 @@ class LandingController extends Controller
         
     }
 
-    
+    public function forestcamp(){
+        return view('forestcamp.package');
+    }
+
+    public function family(){
+        return view('forestcamp.family');
+    }
 
 }

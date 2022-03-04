@@ -47,17 +47,6 @@
       <form action="{{ route('package.store') }}" method="POST">
        @csrf
         <div class="card-body">
-          {{-- <div class="form-group">
-            <label for="kategori_programs_id">Kategori</label>
-            <select class="custom-select rounded-0 form-control" required name="kategori_programs_id">
-              <option value="">Pilih Program</option>
-              @foreach ($kategori_programs as $kategori_program)
-                <option value="{{ $kategori_program->id }}">
-                  {{ $kategori_program->nama }}
-                </option>
-              @endforeach
-            </select>
-          </div> --}}
           <div class="form-group">
             <label for="nama">Nama</label>
             <input type="text" class="form-control" name="nama" placeholder="nama" value="{{ old('nama') }}">
@@ -66,22 +55,10 @@
             <label for="harga">Harga</label>
             <input type="number" class="form-control" name="harga" placeholder="harga" value="{{ old('harga') }}">
           </div>
-          {{-- <div class="form-group">
-            <label for="date">Tanggal Mulai Program</label>
-            <input type="date" class="form-control" name="date" placeholder="date" value="{{ old('date') }}">
-          </div> --}}
           <div class="form-group">
             <label for="keterangan">Keterangan</label>
             <input type="text" class="form-control" name="keterangan" placeholder="Keterangan" value="{{ old('keterangan') }}">
           </div>
-          {{-- <div class="form-group">
-            <label for="tipe">Tipe Form</label>
-             <select class="custom-select rounded-0 form-control" required name="tipe">
-              <option value="">Pilih Tipe</option>
-              <option value="NO">Tanpa Pembayaran</option>
-              <option value="YES">Pembayaran</option>               
-            </select>
-          </div> --}}
           <div class="form-group">
             <label for="assets">Assets</label>
             <input type="file" class="form-control" name="assets" placeholder="Assets">
@@ -90,17 +67,11 @@
             <label>Program</label>
             <select class="select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;" name="programs_id">
               <option value="">Pilih Program</option>
-                <option>Alaska</option>
-                <option>California</option>
-                <option>Delaware</option>
-                <option>Tennessee</option>
-                <option>Texas</option>
-                <option>Washington</option>
-                {{-- @foreach ($program as $program)
+                @foreach ($program as $program)
                   <option value="{{ $program->id }}">
                     {{ $program->nama }}
                   </option>
-                @endforeach --}}
+                @endforeach
             </select>
           </div>
         </div>
