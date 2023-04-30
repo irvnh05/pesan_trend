@@ -1,52 +1,30 @@
+
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
-
-<head>
-    <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('img/favicon.png')}}">
-    <link rel="icon" type="image/png" href="{{asset('img/favicon.png')}}">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>@yield('title') | {{ config('app.name') }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="{{ setting('meta_description') }}">
-    <meta name="keyword" content="{{ setting('meta_keyword') }}">
-
-    @include('frontend.includes.meta')
-
-    <!-- Shortcut Icon -->
-    <link rel="shortcut icon" href="{{asset('img/favicon.png')}}">
-    <link rel="icon" type="image/ico" href="{{asset('img/favicon.png')}}" />
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    @stack('before-styles')
-
-    @vite(['resources/css/app-frontend.css'])
-    @vite(['resources/js/app-frontend.js'])
-
-    @stack('after-styles')
-
-    <x-google-analytics />
-</head>
-
+    @include("frontend.includes.landing_page.shared.head_style")
 <body>
-
-    @include('frontend.includes.header')
-
+    <!-- ======= Header ======= -->
+    @include("frontend.includes.landing_page.shared.header")
+    <!-- ======= Hero Section ======= -->
+    @include("frontend.includes.landing_page.shared.hero_section")
 
     <main>
         @yield('content')
     </main>
 
-    @include('frontend.includes.footer')
+    @include("frontend.includes.landing_page.shared.footer")
 
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="" class="bi bi-arrow-up-short" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"style="fill: #fff"/>
+      </svg>
+    </a>
+
+      
 </body>
 
 <!-- Scripts -->
 @stack('before-scripts')
-
-
+    @include("frontend.includes.landing_page.shared.script")
 @stack('after-scripts')
 
 </html>

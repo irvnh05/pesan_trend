@@ -1,3 +1,5 @@
+@vite(['resources/css/app-frontend.css'])
+@vite(['resources/js/app-frontend.js'])
 <div class="py-10" x-data="{ commentBlock: false }">
     <div class="container mx-auto px-5">
         <h3 class="text-xl">

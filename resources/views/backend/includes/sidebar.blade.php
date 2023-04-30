@@ -1,8 +1,8 @@
-<div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
+<div class="sidebar sidebar-dark sidebar-fixed" id="sidebar" style="--cui-sidebar-bg: #6B4A1F;">
     <div class="sidebar-brand d-none d-md-flex">
         <a href="{{route("backend.dashboard")}}">
-            <img class="sidebar-brand-full" src="{{asset("img/backend-logo.jpg")}}" height="46" alt="{{ app_name() }}">
-            <img class="sidebar-brand-narrow" src="{{asset("img/backend-logo-square.jpg")}}" height="46" alt="{{ app_name() }}">
+            <img class="sidebar-brand-full" src="{{asset("img/logo-white-ps.png")}}" height="46" alt="{{ app_name() }}">
+            <img class="sidebar-brand-narrow" src="{{asset("img/logo-white-ps.jpg")}}" height="46" alt="{{ app_name() }}">
         </a>
         <!-- <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
             <use xlink:href="assets/brand/coreui.svg#full"></use>

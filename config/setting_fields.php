@@ -14,7 +14,7 @@ return [
                 'label' => 'App Name', // you know what label it is
                 'rules' => 'required|min:2|max:50', // validation rule of laravel
                 'class' => '', // any class for input
-                'value' => 'Laravel Starter', // default value if you want
+                'value' => 'Pesan_Trend', // default value if you want
             ],
             [
                 'type' => 'text', // input fields type
@@ -121,7 +121,7 @@ return [
                 'label' => 'Meta Site Name', // you know what label it is
                 'rules' => 'required', // validation rule of laravel
                 'class' => '', // any class for input
-                'value' => 'Awesome Laravel | A Laravel Starter Project', // default value if you want
+                'value' => 'Awesome Laravel | A Pesan_Trend Project', // default value if you want
             ],
             [
                 'type' => 'text', // input fields type
@@ -139,7 +139,7 @@ return [
                 'label' => 'Meta Keyword', // you know what label it is
                 'rules' => 'required', // validation rule of laravel
                 'class' => '', // any class for input
-                'value' => 'Web Application, Laravel,Laravel starter,Bootstrap,Admin,Template,Open,Source, nasir khan, nasirkhan', // default value if you want
+                'value' => 'Web Application, Laravel,Pesan_Trend,Bootstrap,Admin,Template,Open,Source, nasir khan, nasirkhan', // default value if you want
             ],
             [
                 'type' => 'text', // input fields type

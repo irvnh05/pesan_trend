@@ -1,11 +1,12 @@
 @extends('frontend.layouts.app')
-
+@vite(['resources/css/app-frontend.css'])
+@vite(['resources/js/app-frontend.js'])
 @section('title') {{$$module_name_singular->name}} - {{ __("Tags") }} @endsection
 
 @section('content')
 
-<section class="bg-gray-100 text-gray-600 py-20">
-    <div class="container mx-auto flex px-5 items-center justify-center flex-col">
+<section class="py-10 bg-gray-100 text-gray-600 py-20">
+    <div class="mt-5 container mx-auto flex px-5 items-center justify-center flex-col">
         <div class="text-center lg:w-2/3 w-full">
             <p class="mb-8 leading-relaxed">
                 <a href="{{route('frontend.tags.index')}}" class="outline outline-1 outline-gray-800 bg-gray-200 hover:bg-gray-100 text-gray-800 text-sm font-semibold mr-2 px-3 py-1 rounded dark:bg-gray-700 dark:text-gray-300">

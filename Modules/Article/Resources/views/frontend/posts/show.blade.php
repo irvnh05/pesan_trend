@@ -1,5 +1,6 @@
 @extends('frontend.layouts.app')
-
+@vite(['resources/css/app-frontend.css'])
+@vite(['resources/js/app-frontend.js'])
 @section('title') {{$$module_name_singular->name}} @endsection
 
 @section('content')
@@ -52,20 +53,36 @@
                         @lang('Category'):
                     </span>
 
-                    <a href="{{route('frontend.categories.show', [encode_id($$module_name_singular->category_id), $$module_name_singular->category->slug])}}" class="m-2 p-2 bg-gray-100 rounded border-transparent border hover:border-gray-800 transition ease-out duration-300">{{$$module_name_singular->category_name}}</a>
+                    <a href="{{route('frontend.categories.show', [encode_id($$module_name_singular->category_id), $$module_name_singular->category->slug])}}" class="tag-link m-2 p-2 bg-gray-100 rounded border-transparent border hover:border-gray-800 transition ease-out duration-300">{{$$module_name_singular->category_name}}</a>
                 </p>
 
                 @if (count($$module_name_singular->tags))
-                <p>
-                    <span class="font-weight-bold">
-                        @lang('Tags'):
-                    </span>
+                <style>
+                    .tag-link {
+                        display: inline-block;
+                        margin-right: 0.5rem;
+                        margin-bottom: 0.5rem;
+                        padding: 0.5rem 1rem;
+                        background-color: #f1f1f1;
+                        color: #333;
+                        border-radius: 0.25rem;
+                        border: 1px solid transparent;
+                        transition: all 0.3s ease-out;
+                    }
 
+                    .tag-link:hover {
+                        border-color: #333;
+                    }
+                </style>
+                <p>
+                    <span class="font-weight-bold">@lang('Tags'):</span>
+            
                     @foreach ($$module_name_singular->tags as $tag)
-                    <a href="{{route('frontend.tags.show', [encode_id($tag->id), $tag->slug])}}" class="m-2 p-2 bg-gray-100 rounded border-transparent border hover:border-gray-800 transition ease-out duration-300">{{$tag->name}}</a>
+                        <a href="{{ route('frontend.tags.show', [encode_id($tag->id), $tag->slug]) }}" class="tag-link">{{ $tag->name }}</a>
                     @endforeach
                 </p>
-                @endif
+                 @endif
+            
             </div>
 
             <div class="py-5">

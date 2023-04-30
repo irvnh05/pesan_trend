@@ -125,6 +125,7 @@ return [
         'bn' => 'বাংলা (BN)',
         'en' => 'English (EN)',
         'vi' => 'Vietnamese (VI)',
+        'id' => 'Indoneisa (ID)',
     ],
 
     /*

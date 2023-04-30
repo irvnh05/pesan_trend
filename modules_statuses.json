@@ -1,5 +1,12 @@
 {
     "Article": true,
     "Tag": true,
-    "Comment": true
+    "Comment": true,
+    "Catalog": true,
+    "MasterDatum": true,
+    "Datamaster": true,
+    "Transaksi": true,
+    "Transaction": true,
+    "CategoryProgram": true,
+    "CategoryEvent": true
 }

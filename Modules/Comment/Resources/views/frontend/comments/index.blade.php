@@ -1,11 +1,14 @@
 @extends('frontend.layouts.app')
 
+    @vite(['resources/css/app-frontend.css'])
+    @vite(['resources/js/app-frontend.js'])
+
 @section('title') {{ __("Comments") }} @endsection
 
 @section('content')
 
-<section class="bg-gray-100 text-gray-600 py-20">
-    <div class="container mx-auto flex px-5 items-center justify-center flex-col">
+<section class="py-10 bg-gray-100 text-gray-600 py-20">
+    <div class="mt-5 container mx-auto flex px-5 items-center justify-center flex-col">
         <div class="text-center lg:w-2/3 w-full">
             <h1 class="text-3xl sm:text-4xl mb-4 font-medium text-gray-800">
                 {{ __("Comments") }}

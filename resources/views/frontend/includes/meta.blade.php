@@ -54,5 +54,5 @@ $meta_page_type = 'website';
 
 <!--canonical link-->
 <link type="text/plain" rel="author" href="{{asset('humans.txt')}}" />
-<meta name="generator" content="Laravel Starter - A CMS like modular Laravel starter project." />
+<meta name="generator" content="Pesan_Trend - A CMS like modular Pesan_Trend project." />
 <link rel="canonical" href="{{url()->full()}}">

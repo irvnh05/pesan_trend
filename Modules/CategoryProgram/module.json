@@ -1,0 +1,13 @@
+{
+    "name": "CategoryProgram",
+    "alias": "CategoryProgram",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\CategoryProgram\\Providers\\CategoryProgramServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

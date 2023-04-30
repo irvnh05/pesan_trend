@@ -246,11 +246,11 @@ sup {
 }
 
 a {
-  color: var(--cui-link-color, #321fdb);
+  color: var(--cui-link-color, #6b4a1f);
   text-decoration: underline;
 }
 a:hover {
-  color: var(--cui-link-hover-color, #2819af);
+  color: var(--cui-link-hover-color, #563b1d);
 }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
@@ -7761,7 +7761,7 @@ html:not([dir=rtl]) .header-nav {
   width: var(--cui-sidebar-width);
   padding: 0 0;
   color: var(--cui-sidebar-color, rgba(255, 255, 255, 0.87));
-  background: var(--cui-sidebar-bg, #3c4b64);
+  background: var(--cui-sidebar-bg, #6B4A1F);
   box-shadow: none;
   transition: margin-left 0.15s, margin-right 0.15s, box-shadow 0.075s, transform 0.15s, width 0.15s, z-index 0s ease 0.15s;
 }

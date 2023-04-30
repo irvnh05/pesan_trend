@@ -1,0 +1,13 @@
+{
+    "name": "CategoryEvent",
+    "alias": "categoryevent",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\CategoryEvent\\Providers\\CategoryEventServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

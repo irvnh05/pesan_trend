@@ -1,6 +1,6 @@
 {
     "name": "nasirkhan/comment-module",
-    "description": "Comment module for Laravel Starter, nasirkhan/laravel-starter. It can be used with any other Models. One to many polymorphic relation.",
+    "description": "Comment module for Pesan_Trend, nasirkhan/laravel-starter. It can be used with any other Models. One to many polymorphic relation.",
     "type": "laravel-module",
     "version": "v3.0.0",
     "authors": [
