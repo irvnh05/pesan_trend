@@ -8,5 +8,13 @@
     "Transaksi": true,
     "Transaction": true,
     "CategoryProgram": true,
-    "CategoryEvent": true
+    "CategoryEvent": true,
+    "Event": true,
+    "EventCategory": true,
+    "Program": true,
+    "ProgramDetail": true,
+    "Package": true,
+    "ProgramCategory": true,
+    "MainEvent": true,
+    "Main": true
 }

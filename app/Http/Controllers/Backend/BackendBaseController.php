@@ -118,8 +118,18 @@ class BackendBaseController extends Controller
 
         $page_heading = label_case($module_title);
         $title = $page_heading.' '.label_case($module_action);
+        // Mendapatkan URL saat ini
+        $current_url = $_SERVER['REQUEST_URI'];
 
-        $$module_name = $module_model::select('id', 'name', 'updated_at');
+        // Mengecek apakah URL saat ini mengandung string '/admin/programdetails'
+        if (strpos($current_url, '/admin/programdetails') !== false) {
+            // Jika URL mengandung '/admin/programdetails', maka hanya memilih kolom 'id' dan 'updated_at'
+            $$module_name = $module_model::select('id', 'program_id','package_id','updated_at');
+        } else {
+            // Jika tidak, maka memilih kolom 'id', 'name', dan 'updated_at'
+            $$module_name = $module_model::select('id', 'name', 'updated_at');
+        }
+
 
         $data = $$module_name;
 
@@ -129,7 +139,22 @@ class BackendBaseController extends Controller
 
                             return view('backend.includes.action_column', compact('module_name', 'data'));
                         })
-                        ->editColumn('name', '<strong>{{$name}}</strong>')
+                        
+                        ->editColumn('name', function ($data) {
+                            $name = $data->name;
+                        
+                            // Mendapatkan URL saat ini
+                            $current_url = $_SERVER['REQUEST_URI'];
+                        
+                            // Mengecek apakah URL saat ini mengandung string '/admin/programdetails'
+                            if (strpos($current_url, '/admin/programdetails') !== false) {
+                                // Jika URL mengandung '/admin/programdetails', maka tidak menggunakan tag strong
+                                return $name;
+                            } else {
+                                // Jika tidak, maka menggunakan tag strong
+                                return '<strong>' . $name . '</strong>';
+                            }
+                        })
                         ->editColumn('updated_at', function ($data) {
                             $module_name = $this->module_name;
 

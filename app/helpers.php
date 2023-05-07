@@ -200,6 +200,11 @@ if (! function_exists('encode_id')) {
     }
 }
 
+
+function decode_btoa($hash) {
+    // Menggunakan btoa
+    return base64_decode($hash);
+  }
 /*
  *
  * Decode Id to a Hashids\Hashids

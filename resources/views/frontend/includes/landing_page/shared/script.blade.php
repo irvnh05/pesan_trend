@@ -16,6 +16,7 @@
   <script src="landing-page/assets/vendor/fullcalendar/fullcalendar.min.js"></script>
   <!-- Page Specific JS File -->
   <script src="landing-page/assets/js/page/calendar.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hashids/dist/hashids.min.js"></script>
   <!-- Template JS File -->
   <script src="landing-page/assets/js/scripts.js"></script>
   <!-- Custom JS File -->

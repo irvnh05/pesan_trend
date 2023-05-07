@@ -1,0 +1,13 @@
+{
+    "name": "MainEvent",
+    "alias": "mainevent",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\MainEvent\\Providers\\MainEventServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
