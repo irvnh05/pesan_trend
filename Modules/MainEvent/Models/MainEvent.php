@@ -28,5 +28,27 @@ class MainEvent extends BaseModel
         return $this->belongsTo(\Modules\Program\Models\Program::class, 'program_id');
     }
     
+    public function programcategory()
+    {
+        return $this->belongsTo(\Modules\ProgramCategory\Models\ProgramCategory::class, 'program_id');
+    }
+    
+    public function programdetails()
+    {
+        return $this->hasMany(\Modules\ProgramDetail\Models\ProgramDetail::class, 'program_id');
+    }
+    
+    public function package()
+    {
+        return $this->hasManyThrough(
+            \Modules\Package\Models\Package::class,
+            \Modules\ProgramDetail\Models\ProgramDetail::class,
+            'program_id',
+            'id',
+            'program_id',
+            'package_id'
+        );
+    }
+        
 
 }

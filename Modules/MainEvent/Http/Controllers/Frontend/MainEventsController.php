@@ -85,4 +85,36 @@ class MainEventsController extends Controller
             compact('module_title', 'module_name', 'module_icon', 'module_action', 'module_name_singular', "$module_name_singular")
         );
     }
+    /**
+     * Display the package of the specified resource.
+     *
+     * @param  int  $id
+     * @param  string  $slug
+     * @return Response
+     */
+    public function package($id, $slug)
+    {
+        $id = decode_id($id);
+
+        $module_title = $this->module_title;
+        $module_name = $this->module_name;
+        $module_path = $this->module_path;
+        $module_icon = $this->module_icon;
+        $module_model = $this->module_model;
+        $module_name_singular = Str::singular($module_name);
+
+        $module_action = 'Package';
+
+        $$module_name_singular = $module_model::with('program', 'programcategory', 'programdetails', 'package')->find($id);
+
+        if ($$module_name_singular->slug !== $slug) {
+            return redirect()->route('frontend.mainevents.show', ['id' => encode_id($id), 'slug' => $$module_name_singular->slug]);
+        }
+
+        return view(
+            "mainevent::frontend.$module_name.package",
+            compact('module_title', 'module_name', 'module_icon', 'module_action', 'module_name_singular', "$module_name_singular")
+        );
+    }
+
 }

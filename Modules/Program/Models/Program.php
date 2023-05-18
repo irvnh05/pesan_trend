@@ -22,4 +22,5 @@ class Program extends BaseModel
     {
         return \Modules\Program\database\factories\ProgramFactory::new();
     }
+
 }

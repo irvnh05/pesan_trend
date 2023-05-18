@@ -31,6 +31,7 @@ Route::group(['namespace' => '\Modules\MainEvent\Http\Controllers\Frontend', 'as
     $controller_name = 'MainEventsController';
     Route::get("$module_name", ['as' => "$module_name.index", 'uses' => "$controller_name@index"]);
     Route::get("$module_name/{id}/{slug?}", ['as' => "$module_name.show", 'uses' => "$controller_name@show"]);
+    Route::get("$module_name/package/{id}/{slug?}", ['as' => "$module_name.package", 'uses' => "$controller_name@package"]); 
 });
 
 /*

@@ -22,4 +22,6 @@ class ProgramDetail extends BaseModel
     {
         return \Modules\ProgramDetail\database\factories\ProgramDetailFactory::new();
     }
+
+    
 }
