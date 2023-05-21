@@ -22,4 +22,5 @@ class Transaction extends BaseModel
     {
         return \Modules\Transaction\database\factories\TransactionFactory::new();
     }
+    
 }

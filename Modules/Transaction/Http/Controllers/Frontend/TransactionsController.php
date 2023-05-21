@@ -55,10 +55,11 @@ class TransactionsController extends Controller
         $module_action = 'List';
 
         $$module_name = $module_model::latest()->paginate();
+        
 
         return view(
             "transaction::frontend.$module_path.index",
-            compact('module_title', 'module_name', "$module_name", 'module_icon', 'module_action', 'module_name_singular','package')
+            compact('module_title', 'module_name', "$module_name", 'module_icon', 'module_action', 'module_name_singular','package','slug')
         );
     }
 
@@ -114,6 +115,22 @@ class TransactionsController extends Controller
     
         // Redirect to Midtrans payment page
         return redirect($transaction->redirect_url);
+    }
+    public function checkoutManual()
+    {
+
+        // Redirect to success page
+        return redirect('/transaction/success');
+    }
+    public function succes()
+    {
+        $module_title = $this->module_title;
+        $module_name = $this->module_name;
+
+        // Redirect to Midtrans payment page
+        return view(
+            "transaction::frontend.$module_name.succes"
+        );
     }
     
 }

@@ -19,65 +19,54 @@
             <div class="card card-details p-5">
                 <!-- Content for the wider card -->
                 <h1 class="text-3xl font-bold mb-3 text-gray-900">Who is Going?</h1>
-                <p class="text-gray-500">Trip to Ubud, Bali, Indonesia</p>
+                <p class="text-gray-500">Advanture to event {{$module_name_singular}}, Bandung</p>
                 <style>
                     .overflow-x-auto {
                     overflow-x: auto;
                     white-space: nowrap;
                     }
                 </style>
+              @if ($package && $package != 'test' && $slug != 'forest camp')
                 <div class="attendee mt-4 overflow-x-auto">
                   <table class="w-full table-auto">
                     <thead class="bg-gray-50">
                       <tr>
-                        <th class="px-4 py-2">Picture</th>
-                        <th class="px-4 py-2">Name</th>
-                        <th class="px-4 py-2">Nationality</th>
-                        <th class="px-4 py-2">Visa</th>
-                        <th class="px-4 py-2">Passport</th>
-                        <th class="px-4 py-2">Action</th>
+                        {{-- <th class="px-4 py-2">Picture</th> --}}
+                        <th class="px-4 py-2">Nama</th>
+                        <th class="px-4 py-2">No Whatsapp</th>
+                        <th class="px-4 py-2">Email</th>
+                        <th class="px-4 py-2">Kota/Kecamatan</th>
+                        @if ($package && $package != 'test') 
+                          <th class="px-4 py-2">Action</th> 
+                        @endif
                       </tr>
                     </thead>
                     <tbody>
                       <tr class="hover:bg-gray-100">
-                        <td class="px-4 py-2">
+                        {{-- <td class="px-4 py-2">
                           <img src="https://source.unsplash.com/60x60/?portrait" alt="" height="60" class="rounded-full">
-                        </td>
-                        <td class="px-4 py-2">Angga Risky</td>
+                        </td> --}}
+                        <td class="px-4 py-2">irvan</td>
                         <td class="px-4 py-2">CN</td>
                         <td class="px-4 py-2">N/A</td>
-                        <td class="px-4 py-2">Active</td>
-                        <td class="px-4 py-2">
-                              <a href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-red-500">
-                                  <path d="M19 5L5 19M12 6v12" />
-                                </svg>
-                              </a>
-                              
-                        </td>
+                        <td class="px-4 py-2">Bandung Kota</td>
+                        @if ($package && $package != 'test') 
+                          <td class="px-4 py-2">
+                                <a href="#">
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-red-500">
+                                    <path d="M19 5L5 19M12 6v12" />
+                                  </svg>
+                                </a>
+                                
+                          </td>
+                        @endif
                       </tr>
-                      <tr class="hover:bg-gray-100">
-                        <td class="px-4 py-2">
-                          <img src="https://source.unsplash.com/60x60/?portrait" alt="" height="60" class="rounded-full">
-                        </td>
-                        <td class="px-4 py-2">Galih Pratama</td>
-                        <td class="px-4 py-2">SG</td>
-                        <td class="px-4 py-2">30 Days</td>
-                        <td class="px-4 py-2">Active</td>
-                        <td class="px-4 py-2">
-                            <a href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-red-500">
-                                  <path d="M19 5L5 19M12 6v12" />
-                                </svg>
-                              </a>
-                              
-                        </td>
-                      </tr>
+
                     </tbody>
                   </table>
                 </div>
                   <div class="member mt-3">
-                  @if ($package && $package != 'test')
+                    {{-- @if ($package && $package != 'test') --}}
                       <h2 class="text-lg font-semibold mb-2">Add Member</h2>
                       <form class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                             {{-- <div>
@@ -196,13 +185,97 @@
                       
     
                       </form>
-                    @endif
+                    {{-- @endif --}}
                     <h3 class="text-base font-semibold mt-2 mb-0">Note</h3>
                     <p class="disclaimer mb-0">
                       You are only able to invite members who have registered in Nomads.
                     </p>
                   </div>
-                  
+              @else
+              <form id="default"class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div>
+                  <label for="inputUsername" class="sr-only">Nama Lengkap</label>
+                  <input type="text" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inputUsername" placeholder="Nama Lengkap">
+                </div>
+              
+                <div>
+                  <label for="doePassport" class="sr-only">Tanggal Lahir</label>
+                  <div class="relative">
+                    <input type="date" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="doePassport" placeholder="Tanggal Lahir">
+                  </div>
+                </div>
+       
+                <div>
+                  <label for="inputProvince" class="sr-only">Provinsi</label>
+                  <select id="inputProvince" class="form-select w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="" disabled selected>Pilih Provinsi</option>
+                    <!-- Daftar provinsi -->
+                  </select>
+                </div>
+
+                <div>
+                  <label for="inputCity" class="sr-only">Kota/Kabupaten</label>
+                  <select id="inputCity" class="form-select w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="" disabled selected>Pilih Kota/Kabupaten</option>
+                    <!-- Daftar kota/kabupaten -->
+                  </select>
+                </div>
+
+                <div>
+                  <label for="inputKecamatan" class="sr-only">Kecamatan</label>
+                  <select id="inputKecamatan" class="form-select w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="" disabled selected>Pilih Kecamatan</option>
+                    <!-- Daftar kecamatan -->
+                  </select>
+                </div>
+                
+                <div>
+                  <label for="inputKelurahan" class="sr-only">Kelurahan</label>
+                  <select id="inputKelurahan" class="form-select w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="" disabled selected>Pilih Kelurahan</option>
+                    <!-- Daftar kelurahan -->
+                  </select>
+                </div>
+
+              
+                <div>
+                  <label for="inputPostalCode" class="sr-only">Kode Pos</label>
+                  <input type="text" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inputPostalCode" placeholder="Kode Pos">
+                </div>
+              
+                <div>
+                  <label for="inputAddress" class="sr-only">Alamat Rumah</label>
+                  <input type="text" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inputAddress" placeholder="Alamat Rumah">
+                </div>
+
+                              
+                <style>
+                  /* Hide the spinner arrows for number input */
+                  input[type="number"]::-webkit-inner-spin-button,
+                  input[type="number"]::-webkit-outer-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                  }
+                  input[type="number"] {
+                    -moz-appearance: textfield; /* Firefox */
+                  }
+                </style>
+                
+                <div>
+                  <label for="inputPostalCode" class="sr-only">No Handphone/Whatsapp</label>
+                  <input type="number" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inputPostalCode" placeholder="No Handphone/Whatsapp">
+                </div>
+                
+                <div>
+                  <label for="inputAddress" class="sr-only">Email</label>
+                  <input type="email" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inputAddress" placeholder="Email">
+                </div>
+              </form>
+              <h3 class="text-base font-semibold mt-2 mb-0">Note</h3>
+              <p class="disclaimer mb-0">
+                Sebelum melanjutkan, harap lengkapi data Anda terlebih dahulu. Setelah itu, Anda dapat memilih metode pembayaran manual atau otomatis menggunakan layanan Midtrans. Terima kasih atas kerjasamanya.
+              </p>
+              @endif
               </div>
               
         </div>
@@ -214,89 +287,183 @@
                   <tbody>
                     <tr>
                       <th class="w-1/2">Members</th>
-                      <td class="w-1/2 text-right">2 person</td>
+                      <td class="w-1/2 text-right">    '
+                        @if ($package && $package != 'test' && $slug != 'forest camp')
+                         {{$module_name_singular}}
+                        @else
+                          1 
+                        @endif
+                      </td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                       <th class="w-1/2">Additional Visa</th>
                       <td class="w-1/2 text-right">$ 190.00</td>
+                    </tr> --}}
+                    <tr>
+                      <th class="w-1/2">Harga Tiket Event</th>
+                      <td class="w-1/2 text-right">Rp.  / orang</td>
                     </tr>
                     <tr>
-                      <th class="w-1/2">Trip Price</th>
-                      <td class="w-1/2 text-right">$ 80.00 / person</td>
+                      <th class="w-1/2">Total Harga</th>
+                      <td class="w-1/2 text-right">Rp.  </td>
                     </tr>
-                    <tr>
-                      <th class="w-1/2">Sub Total</th>
-                      <td class="w-1/2 text-right">$ 280.00</td>
-                    </tr>
-                    <tr>
+                    {{-- <tr>
                       <th class="w-1/2">Total (+Unique)</th>
                       <td class="w-1/2 text-right text-total">
                         <span class="text-blue">$ 279,</span><span class="text-orange">33</span>
                       </td>
-                    </tr>
+                    </tr> --}}
                   </tbody>
                 </table>
               
                 <hr class="my-6">
                 <h4 class="text-1xl font-semibold mb-4">Pembayaran</h4>
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item">
-                      <a class="nav-link active" id="midtrans-tab" data-toggle="tab" href="#midtrans" role="tab" aria-controls="midtrans" aria-selected="true">Otomatis (Midtrans)</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="manual-tab" data-toggle="tab" href="#manual" role="tab" aria-controls="manual" aria-selected="false">Manual</a>
-                    </li>
-                  </ul>
-                  <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="midtrans" role="tabpanel" aria-labelledby="midtrans-tab">
-                        <div class="px-6 py-4 bg-gray-100 my-4">
-                            <a href="{{ route("frontend.$module_name.checkout") }}" class="block bg-blue-600 hover:bg-blue-700 text-white text-center font-semibold py-3 px-4 rounded">
-                                Bergabung Sekarang
-                            </a>
-                        
-                            <a href="#" class="mt-4 block bg-white hover:bg-white text-black text-center font-semibold py-3 px-4 rounded">
-                              Tanya Admin
-                            </a>
-                        </div>
-                    </div>
-                   
-                    <div class="tab-pane fade" id="manual" role="tabpanel" aria-labelledby="manual-tab">
-                        <div class="bank grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
-                          <div class="bank-item bg-white rounded-lg shadow-lg p-6 flex items-center">
-                            <img src="https://source.unsplash.com/200x200/?bank" alt="" class="bank-image w-16 h-16 rounded-full">
-                            <div class="ml-4">
-                              <h3 class="text-xl font-semibold mb-2">PT Nomads ID</h3>
-                              <p class="text-gray-600">
-                                0881 8829 8800
-                                <br>
-                                Bank Central Asia
-                              </p>
-                            </div>
-                          </div>
-                          <div class="bank-item bg-white rounded-lg shadow-lg p-6 flex items-center">
-                            <img src="https://source.unsplash.com/200x200/?bank" alt="" class="bank-image w-16 h-16 rounded-full">
-                            <div class="ml-4">
-                              <h3 class="text-xl font-semibold mb-2">PT Nomads ID</h3>
-                              <p class="text-gray-600">
-                                0899 8501 7888
-                                <br>
-                                Bank HSBC
-                              </p>
-                            </div>
+                  <style>
+                    .tab-link {
+                      transition: background-color 0.3s ease;
+                    }
+                  
+                    .tab-link.active {
+                      background-color: #6B4A1F;
+                      color: #fff;
+                    }
+                  
+                    .tab-pane {
+                      display: none;
+                    }
+                  
+                    .tab-pane.active {
+                      display: block;
+                    }
+                  </style>
+                  
+                  <div class="flex flex-col">
+                    <nav class="flex space-x-4">
+                      <a href="#" class="tab-link px-4 py-2 bg-gray-200 text-gray-600 font-medium border-b-2 border-gray-200" onclick="openTab(event, 'tab1')">Otomatis (Midtrans)</a>
+                      <a href="#" class="tab-link px-4 py-2 text-gray-500 font-medium" onclick="openTab(event, 'tab2')">Manual</a>
+                    </nav>
+                    <div class="mt-4">
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="tab1">
+                          <div class="px-6 py-4 bg-gray-100 my-4">
+                              <a   id="konfirm-midtrans" href="{{ route("frontend.$module_name.checkout") }}" style="background-color: #6B4A1F;"onclick class="block text-white text-center font-semibold py-3 px-4 rounded">
+                                  Bergabung Sekarang
+                              </a>
+                          
+                              <a href="#" class="mt-4 block bg-white hover:bg-white text-black text-center font-semibold py-3 px-4 rounded">
+                                Tanya Admin
+                              </a>
                           </div>
                         </div>
-                        <hr class="my-6">
-                        <div class="px-6 py-4 bg-gray-100 my-4">
-                            <a href="#" class="block bg-blue-600 hover:bg-blue-700 text-white text-center font-semibold py-3 px-4 rounded">
-                              Konfirmasi Pembayaran 
-                            </a>
-                            <a href="#" class="mt-4 block bg-white hover:bg-white text-black text-center font-semibold py-3 px-4 rounded">
-                              Tanya Admin
-                            </a>
+                        <div class="tab-pane" id="tab2">
+                          <div class="bank grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
+                            <div class="bank-item bg-white rounded-lg shadow-lg p-6 flex items-center">
+                              <img src="https://source.unsplash.com/200x200/?bank" alt="" class="bank-image w-16 h-16 rounded-full">
+                              <div class="ml-4">
+                                <h3 class="text-xl font-semibold mb-2">PT Nomads ID</h3>
+                                <p class="text-gray-600">
+                                  0881 8829 8800
+                                  <br>
+                                  Bank Central Asia
+                                </p>
+                              </div>
+                            </div>
+                            <div class="bank-item bg-white rounded-lg shadow-lg p-6 flex items-center">
+                              <img src="https://source.unsplash.com/200x200/?bank" alt="" class="bank-image w-16 h-16 rounded-full">
+                              <div class="ml-4">
+                                <h3 class="text-xl font-semibold mb-2">PT Nomads ID</h3>
+                                <p class="text-gray-600">
+                                  0899 8501 7888
+                                  <br>
+                                  Bank HSBC
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                            <hr class="my-6">
+                          <div class="px-6 py-4 bg-gray-100 my-4">
+                              <a id="konfirm" href="{{ route("frontend.$module_name.checkout") }}" style="background-color: #6B4A1F;"onclick class="block  text-white text-center font-semibold py-3 px-4 rounded">
+                                Konfirmasi Pembayaran
+                              </a>
+                              <a href="#" class="mt-4 block bg-white hover:bg-white text-black text-center font-semibold py-3 px-4 rounded">
+                                Tanya Admin
+                              </a>
+                          </div>
                         </div>
+                      </div>
                     </div>
-                      
                   </div>
+                  
+                  <script>
+                      const form = document.getElementById('default');
+                      const confirmationButton = document.getElementById('konfirm');
+                      const confirmationmidtransButton = document.getElementById('konfirm-midtrans');
+
+                      // Fungsi untuk memeriksa apakah semua inputan terisi
+                      function validateForm() {
+                        const inputs = form.querySelectorAll('input');
+
+                        for (let i = 0; i < inputs.length; i++) {
+                          if (!inputs[i].value) {
+                            return false;
+                          }
+                        }
+
+                        return true;
+                      }
+
+                      // Fungsi untuk menangani klik tombol "Konfirmasi Pembayaran"
+                      function handleConfirmation(event) {
+                        event.preventDefault();
+
+                        if (validateForm()) {
+                          // Lakukan proses pembayaran atau tindakan lainnya
+                          // console.log('Form is valid. Proceed with payment.');
+                          if (event.target === confirmationButton) {
+                            // Redirect ke halaman checkout menggunakan href dari confirmationButton
+                            window.location.href = confirmationButton.href;
+                          } else if (event.target === confirmationmidtransButton) {
+                            // Redirect ke halaman checkout menggunakan href dari confirmationmidtransButton
+                            window.location.href = confirmationmidtransButton.href;
+                          }
+                        } else {
+                          // Tampilkan pesan kesalahan atau instruksi kepada pengguna
+                          alert('Lengkapi dulu data di form sebelum melakukan konfirmasi pembayaran.');
+                        }
+                      }
+
+                      // Tambahkan event listener untuk tombol "Konfirmasi Pembayaran"
+                      confirmationButton.addEventListener('click', handleConfirmation);
+                      confirmationmidtransButton.addEventListener('click', handleConfirmation);
+                      // Tambahkan event listener untuk memeriksa apakah semua inputan terisi saat input berubah
+                      form.addEventListener('input', function() {
+                        confirmationButton.disabled = !validateForm();
+                        confirmationmidtransButton.disabled = !validateForm();
+                      });
+
+                    function openTab(event, tabId) {
+                      event.preventDefault();
+                  
+                      // Hide all tab content
+                      var tabContent = document.getElementsByClassName("tab-pane");
+                      for (var i = 0; i < tabContent.length; i++) {
+                        tabContent[i].classList.remove("active");
+                      }
+                  
+                      // Remove active class from all tab links
+                      var tabLinks = document.getElementsByClassName("tab-link");
+                      for (var i = 0; i < tabLinks.length; i++) {
+                        tabLinks[i].classList.remove("active");
+                      }
+                  
+                      // Show the selected tab content
+                      document.getElementById(tabId).classList.add("active");
+                  
+                      // Add active class to the clicked tab link
+                      event.target.classList.add("active");
+                    }
+                  </script>
+                  
                 {{-- <hr class="my-6"> --}}
                 {{-- <h2 class="text-2xl font-semibold mb-4">Payment Instructions</h2>
                 <p class="payment-instructions">
@@ -337,3 +504,136 @@
   </section>
   
 @endsection
+
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+
+  
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    const inputCity = document.getElementById('inputCity');
+    const inputProvince = document.getElementById('inputProvince');
+
+    function getCities(provinceId) {
+      axios
+        .get(`https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${provinceId}`)
+        .then(response => {
+          const cities = response.data.kota_kabupaten;
+          console.log(cities);
+          populateCities(cities);
+        })
+        .catch(error => {
+          console.error('Error:', error.message);
+          console.error('Response:', error.response.data);
+        });
+    }
+
+    function populateCities(cities) {
+      inputCity.innerHTML = '';
+      cities.forEach(city => {
+        const option = document.createElement('option');
+        option.value = city.id;
+        option.textContent = city.nama;
+        inputCity.appendChild(option);
+      });
+    }
+
+    function populateProvinces(provinces) {
+      provinces.forEach(province => {
+        const option = document.createElement('option');
+        option.value = province.id;
+        option.textContent = province.nama;
+        inputProvince.appendChild(option);
+      });
+    }
+
+    function getProvinces() {
+      axios
+        .get('https://dev.farizdotid.com/api/daerahindonesia/provinsi')
+        .then(response => {
+          const provinces = response.data.provinsi;
+          console.log(provinces);
+          populateProvinces(provinces);
+        })
+        .catch(error => {
+          console.error('Error:', error.message);
+          console.error('Response:', error.response.data);
+        });
+    }
+
+    getProvinces();
+
+    inputProvince.addEventListener('change', function() {
+      const provinceId = this.value;
+      getCities(provinceId);
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const inputCity = document.getElementById('inputCity');
+    const inputKecamatan = document.getElementById('inputKecamatan');
+    const inputKelurahan = document.getElementById('inputKelurahan');
+
+    function getKecamatan(cityId) {
+      axios
+        .get(`https://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=${cityId}`)
+        .then(response => {
+          const kecamatan = response.data.kecamatan;
+          console.log(kecamatan);
+          populateKecamatan(kecamatan);
+        })
+        .catch(error => {
+          console.error('Error:', error.message);
+          console.error('Response:', error.response.data);
+        });
+    }
+
+    function getKelurahan(kecamatanId) {
+      axios
+        .get(`https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan=${kecamatanId}`)
+        .then(response => {
+          const kelurahan = response.data.kelurahan;
+          console.log(kelurahan);
+          populateKelurahan(kelurahan);
+        })
+        .catch(error => {
+          console.error('Error:', error.message);
+          console.error('Response:', error.response.data);
+        });
+    }
+
+    function populateKecamatan(kecamatan) {
+      inputKecamatan.innerHTML = '';
+      kecamatan.forEach(k => {
+        const option = document.createElement('option');
+        option.value = k.id;
+        option.textContent = k.nama;
+        inputKecamatan.appendChild(option);
+      });
+    }
+
+    function populateKelurahan(kelurahan) {
+      inputKelurahan.innerHTML = '';
+      kelurahan.forEach(k => {
+        const option = document.createElement('option');
+        option.value = k.id;
+        option.textContent = k.nama;
+        inputKelurahan.appendChild(option);
+      });
+    }
+
+    inputCity.addEventListener('change', function() {
+      const cityId = this.value;
+      getKecamatan(cityId);
+    });
+
+    inputKecamatan.addEventListener('change', function() {
+      const kecamatanId = this.value;
+      getKelurahan(kecamatanId);
+    });
+  });
+</script>

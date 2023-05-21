@@ -1,4 +1,4 @@
-<div class="row">
+{{-- <div class="row">
     <div class="col-sm-6 col-lg-3">
         <div class="card mb-4">
             <div class="card-body">
@@ -183,4 +183,4 @@
     </div>
     <!-- /.col-->
 </div>
-<!-- /.row-->
+<!-- /.row--> --}}

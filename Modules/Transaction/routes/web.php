@@ -34,6 +34,8 @@ Route::group(['namespace' => '\Modules\Transaction\Http\Controllers\Frontend', '
     Route::get("$module_name/{id}/{slug?}/{package?}/", ['as' => "$module_name.index", 'uses' => "$controller_name@index"]);
     Route::get("$module_name/{id}/{slug?}", ['as' => "$module_name.show", 'uses' => "$controller_name@show"]);
     Route::get("/checkout", ['as' => "$module_name.checkout", 'uses' => "$controller_name@checkout"]);
+    Route::get("/checkout-manual", ['as' => "$module_name.checkout-manual", 'uses' => "$controller_name@checkoutManual"]);
+    Route::get("transaction/success", ['as' => "$module_name.success", 'uses' => "$controller_name@succes"]);
 
 });
 

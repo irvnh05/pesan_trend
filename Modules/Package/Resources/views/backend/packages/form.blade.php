@@ -127,7 +127,7 @@ function formatToRupiah(input) {
             $field_placeholder = $field_lable;
             $required = "";
             ?>
-            {{ html()->label($field_lable, $field_name)->class('form-label') }} {!! fielf_required($required) !!}
+            {{ html()->label('List (format penulisan: test1,test2,test3)')->class('form-label') }} {!! fielf_required($required) !!}
             {{ html()->textarea($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
         </div>
     </div>
