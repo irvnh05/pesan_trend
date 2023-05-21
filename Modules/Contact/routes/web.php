@@ -19,22 +19,18 @@ use Illuminate\Support\Facades\Route;
 *
 * --------------------------------------------------------------------
 */
-Route::group(['namespace' => '\Modules\Transaction\Http\Controllers\Frontend', 'as' => 'frontend.', 'middleware' => 'web', 'prefix' => ''], function () {
+Route::group(['namespace' => '\Modules\Contact\Http\Controllers\Frontend', 'as' => 'frontend.', 'middleware' => 'web', 'prefix' => ''], function () {
 
     /*
      *
-     *  Frontend Transactions Routes
+     *  Frontend Contacts Routes
      *
      * ---------------------------------------------------------------------
      */
-    $module_name = 'transactions';
-    $controller_name = 'TransactionsController';
-    
-    // Route::get("$module_name", ['as' => "$module_name.index", 'uses' => "$controller_name@index"]);
-    Route::get("$module_name/{id}/{slug?}/{package?}/", ['as' => "$module_name.index", 'uses' => "$controller_name@index"]);
+    $module_name = 'contacts';
+    $controller_name = 'ContactsController';
+    Route::get("$module_name", ['as' => "$module_name.index", 'uses' => "$controller_name@index"]);
     Route::get("$module_name/{id}/{slug?}", ['as' => "$module_name.show", 'uses' => "$controller_name@show"]);
-    Route::get("/checkout", ['as' => "$module_name.checkout", 'uses' => "$controller_name@checkout"]);
-
 });
 
 /*
@@ -43,7 +39,7 @@ Route::group(['namespace' => '\Modules\Transaction\Http\Controllers\Frontend', '
 *
 * --------------------------------------------------------------------
 */
-Route::group(['namespace' => '\Modules\Transaction\Http\Controllers\Backend', 'as' => 'backend.', 'middleware' => ['web', 'auth', 'can:view_backend'], 'prefix' => 'admin'], function () {
+Route::group(['namespace' => '\Modules\Contact\Http\Controllers\Backend', 'as' => 'backend.', 'middleware' => ['web', 'auth', 'can:view_backend'], 'prefix' => 'admin'], function () {
     /*
     * These routes need view-backend permission
     * (good if you want to allow more than one group in the backend,
@@ -54,12 +50,12 @@ Route::group(['namespace' => '\Modules\Transaction\Http\Controllers\Backend', 'a
 
     /*
      *
-     *  Backend Transactions Routes
+     *  Backend Contacts Routes
      *
      * ---------------------------------------------------------------------
      */
-    $module_name = 'transactions';
-    $controller_name = 'TransactionsController';
+    $module_name = 'contacts';
+    $controller_name = 'ContactsController';
     Route::get("$module_name/index_list", ['as' => "$module_name.index_list", 'uses' => "$controller_name@index_list"]);
     Route::get("$module_name/index_data", ['as' => "$module_name.index_data", 'uses' => "$controller_name@index_data"]);
     Route::get("$module_name/trashed", ['as' => "$module_name.trashed", 'uses' => "$controller_name@trashed"]);

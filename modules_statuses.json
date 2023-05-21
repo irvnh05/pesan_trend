@@ -16,5 +16,6 @@
     "Package": true,
     "ProgramCategory": true,
     "MainEvent": true,
-    "Main": true
+    "Main": true,
+    "Contact": true
 }

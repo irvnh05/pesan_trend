@@ -109,7 +109,11 @@
                             <span class="text-base font-normal leading-tight text-gray-500">24×7 phone & email support</span>
                         </li>
                     </ul>
-                    <button type="button" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose plan</button>
+                    <!-- {{$package->slug}} -->
+                    <!-- <button type="button" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose plan</button> -->
+                    <a href="{{ route("frontend.transactions.index", [encode_id($$module_name_singular->id), $$module_name_singular->slug,$package->slug]) }}" class="block bg-blue-600 hover:bg-blue-700 text-white text-center font-semibold py-3 px-4 round">
+                        Bergabung Sekarang
+                      </a>
                 </div>
             </div>
             @endforeach

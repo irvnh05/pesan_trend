@@ -76,125 +76,127 @@
                     </tbody>
                   </table>
                 </div>
-                <div class="member mt-3">
-                    <h2 class="text-lg font-semibold mb-2">Add Member</h2>
-                    <form class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                      {{-- <div>
-                        <label for="inputUsername" class="sr-only">Name</label>
-                        <input type="text" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inputUsername" placeholder="Username">
-                      </div>
-                  
-                      <div>
-                        <label for="inlineFormCustomSelectPref" class="sr-only">Preference</label>
-                        <select class="form-select w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inlineFormCustomSelectPref">
-                          <option selected="" value="">VISA</option>
-                          <option value="2">30 Days</option>
-                          <option value="3">N/A</option>
-                        </select>
-                      </div>
-                  
-                      <div>
-                        <label for="doePassport" class="sr-only">DOE Passport</label>
-                        <div class="relative">
-                          <input type="text" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="doePassport" placeholder="DOE Passport">
-                        </div>
-                      </div>
-                   --}}
-                    
-                    <!-- Modal toggle -->
-                    <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-                        Toggle Modal
-                    </button>
-                    
-                    <!-- Main modal -->
-                    <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center z-50 hidden">
-                        <div class="bg-white rounded-lg shadow-lg w-full col-6 max-w-md p-6">
-                            <!-- Modal content -->
-                            <h2 class="text-2xl font-bold mb-4">Login</h2>
-                            <form id="wizard-form">
-                                <div class="step hidden" id="step1">
-                                    <div class="mb-4">
-                                        <label for="email" class="block mb-2 font-semibold text-gray-800">Email</label>
-                                        <input type="email" id="email" placeholder="Enter your email" class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <div class="member mt-3">
+                  @if ($package && $package != 'test')
+                      <h2 class="text-lg font-semibold mb-2">Add Member</h2>
+                      <form class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                            {{-- <div>
+                              <label for="inputUsername" class="sr-only">Name</label>
+                              <input type="text" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inputUsername" placeholder="Username">
+                            </div>
+                        
+                            <div>
+                              <label for="inlineFormCustomSelectPref" class="sr-only">Preference</label>
+                              <select class="form-select w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inlineFormCustomSelectPref">
+                                <option selected="" value="">VISA</option>
+                                <option value="2">30 Days</option>
+                                <option value="3">N/A</option>
+                              </select>
+                            </div>
+                        
+                            <div>
+                              <label for="doePassport" class="sr-only">DOE Passport</label>
+                              <div class="relative">
+                                <input type="text" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="doePassport" placeholder="DOE Passport">
+                              </div>
+                            </div>
+                        --}}
+                      
+                        <!-- Modal toggle -->
+                        <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                            Toggle Modal
+                        </button>
+                        
+                        <!-- Main modal -->
+                        <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center z-50 hidden">
+                            <div class="bg-white rounded-lg shadow-lg w-full col-6 max-w-md p-6">
+                                <!-- Modal content -->
+                                <h2 class="text-2xl font-bold mb-4">Login</h2>
+                                <form id="wizard-form">
+                                    <div class="step hidden" id="step1">
+                                        <div class="mb-4">
+                                            <label for="email" class="block mb-2 font-semibold text-gray-800">Email</label>
+                                            <input type="email" id="email" placeholder="Enter your email" class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="step hidden" id="step2">
-                                    <div class="mb-4">
-                                        <label for="password" class=" block mb-2 font-semibold text-gray-800">Password</label>
-                                        <input type="password" id="password" placeholder="Enter your password" class=" w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <div class="step hidden" id="step2">
+                                        <div class="mb-4">
+                                            <label for="password" class=" block mb-2 font-semibold text-gray-800">Password</label>
+                                            <input type="password" id="password" placeholder="Enter your password" class=" w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="flex justify-between mt-6">
-                                    <button type="button" id="previousBtn" class="bg-gray-300 text-gray-600 font-medium rounded-lg px-4 py-2 focus:outline-none">Previous</button>
-                                    <button type="button" id="nextBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg px-4 py-2 focus:outline-none">Next</button>
-                                </div>
-                            </form>
+                                    <div class="flex justify-between mt-6">
+                                        <button type="button" id="previousBtn" class="bg-gray-300 text-gray-600 font-medium rounded-lg px-4 py-2 focus:outline-none">Previous</button>
+                                        <button type="button" id="nextBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg px-4 py-2 focus:outline-none">Next</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <script>
-                        const form = document.getElementById('wizard-form');
-                        const steps = Array.from(document.getElementsByClassName('step'));
-                        let currentStep = 0;
-                        const previousBtn = document.getElementById('previousBtn');
-                        const nextBtn = document.getElementById('nextBtn');
-                    
-                        function showStep(stepIndex) {
-                            steps.forEach((step, index) => {
-                                if (index === stepIndex) {
-                                    step.classList.add('active');
+                        
+                        <script>
+                            const form = document.getElementById('wizard-form');
+                            const steps = Array.from(document.getElementsByClassName('step'));
+                            let currentStep = 0;
+                            const previousBtn = document.getElementById('previousBtn');
+                            const nextBtn = document.getElementById('nextBtn');
+                        
+                            function showStep(stepIndex) {
+                                steps.forEach((step, index) => {
+                                    if (index === stepIndex) {
+                                        step.classList.add('active');
+                                    } else {
+                                        step.classList.remove('active');
+                                    }
+                                });
+                        
+                                // Hide or show Previous/Next buttons based on current step
+                                if (stepIndex === 0) {
+                                    previousBtn.style.display = 'none';
                                 } else {
-                                    step.classList.remove('active');
+                                    previousBtn.style.display = 'block';
                                 }
-                            });
-                    
-                            // Hide or show Previous/Next buttons based on current step
-                            if (stepIndex === 0) {
-                                previousBtn.style.display = 'none';
-                            } else {
-                                previousBtn.style.display = 'block';
+                        
+                                if (stepIndex === steps.length - 1) {
+                                    nextBtn.textContent = 'Submit';
+                                } else {
+                                    nextBtn.textContent = 'Next';
+                                }
+                                if (stepIndex === 1) {
+                                    document.getElementById('step2').classList.remove('hidden');
+                                    document.getElementById('step1').classList.add('hidden');
+                                } else if (stepIndex === 0) {
+                                    document.getElementById('step2').classList.add('hidden');
+                                    document.getElementById('step1').classList.remove('hidden');
+                                }
                             }
-                    
-                            if (stepIndex === steps.length - 1) {
-                                nextBtn.textContent = 'Submit';
-                            } else {
-                                nextBtn.textContent = 'Next';
+                        
+                            function previousStep() {
+                                if (currentStep > 0) {
+                                    currentStep--;
+                                    showStep(currentStep);
+                                }
                             }
-                            if (stepIndex === 1) {
-                                document.getElementById('step2').classList.remove('hidden');
-                                document.getElementById('step1').classList.add('hidden');
-                            } else if (stepIndex === 0) {
-                                document.getElementById('step2').classList.add('hidden');
-                                document.getElementById('step1').classList.remove('hidden');
+                        
+                            function nextStep() {
+                                if (currentStep < steps.length - 1) {
+                                    currentStep++;
+                                    showStep(currentStep);
+                                } else {
+                                    // Handle form submission
+                                    form.submit();
+                                }
                             }
-                        }
-                    
-                        function previousStep() {
-                            if (currentStep > 0) {
-                                currentStep--;
-                                showStep(currentStep);
-                            }
-                        }
-                    
-                        function nextStep() {
-                            if (currentStep < steps.length - 1) {
-                                currentStep++;
-                                showStep(currentStep);
-                            } else {
-                                // Handle form submission
-                                form.submit();
-                            }
-                        }
-                    
-                        // Initialize the form
-                        showStep(currentStep);
-                        previousBtn.addEventListener('click', previousStep);
-                        nextBtn.addEventListener('click', nextStep);
-                    </script>
-                    
-                    
-  
-                    </form>
+                        
+                            // Initialize the form
+                            showStep(currentStep);
+                            previousBtn.addEventListener('click', previousStep);
+                            nextBtn.addEventListener('click', nextStep);
+                        </script>
+                        
+                      
+    
+                      </form>
+                    @endif
                     <h3 class="text-base font-semibold mt-2 mb-0">Note</h3>
                     <p class="disclaimer mb-0">
                       You are only able to invite members who have registered in Nomads.

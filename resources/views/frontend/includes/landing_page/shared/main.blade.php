@@ -53,9 +53,16 @@
               <div class="row">
                 <div class="col-12">
                   <div class="card">
-                    <div class="card-header">
-                      <h4>Calendar</h4>
+                    <div class="card-header flex items-center justify-between">
+                      <div class="text-left">
+                        <h4 class="text-xl">Calendar</h4>
+                      </div>
+                      <div class="text-left">
+                        <h6 class="text-sm text-danger">Note: Refresh website jika event gagal tampil di calendar</h6>
+                      </div>
                     </div>
+                    
+                    
                     <div class="card-body">
                       <div class="fc-overflow">
                         <div id="myEvent"></div>
@@ -137,73 +144,91 @@
                   <% end %> --}}
 
                   {{-- end --}}
-                
-                  <div class="col-lg-6">
-                    <div class="row align-self-center gy-4">
-                      <div class="mastering-tools pt-50 pb-50">
-                        <div class="tools-slideshow mt-50">
-                          <div id="toolsRow1">
-                            <div class="card bg-light mt-3">
-                              <img src="/assets/logo-brown-2.png" alt="">
-                              <div>
-                                <h5 class="title">
-                                  Program 1 Name
-                                </h5>
-                                <p class="subtitle">
-                                  Program 1 Category
-                                </p>
-                                <a href="#" class="stretched-link"></a>
-                              </div>
-                            </div>
-                            <div class="card bg-light mt-3">
-                              <img src="/assets/logo-brown-2.png" alt="">
-                              <div>
-                                <h5 class="title">
-                                  Program 2 Name
-                                </h5>
-                                <p class="subtitle">
-                                  Program 2 Category
-                                </p>
-                                <a href="#" class="stretched-link"></a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="tools-slideshow toRight mt-30">
-                          <div id="toolsRow2">
-                            <div class="card bg-light mt-3">
-                              <img src="/assets/logo-brown-2.png" alt="">
-                              <div>
-                                <h5 class="title">
-                                  Program 3 Name
-                                </h5>
-                                <p class="subtitle">
-                                  Program 3 Category
-                                </p>
-                                <a href="#" class="stretched-link"></a>
-                              </div>
-                            </div>
-                            <div class="card bg-light mt-3">
-                              <img src="/assets/logo-brown-2.png" alt="">
-                              <div>
-                                <h5 class="title">
-                                  Program 4 Name
-                                </h5>
-                                <p class="subtitle">
-                                  Program 4 Category
-                                </p>
-                                <a href="#" class="stretched-link"></a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        
-        
-                      </div>
-                    </div>
-                  </div>
-        
-        
+                  <div class="col-lg-6 row align-self-center ">
+  <div class="mastering-tools pt-50 pb-50">
+    <div class="tools-slideshow mt-50">
+      <div id="toolsRow1" class="carousel"></div>
+    </div>
+    <div class="tools-slideshow toRight mt-30">
+      <div id="toolsRow2" class="carousel"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick.min.js"></script>
+<script>
+  const toolsRow1 = document.getElementById('toolsRow1');
+  const toolsRow2 = document.getElementById('toolsRow2');
+
+  fetch('http://pesan_trend.test/api/programs')
+    .then(response => response.json())
+    .then(data => {
+      const generateCard = (program) => {
+        const card = document.createElement('div');
+        card.classList.add('card', 'bg-light', 'mt-3');
+
+        const image = document.createElement('img');
+        image.src = '/landing-page/assets/img/logo-brown.png';
+        card.appendChild(image);
+
+        const content = document.createElement('div');
+
+        const title = document.createElement('h5');
+        title.classList.add('title');
+        title.textContent = program.name;
+        content.appendChild(title);
+
+        const subtitle = document.createElement('p');
+        subtitle.classList.add('subtitle');
+        subtitle.textContent = program.category.name;
+        content.appendChild(subtitle);
+
+        const link = document.createElement('a');
+        link.href = '#';
+        link.classList.add('stretched-link');
+        content.appendChild(link);
+
+        card.appendChild(content);
+
+        return card;
+      };
+
+      const initCarousel = (containerId) => {
+        $(`#${containerId}`).slick({
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 0,
+          arrows: false,
+          responsive: [
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 1,
+              },
+            },
+          ],
+        });
+      };
+
+      data.forEach((program, index) => {
+        const card = generateCard(program);
+        if (index % 3 === 0) {
+          toolsRow1.appendChild(card);
+        } else {
+          toolsRow2.appendChild(card);
+        }
+      });
+
+      initCarousel('toolsRow1');
+      initCarousel('toolsRow2');
+    })
+    .catch(error => {
+      console.error(error);
+    });
+</script>
+
                     </div>
                   </div>
         
@@ -330,26 +355,58 @@
           </div>
 
           <div class="col-lg-6">
-            <form method="post" action="#" class="php-email-form">
-              @csrf
-              <div class="row gy-4">
-                <div class="col-md-6">
-                  <input type="text" name="nama" class="form-control" placeholder="Your Name" required>
-                </div>
-                <div class="col-md-6">
-                  <input type="email" name="email" class="form-control" placeholder="Your Email" required>
-                </div>
-                <div class="col-md-12">
-                  <input type="tel" name="no_handphone" class="form-control" placeholder="Your No Handphone" required>
-                </div>
-                <div class="col-md-12">
-                  <textarea name="pesan" class="form-control" rows="5" placeholder="Your Pesan" required></textarea>
-                </div>
-                <div class="col-md-12 text-center">
-                  <button type="submit" class="btn btn-light">Kirim Pesan</button>
-                </div>
-              </div>
-            </form>
+          <form method="post" id="contactForm" action="/api/contacts" class="php-email-form">
+  <div class="row gy-4">
+    <div class="col-md-6">
+      <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+    </div>
+    <div class="col-md-6">
+      <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+    </div>
+    <div class="col-md-12">
+      <input type="tel" name="no_handphone" class="form-control" placeholder="Your No Handphone" required>
+    </div>
+    <div class="col-md-12">
+      <textarea name="description" class="form-control" rows="5" placeholder="Your Pesan" required></textarea>
+    </div>
+    <div class="col-md-12 text-center">
+      <button type="submit" class="btn btn-light">Kirim Pesan</button>
+    </div>
+  </div>
+</form>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting
+
+    var form = event.target;
+    var formData = new FormData(form);
+
+    fetch('/api/contacts', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json', // Menentukan header 'Accept' sebagai 'application/json'
+        },
+    })
+    .then(function(response) {
+        if (!response.ok) {
+            throw new Error('Request failed: ' + response.status);
+        }
+        return response.json();
+    })
+    .then(function(data) {
+        // console.log(data);
+        alert('Your message has been sent.');
+        // Handle the successful response here
+    })
+    .catch(function(error) {
+        console.error(error);
+        // Handle any errors that occur during the request
+    });
+  });
+</script>
+
           </div>
           
         </div>
@@ -366,13 +423,13 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-12 text-center">
-              <h4>Periksa Invoice</h4>
-              <p>Segera periksa invoice Anda sekarang juga dengan memasukkan kode transaksi.</p>
+              <h4>Periksa Pesanan</h4>
+              <p>Segera periksa pesana Anda sekarang juga dengan memasukkan kode transaksi.</p>
             </div>
             <div class="col-lg-6">
               <form action="" method="post"> 
                 <input type="email" name="email">
-                <input type="submit" value="Periksa Pembayaran">
+                <input type="submit" value="Periksa Pesanan">
               </form>
             </div>
           </div>

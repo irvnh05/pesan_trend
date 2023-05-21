@@ -7,10 +7,6 @@
 
 @section('content')
 
-{{ ($$module_name_singular->programcategory) }}
-
-  
-
 <section class="bg-gray-100 text-gray-600 py-20">
     <div class="container mx-auto flex px-5 items-center justify-center flex-col">
         <div class="lg:w-2/3 w-full">
@@ -21,65 +17,25 @@
                 </div>
                 <div class="col-7">
                   <div class="card">
-                    {{-- <div class="card-body">
-                      <h2 class="card-title">Members Going</h2>
-                      <div class="flex flex-wrap items-center mb-2">
-                        <img src="https://source.unsplash.com/60x60/?portrait" class="w-10 h-10 rounded-full mr-2 mb-2">
-                        <img src="https://source.unsplash.com/60x60/?person" class="w-10 h-10 rounded-full mr-2 mb-2">
-                        <img src="https://source.unsplash.com/60x60/?woman" class="w-10 h-10 rounded-full mr-2 mb-2">
-                        <img src="https://source.unsplash.com/60x60/?man" class="w-10 h-10 rounded-full mr-2 mb-2">
-                        <img src="https://source.unsplash.com/60x60/?young" class="w-10 h-10 rounded-full mr-2 mb-2">
-                        <span class="text-gray-500 text-sm ml-2">(5 members)</span>
-                      </div>
-                      <hr class="my-4">
-                      <h2 class="card-title">Trip Information</h2>
-                      <table class="w-full">
-                        <tbody>
-                          <tr>
-                            <th class="text-gray-600 pr-2">Date of Departure:</th>
-                            <td class="text-gray-800">January 1, 2023</td>
-                          </tr>
-                          <tr>
-                            <th class="text-gray-600 pr-2">Duration:</th>
-                            <td class="text-gray-800">3D 4N</td>
-                          </tr>
-                          <tr>
-                            <th class="text-gray-600 pr-2">Type:</th>
-                            <td class="text-gray-800">Open Trip</td>
-                          </tr>
-                          <tr>
-                            <th class="text-gray-600 pr-2">Price:</th>
-                            <td class="text-gray-800">$2000 / person</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div> --}}
                     <div class="grid gap-4 p-3">
 
                         <div id="controls-carousel" class="relative w-full" data-carousel="static">
                             <!-- Carousel wrapper -->
                             <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-                                <!-- Item 1 -->
-                                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                    <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                                </div>
-                                <!-- Item 2 -->
-                                <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-                                    <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                                </div>
-                                <!-- Item 3 -->
-                                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                    <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                                </div>
-                                <!-- Item 4 -->
-                                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                    <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                                </div>
-                                <!-- Item 5 -->
-                                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                    <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                                </div>
-                            </div>
+                              <!-- Video 1 -->
+                              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/QffKKgOVtZ0?start=3" frameborder="0" allowfullscreen></iframe>
+                              </div>
+                              <!-- Video 2 -->
+                              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/3A_xGCaoYq8" frameborder="0" allowfullscreen></iframe>
+                              </div>
+                              <!-- Video 3 -->
+                              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/yAB7DG0wrl4" frameborder="0" allowfullscreen></iframe>
+                              </div>
+                          </div>
+                          
                             <!-- Slider controls -->
                             <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
                                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
@@ -113,10 +69,12 @@
                             </div>
                         </div>
                         
-                        <p class="mb-3 text-gray-500 dark:text-gray-400">Track work across the enterprise through an open, collaborative platform. Link issues across Jira and ingest data from other software development tools, so your IT support and operations teams have richer contextual information to rapidly respond to requests, incidents, and changes.</p>
-                        <p class="text-gray-500 dark:text-gray-400">Deliver great service experiences fast - without the complexity of traditional ITSM solutions.Accelerate critical development work, eliminate toil, and deploy changes with ease, with a complete audit trail for every change.</p>
-
-                        
+                        <div class="overflow-hidden">
+                          <p class="mb-3 text-gray-500 dark:text-gray-400 text-base md:text-lg whitespace-pre-wrap">
+                              {!! nl2br($$module_name_singular->description) !!}
+                          </p>
+                        </div>
+                      
                     </div>
                     
                   </div>
@@ -128,28 +86,54 @@
                           <div class="px-6 py-4">
                             <h2 class="text-lg font-semibold text-gray-800 mb-2">Members Going</h2>
                             <div class="flex flex-wrap items-center mb-2">
-                              <img src="https://source.unsplash.com/60x60/?portrait" class="w-10 h-10 rounded-full mr-2 mb-2">
-                              <img src="https://source.unsplash.com/60x60/?person" class="w-10 h-10 rounded-full mr-2 mb-2">
-                              <img src="https://source.unsplash.com/60x60/?woman" class="w-10 h-10 rounded-full mr-2 mb-2">
-                              <img src="https://source.unsplash.com/60x60/?man" class="w-10 h-10 rounded-full mr-2 mb-2">
-                              <img src="https://source.unsplash.com/60x60/?young" class="w-10 h-10 rounded-full mr-2 mb-2">
-                              <span class="text-gray-500 text-sm ml-2">(5 members)</span>
+                              @foreach($$module_name_singular->transactions->take(10) as $transaction)
+                                <img src="/media/11/wfeYQrV8To7gWbMXVxCDFhEMZCpH0yt9UuZuJMPn.jpg" class="w-10 h-10 rounded-full mr-2 mb-2">
+                              @endforeach
+                              {{-- <svg class="w-4 h-4 text-gray-500 transition-all duration-300 transform hover:rotate-12 group-hover:rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                              </svg>  --}}
+                              <span class="text-gray-500 text-sm ml-2">({{ $$module_name_singular->transactions->count() }} members)</span>
+                              {{-- <div class="flex flex-wrap items-center mb-2">
+                                @for($i = 0; $i < 28; $i++)
+                                    <div class="flex items-center group">
+                                        <img src="https://source.unsplash.com/random" alt="Unsplash Image" class="w-10 h-10 rounded-full mr-2 mb-2 transition-all duration-300 transform hover:scale-110">
+                                    </div>
+                                @endfor
+                                <svg class="w-4 h-4 text-gray-500 transition-all duration-300 transform hover:rotate-12 group-hover:rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                </svg>
+                                <span class="text-gray-500 text-sm ml-2 transition-all duration-300 transform hover:scale-110">(10 members)</span>
                             </div>
+                             --}}
+                            </div>                            
                             <hr class="my-4">
                             <h2 class="text-lg font-semibold text-gray-800 mb-2">Trip Information</h2>
                             <table class="w-full">
                               <tbody>
                                 <tr>
-                                  <th class="text-gray-600 pr-2">Date of Departure:</th>
-                                  <td class="text-gray-800">January 1, 2023</td>
+                                  <th class="text-gray-600 pr-2">Tanggal Event:</th>
+                                  {{-- <td class="text-gray-800">January 1, 2023</td> --}}
+                                  @php
+                                      $startDate = \Carbon\Carbon::parse($$module_name_singular->start_date);
+                                      $endDate = \Carbon\Carbon::parse($$module_name_singular->end_date);
+                                      $durationDays = $startDate->diffInDays($endDate);
+                                  @endphp
+
+                                  <td class="text-gray-800">{{ $startDate->format('F d, Y') }} s/d {{ $endDate->format('F d, Y') }}</td>
+
                                 </tr>
                                 <tr>
-                                  <th class="text-gray-600 pr-2">Duration:</th>
-                                  <td class="text-gray-800">3D 4N</td>
+                                  <th class="text-gray-600 pr-2">Durasi:</th>
+                                  {{-- <td class="text-gray-800">3D 4N</td> --}}
+                                  <td class="text-gray-800">{{ $durationDays }}D {{ $durationDays+1 }}N</td>
                                 </tr>
                                 <tr>
-                                  <th class="text-gray-600 pr-2">Type:</th>
-                                  <td class="text-gray-800">Open Trip</td>
+                                  <th class="text-gray-600 pr-2">Kategori:</th>
+                                  <td class="text-gray-800">{{$$module_name_singular->programcategory->name}}</td>
+                                </tr>
+                                <tr>
+                                  <th class="text-gray-600 pr-2">Kuota:</th>
+                                  <td class="text-gray-800">{{$$module_name_singular->quota}}</td>
                                 </tr>
                                 {{-- <tr>
                                   <th class="text-gray-600 pr-2">Price:</th>
@@ -160,10 +144,17 @@
                           </div>
                     </div>
                     <div class="px-6 py-4 bg-gray-100">
-                      <a href="{{ route("frontend.$module_name.package", [encode_id($$module_name_singular->id), $$module_name_singular->slug]) }}" class="block bg-blue-600 hover:bg-blue-700 text-white text-center font-semibold py-3 px-4 round">
-                        Bergabung Sekarang
-                      </a>
-                      
+                      {{-- {{$$module_name_singular->transactions->count()}}  --}}
+                      @if ($$module_name_singular->quota <= $$module_name_singular->transactions->count())
+                          {{-- <p>Quota Sudah Habis</p> --}}
+                          <a href="#" class="block bg-blue-600 hover:bg-blue-700 text-white text-center font-semibold py-3 px-4 round">
+                              Quota Sudah Habis
+                          </a>
+                      @else
+                          <a href="{{ route("frontend.$module_name.package", [encode_id($$module_name_singular->id), $$module_name_singular->slug]) }}" class="block bg-blue-600 hover:bg-blue-700 text-white text-center font-semibold py-3 px-4 round">
+                              Bergabung Sekarang
+                          </a>
+                      @endif
                       </div>
                   </div>
                   {{-- <div class="card mt-4">

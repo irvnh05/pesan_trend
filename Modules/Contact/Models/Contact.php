@@ -1,17 +1,17 @@
 <?php
 
-namespace Modules\Program\Models;
+namespace Modules\Contact\Models;
 
 use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Program extends BaseModel
+class Contact extends BaseModel
 {
     use HasFactory;
     use SoftDeletes;
 
-    protected $table = 'programs';
+    protected $table = 'contacts';
 
     /**
      * Create a new factory instance for the model.
@@ -20,12 +20,6 @@ class Program extends BaseModel
      */
     protected static function newFactory()
     {
-        return \Modules\Program\database\factories\ProgramFactory::new();
+        return \Modules\Contact\database\factories\ContactFactory::new();
     }
-    public function category()
-    {
-        return $this->belongsTo(\Modules\ProgramCategory\Models\ProgramCategory::class, 'programcategory_id');
-    }
-    
-
 }

@@ -43,7 +43,7 @@ class TransactionsController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index($id, $slug = null, $package = null)
     {
         $module_title = $this->module_title;
         $module_name = $this->module_name;
@@ -58,7 +58,7 @@ class TransactionsController extends Controller
 
         return view(
             "transaction::frontend.$module_path.index",
-            compact('module_title', 'module_name', "$module_name", 'module_icon', 'module_action', 'module_name_singular')
+            compact('module_title', 'module_name', "$module_name", 'module_icon', 'module_action', 'module_name_singular','package')
         );
     }
 

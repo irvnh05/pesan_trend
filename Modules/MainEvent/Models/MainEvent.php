@@ -48,7 +48,10 @@ class MainEvent extends BaseModel
             'program_id',
             'package_id'
         );
+    }   
+    public function transactions()
+    {
+        return $this->hasMany(\Modules\Transaction\Models\Transaction::class, 'mainevent_id', 'id');
     }
-        
 
 }

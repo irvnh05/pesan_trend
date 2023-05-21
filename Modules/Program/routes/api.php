@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+
+use Modules\Program\Models\Program;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,4 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/programs', function (Request $request) {
     return $request->user();
+});
+Route::get('/programs', function (Request $request) {
+    $programs = Program::with('category')->select('id', 'name', 'slug', 'created_at', 'updated_at', 'notes', 'programcategory_id', 'color')->get();
+    return response()->json($programs);
 });
