@@ -15,7 +15,7 @@
 <section class="bg-gray-100 text-gray-600 p-6 sm:p-15">
     <div class="container mx-auto">
       <div class="flex flex-wrap justify-center">
-        <div class="w-full sm:w-8/12 md:w-9/12 lg:w-7/12 xl:w-8/12 mb-4 sm:mb-0 sm:mr-4 p-3">
+        <div class="w-full sm:w-8/12 md:w-9/12 lg:w-7/12 xl:w-8/12 mb-4 p-3">
             <div class="card card-details p-5">
                 <!-- Content for the wider card -->
                 <h1 class="text-3xl font-bold mb-3 text-gray-900">Who is Going?</h1>
@@ -192,7 +192,7 @@
                     </p>
                   </div>
               @else
-              <form id="default"class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <form id="default"class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4">
                 <div>
                   <label for="inputUsername" class="sr-only">Nama Lengkap</label>
                   <input type="text" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inputUsername" placeholder="Nama Lengkap">
@@ -317,7 +317,7 @@
                 </table>
               
                 <hr class="my-6">
-                <h4 class="text-1xl font-semibold mb-4">Pembayaran</h4>
+                  <h4 class="text-1xl font-semibold mb-4">Pembayaran</h4>
                   <style>
                     .tab-link {
                       transition: background-color 0.3s ease;
@@ -356,7 +356,7 @@
                           </div>
                         </div>
                         <div class="tab-pane" id="tab2">
-                          <div class="bank grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
+                          <div class="bank grid grid-cols-1 md:grid-cols-1 gap-6 my-4">
                             <div class="bank-item bg-white rounded-lg shadow-lg p-6 flex items-center">
                               <img src="https://source.unsplash.com/200x200/?bank" alt="" class="bank-image w-16 h-16 rounded-full">
                               <div class="ml-4">
@@ -368,7 +368,7 @@
                                 </p>
                               </div>
                             </div>
-                            <div class="bank-item bg-white rounded-lg shadow-lg p-6 flex items-center">
+                            <div class="bank-item bg-white rounded-lg shadow-lg p-6 flex items-center my-1">
                               <img src="https://source.unsplash.com/200x200/?bank" alt="" class="bank-image w-16 h-16 rounded-full">
                               <div class="ml-4">
                                 <h3 class="text-xl font-semibold mb-2">PT Nomads ID</h3>
@@ -463,39 +463,7 @@
                       event.target.classList.add("active");
                     }
                   </script>
-                  
-                {{-- <hr class="my-6"> --}}
-                {{-- <h2 class="text-2xl font-semibold mb-4">Payment Instructions</h2>
-                <p class="payment-instructions">
-                  Please complete your payment before to continue the wonderful trip
-                </p> --}}
-              
-                {{-- <div class="bank">
-                  <div class="bank-item pb-3">
-                    <img src="frontend/images/ic_bank.png" alt="" class="bank-image">
-                    <div class="description">
-                      <h3 class="text-lg font-semibold">PT Nomads ID</h3>
-                      <p>
-                        0881 8829 8800
-                        <br>
-                        Bank Central Asia
-                      </p>
-                    </div>
-                  </div>
-                  <div class="bank-item">
-                    <img src="frontend/images/ic_bank.png" alt="" class="bank-image">
-                    <div class="description">
-                      <h3 class="text-lg font-semibold">PT Nomads ID</h3>
-                      <p>
-                        0899 8501 7888
-                        <br>
-                        Bank HSBC
-                      </p>
-                    </div>
-                  </div>
-                </div> --}}
-              
-              </div>
+            </div>
               
           </div>
         </div>
