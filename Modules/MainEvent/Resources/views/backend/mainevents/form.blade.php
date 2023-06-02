@@ -143,6 +143,7 @@
     </div>
 </div>
 
+
 @push ('after-scripts')
 <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.js"></script>
 <script type="module">

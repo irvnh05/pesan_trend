@@ -19,7 +19,7 @@
             <div class="card card-details p-5">
                 <!-- Content for the wider card -->
                 <h1 class="text-3xl font-bold mb-3 text-gray-900">Who is Going?</h1>
-                <p class="text-gray-500">Advanture to event {{$module_name_singular}}, Bandung</p>
+                <p class="text-gray-500">Advanture to event {{$slug}} and package  {{$package}}</p>
                 <style>
                     .overflow-x-auto {
                     overflow-x: auto;
@@ -69,28 +69,6 @@
                     {{-- @if ($package && $package != 'test') --}}
                       <h2 class="text-lg font-semibold mb-2">Add Member</h2>
                       <form class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                            {{-- <div>
-                              <label for="inputUsername" class="sr-only">Name</label>
-                              <input type="text" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inputUsername" placeholder="Username">
-                            </div>
-                        
-                            <div>
-                              <label for="inlineFormCustomSelectPref" class="sr-only">Preference</label>
-                              <select class="form-select w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inlineFormCustomSelectPref">
-                                <option selected="" value="">VISA</option>
-                                <option value="2">30 Days</option>
-                                <option value="3">N/A</option>
-                              </select>
-                            </div>
-                        
-                            <div>
-                              <label for="doePassport" class="sr-only">DOE Passport</label>
-                              <div class="relative">
-                                <input type="text" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="doePassport" placeholder="DOE Passport">
-                              </div>
-                            </div>
-                        --}}
-                      
                         <!-- Modal toggle -->
                         <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
                             Toggle Modal
@@ -192,22 +170,28 @@
                     </p>
                   </div>
               @else
-              <form id="default"class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4">
+              <form id="form-transaction-one" method="POST" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4">
+                @csrf
                 <div>
-                  <label for="inputUsername" class="sr-only">Nama Lengkap</label>
-                  <input type="text" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inputUsername" placeholder="Nama Lengkap">
+                  <label for="inputUsername" class="sr-only">Nama Depan</label>
+                  <input type="text"  name="nama_depan" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inpuFirstName" placeholder="Nama Depan">
+                </div>
+
+                <div>
+                  <label for="inputUsername" class="sr-only">Nama Belakang</label>
+                  <input type="text"  name="nama_belakang" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inputLastName" placeholder="Nama Belakang">
                 </div>
               
                 <div>
                   <label for="doePassport" class="sr-only">Tanggal Lahir</label>
                   <div class="relative">
-                    <input type="date" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="doePassport" placeholder="Tanggal Lahir">
+                    <input type="date"  name="tanggal_lahir" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="doePassport" placeholder="Tanggal Lahir">
                   </div>
                 </div>
        
                 <div>
                   <label for="inputProvince" class="sr-only">Provinsi</label>
-                  <select id="inputProvince" class="form-select w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <select id="inputProvince"  name="provinsi" class="form-select w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="" disabled selected>Pilih Provinsi</option>
                     <!-- Daftar provinsi -->
                   </select>
@@ -215,7 +199,7 @@
 
                 <div>
                   <label for="inputCity" class="sr-only">Kota/Kabupaten</label>
-                  <select id="inputCity" class="form-select w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <select id="inputCity" name="kota_kab"  class="form-select w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="" disabled selected>Pilih Kota/Kabupaten</option>
                     <!-- Daftar kota/kabupaten -->
                   </select>
@@ -223,7 +207,7 @@
 
                 <div>
                   <label for="inputKecamatan" class="sr-only">Kecamatan</label>
-                  <select id="inputKecamatan" class="form-select w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <select id="inputKecamatan" name="kecamatan"  class="form-select w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="" disabled selected>Pilih Kecamatan</option>
                     <!-- Daftar kecamatan -->
                   </select>
@@ -231,7 +215,7 @@
                 
                 <div>
                   <label for="inputKelurahan" class="sr-only">Kelurahan</label>
-                  <select id="inputKelurahan" class="form-select w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <select id="inputKelurahan"  name="kelurahan" class="form-select w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="" disabled selected>Pilih Kelurahan</option>
                     <!-- Daftar kelurahan -->
                   </select>
@@ -240,12 +224,12 @@
               
                 <div>
                   <label for="inputPostalCode" class="sr-only">Kode Pos</label>
-                  <input type="text" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inputPostalCode" placeholder="Kode Pos">
+                  <input type="text"  name="kode_pos" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inputPostalCode" placeholder="Kode Pos">
                 </div>
               
                 <div>
                   <label for="inputAddress" class="sr-only">Alamat Rumah</label>
-                  <input type="text" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inputAddress" placeholder="Alamat Rumah">
+                  <input type="text" name="alamat_rumah" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inputAddress" placeholder="Alamat Rumah">
                 </div>
 
                               
@@ -263,14 +247,15 @@
                 
                 <div>
                   <label for="inputPostalCode" class="sr-only">No Handphone/Whatsapp</label>
-                  <input type="number" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inputPostalCode" placeholder="No Handphone/Whatsapp">
+                  <input type="number"  name="no_handphone"  class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inputPostalCode" placeholder="No Handphone/Whatsapp">
                 </div>
-                
+           
                 <div>
                   <label for="inputAddress" class="sr-only">Email</label>
-                  <input type="email" class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inputAddress" placeholder="Email">
+                  <input type="email"  name="email"  class="form-input w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="inputAddress" placeholder="Email">
                 </div>
               </form>
+                
               <h3 class="text-base font-semibold mt-2 mb-0">Note</h3>
               <p class="disclaimer mb-0">
                 Sebelum melanjutkan, harap lengkapi data Anda terlebih dahulu. Setelah itu, Anda dapat memilih metode pembayaran manual atau otomatis menggunakan layanan Midtrans. Terima kasih atas kerjasamanya.
@@ -289,30 +274,30 @@
                       <th class="w-1/2">Members</th>
                       <td class="w-1/2 text-right">    '
                         @if ($package && $package != 'test' && $slug != 'forest camp')
-                         {{$module_name_singular}}
+                          1
                         @else
                           1 
                         @endif
                       </td>
                     </tr>
-                    {{-- <tr>
-                      <th class="w-1/2">Additional Visa</th>
-                      <td class="w-1/2 text-right">$ 190.00</td>
-                    </tr> --}}
                     <tr>
-                      <th class="w-1/2">Harga Tiket Event</th>
-                      <td class="w-1/2 text-right">Rp.  / orang</td>
+                      @foreach ($mainevent->package as $packageItem)
+                        @if ($packageItem->slug === $package)
+                          <th class="w-1/2">Harga Tiket Event</th>
+                          <td class="w-1/2 text-right">Rp. {{ $packageItem->price}} / orang</td>
+                        @endif
+                      @endforeach
                     </tr>
                     <tr>
                       <th class="w-1/2">Total Harga</th>
-                      <td class="w-1/2 text-right">Rp.  </td>
-                    </tr>
-                    {{-- <tr>
-                      <th class="w-1/2">Total (+Unique)</th>
-                      <td class="w-1/2 text-right text-total">
-                        <span class="text-blue">$ 279,</span><span class="text-orange">33</span>
+                      <td class="w-1/2 text-right">
+                        @foreach ($mainevent->package as $packageItem)
+                            @if ($packageItem->slug === $package)
+                                Rp. {{ floatval($packageItem->price) * floatval($package && $package != 'test' && $slug != 'forest camp' ? $module_name_singular : 1) }}
+                            @endif
+                        @endforeach
                       </td>
-                    </tr> --}}
+                    </tr>
                   </tbody>
                 </table>
               
@@ -346,8 +331,8 @@
                       <div class="tab-content">
                         <div class="tab-pane active" id="tab1">
                           <div class="px-6 py-4 bg-gray-100 my-4">
-                              <a   id="konfirm-midtrans" href="{{ route("frontend.$module_name.checkout") }}" style="background-color: #6B4A1F;"onclick class="block text-white text-center font-semibold py-3 px-4 rounded">
-                                  Bergabung Sekarang
+                              <a   id="konfirm-midtrans" href="{{ route("frontend.$module_name.checkout", ['mainevent' => $slug, 'package' => $package]) }}" style="background-color: #6B4A1F;"onclick class="block text-white text-center font-semibold py-3 px-4 rounded">
+                                Bergabung Sekarang
                               </a>
                           
                               <a href="#" class="mt-4 block bg-white hover:bg-white text-black text-center font-semibold py-3 px-4 rounded">
@@ -382,8 +367,8 @@
                           </div>
                             <hr class="my-6">
                           <div class="px-6 py-4 bg-gray-100 my-4">
-                              <a id="konfirm" href="{{ route("frontend.$module_name.checkout") }}" style="background-color: #6B4A1F;"onclick class="block  text-white text-center font-semibold py-3 px-4 rounded">
-                                Konfirmasi Pembayaran
+                              <a id="konfirm" href="{{ route("frontend.$module_name.checkout-manual", ['mainevent' => $slug, 'package' => $package]) }}" style="background-color: #6B4A1F;"onclick class="block  text-white text-center font-semibold py-3 px-4 rounded">
+                                Konfirmasi Pembayaran 
                               </a>
                               <a href="#" class="mt-4 block bg-white hover:bg-white text-black text-center font-semibold py-3 px-4 rounded">
                                 Tanya Admin
@@ -394,53 +379,64 @@
                     </div>
                   </div>
                   
+                  {{-- 3 --}}
                   <script>
-                      const form = document.getElementById('default');
-                      const confirmationButton = document.getElementById('konfirm');
-                      const confirmationmidtransButton = document.getElementById('konfirm-midtrans');
-
-                      // Fungsi untuk memeriksa apakah semua inputan terisi
-                      function validateForm() {
-                        const inputs = form.querySelectorAll('input');
-
-                        for (let i = 0; i < inputs.length; i++) {
-                          if (!inputs[i].value) {
-                            return false;
-                          }
-                        }
-
-                        return true;
-                      }
-
-                      // Fungsi untuk menangani klik tombol "Konfirmasi Pembayaran"
-                      function handleConfirmation(event) {
-                        event.preventDefault();
-
-                        if (validateForm()) {
-                          // Lakukan proses pembayaran atau tindakan lainnya
-                          // console.log('Form is valid. Proceed with payment.');
-                          if (event.target === confirmationButton) {
-                            // Redirect ke halaman checkout menggunakan href dari confirmationButton
-                            window.location.href = confirmationButton.href;
-                          } else if (event.target === confirmationmidtransButton) {
-                            // Redirect ke halaman checkout menggunakan href dari confirmationmidtransButton
-                            window.location.href = confirmationmidtransButton.href;
-                          }
-                        } else {
-                          // Tampilkan pesan kesalahan atau instruksi kepada pengguna
-                          alert('Lengkapi dulu data di form sebelum melakukan konfirmasi pembayaran.');
+                    const form = document.getElementById('form-transaction-one');
+                    const confirmationButton = document.getElementById('konfirm');
+                    const confirmationmidtransButton = document.getElementById('konfirm-midtrans');
+                  
+                    // Fungsi untuk memeriksa apakah semua inputan terisi
+                    function validateForm() {
+                      const inputs = form.querySelectorAll('input, select');
+                  
+                      for (let i = 0; i < inputs.length; i++) {
+                        if (!inputs[i].value) {
+                          return false;
                         }
                       }
-
-                      // Tambahkan event listener untuk tombol "Konfirmasi Pembayaran"
-                      confirmationButton.addEventListener('click', handleConfirmation);
-                      confirmationmidtransButton.addEventListener('click', handleConfirmation);
-                      // Tambahkan event listener untuk memeriksa apakah semua inputan terisi saat input berubah
-                      form.addEventListener('input', function() {
-                        confirmationButton.disabled = !validateForm();
-                        confirmationmidtransButton.disabled = !validateForm();
-                      });
-
+                  
+                      return true;
+                    }
+                  
+                    // Fungsi untuk menangani klik tombol "Konfirmasi Pembayaran"
+                    function handleConfirmation(event) {
+                      event.preventDefault();
+                  
+                      if (validateForm()) {
+                        // Lakukan proses pembayaran atau tindakan lainnya
+                        // console.log('Form is valid. Proceed with payment.');
+                        if (event.target === confirmationButton) {
+                          // Submit the form programmatically
+                          form.submit();
+                        } else if (event.target === confirmationmidtransButton) {
+                          // Redirect to the checkout page using the href from confirmationmidtransButton
+                          const formData = new FormData(form);
+                          const url = new URL(confirmationmidtransButton.href);
+                          
+                          // Tambahkan nilai-nilai formulir sebagai parameter query
+                          for (const [name, value] of formData.entries()) {
+                            url.searchParams.append(name, value);
+                          }
+                          
+                          // Arahkan pengguna ke halaman checkout dengan URL yang sudah diperbarui
+                          window.location.href = url.href;
+                        }
+                      } else {
+                        // Tampilkan pesan kesalahan atau instruksi kepada pengguna
+                        alert('Lengkapi dulu data di form sebelum melakukan konfirmasi pembayaran.');
+                      }
+                    }
+                    
+                  
+                    // Tambahkan event listener untuk tombol "Konfirmasi Pembayaran"
+                    confirmationButton.addEventListener('click', handleConfirmation);
+                    confirmationmidtransButton.addEventListener('click', handleConfirmation);
+                    // Tambahkan event listener untuk memeriksa apakah semua inputan terisi saat input berubah
+                    form.addEventListener('input', function() {
+                      confirmationButton.disabled = !validateForm();
+                      confirmationmidtransButton.disabled = !validateForm();
+                    });
+                  
                     function openTab(event, tabId) {
                       event.preventDefault();
                   
@@ -463,6 +459,7 @@
                       event.target.classList.add("active");
                     }
                   </script>
+                  
             </div>
               
           </div>

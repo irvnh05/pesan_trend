@@ -121,114 +121,148 @@
         
                   </div>
         
-                  {{-- example loop ruby --}}
-                    {{-- <% @progam.each_slice((@progam.count / 2.0).ceil).with_index do |slice, index| %>
-                    <div class="tools-slideshow <%= index.zero? ? 'toRight' : '' %> mt-<%= index.zero? ? '50' : '30' %>">
-                      <div id="toolsRow<%= index + 1 %>">
-                        <% slice.each do |p| %>
-                          <div class="card bg-light mt-3">
-                            <img src="/assets/logo-brown-2.png" alt="">
-                            <div>
-                              <h5 class="title">
-                                <%= p.try(:name) %>
-                              </h5>
-                              <p class="subtitle">
-                                <%= p.try(:category) %>
-                              </p>
-                              <a href="#" class="stretched-link"></a>
-                            </div>
-                          </div>
-                        <% end %>
+                  <div class="col-lg-6 row align-self-center client-slider">
+                    <div class="mastering-tools pt-50 pb-50">
+                      <div class="tools-slideshow mt-50">
+                        <div id="toolsRow1"  class="toolsRow1 carousel"></div>
+                      </div>
+                      <div class="tools-slideshow toRight mt-30">
+                        <div id="toolsRow2" class="toolsRow2 carousel"></div>
                       </div>
                     </div>
-                  <% end %> --}}
+                  </div>
+                  
+                  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick.min.js"></script>
+                  <script>
+                    const toolsRow1 = document.getElementById('toolsRow1');
+                    const toolsRow2 = document.getElementById('toolsRow2');
+                  
+                    fetch('http://pesan_trend.test/api/programs')
+                      .then(response => response.json())
+                      .then(data => {
+                        const generateCard = (program) => {
+                          const card = document.createElement('div');
+                          card.classList.add('card', 'bg-light', 'mt-3','client-slide-track');
+                  
+                          const image = document.createElement('img');
+                          image.src = '/landing-page/assets/img/logo-brown.png';
+                          card.appendChild(image);
+                  
+                          const content = document.createElement('div');
+                  
+                          const title = document.createElement('h5');
+                          title.classList.add('title');
+                          title.textContent = program.name;
+                          content.appendChild(title);
+                  
+                          const subtitle = document.createElement('p');
+                          subtitle.classList.add('subtitle');
+                          subtitle.textContent = program.category.name;
+                          content.appendChild(subtitle);
+                  
+                          const link = document.createElement('a');
+                          link.href = '#';
+                          link.classList.add('stretched-link');
+                          content.appendChild(link);
+                  
+                          card.appendChild(content);
+                  
+                          return card;
+                        };
+                  
+                        const initCarousel = (containerId) => {
+                          $(`#${containerId}`).slick({
+                            slidesToShow: 2,
+                            slidesToScroll: 1,
+                            autoplay: true,
+                            autoplaySpeed: 0,
+                            arrows: false,
+                            responsive: [
+                              {
+                                breakpoint: 768,
+                                settings: {
+                                  slidesToShow: 1,
+                                },
+                              },
+                            ],
+                          });
+                        };
+                  
+                        data.forEach((program, index) => {
+                          const card = generateCard(program);
+                          if (index % 3 === 0) {
+                            toolsRow1.appendChild(card);
+                          } else {
+                            toolsRow2.appendChild(card);
+                          }
+                        });
+                  
+                        initCarousel('toolsRow1');
+                        initCarousel('toolsRow2');
+                      })
+                      .catch(error => {
+                        console.error(error);
+                      });
+                        // Menghitung jumlah card pada toolsRow1 dan toolsRow2
+                      const toolsRow1Count = toolsRow1.getElementsByClassName('client-slide').length;
+                      const toolsRow2Count = toolsRow2.getElementsByClassName('client-slide').length;
 
-                  {{-- end --}}
-                  <div class="col-lg-6 row align-self-center ">
-  <div class="mastering-tools pt-50 pb-50">
-    <div class="tools-slideshow mt-50">
-      <div id="toolsRow1" class="carousel"></div>
-    </div>
-    <div class="tools-slideshow toRight mt-30">
-      <div id="toolsRow2" class="carousel"></div>
-    </div>
-  </div>
-</div>
+                      if (toolsRow1Count > toolsRow2Count) {
+                        // Jika card lebih banyak pada toolsRow1
+                        toolsRow1.classList.add('has-more-cards');
+                        toolsRow2.classList.remove('has-more-cards');
+                      } else if (toolsRow2Count > toolsRow1Count) {
+                        // Jika card lebih banyak pada toolsRow2
+                        toolsRow2.classList.add('has-more-cards');
+                        toolsRow1.classList.remove('has-more-cards');
+                      } else {
+                        // Jika jumlah card sama pada kedua row
+                        toolsRow1.classList.remove('has-more-cards');
+                        toolsRow2.classList.remove('has-more-cards');
+                      }
+                  </script>
+                  <style>
+                    .tools-slideshow {
+                      display: flex;
+                    }
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick.min.js"></script>
-<script>
-  const toolsRow1 = document.getElementById('toolsRow1');
-  const toolsRow2 = document.getElementById('toolsRow2');
+                    .toolsRow1 .client-slide-track {
+                      animation: scrollLeft 6s linear infinite;
+                    }
 
-  fetch('http://pesan_trend.test/api/programs')
-    .then(response => response.json())
-    .then(data => {
-      const generateCard = (program) => {
-        const card = document.createElement('div');
-        card.classList.add('card', 'bg-light', 'mt-3');
+                    .toolsRow2 .client-slide-track {
+                      animation: scrollRight 8s linear infinite;
+                    }
 
-        const image = document.createElement('img');
-        image.src = '/landing-page/assets/img/logo-brown.png';
-        card.appendChild(image);
+                    .has-more-cards .toolsRow1 .client-slide-track {
+                      animation: scrollLeft 8s linear infinite;  /* Menyesuaikan kecepatan animasi jika toolsRow1 memiliki lebih banyak card */
+                    }
 
-        const content = document.createElement('div');
+                    .has-more-cards .toolsRow2 .client-slide-track {
+                      animation: scrollRight 0s linear infinite;  /* Menyesuaikan kecepatan animasi jika toolsRow2 memiliki lebih banyak card */
+                    }
 
-        const title = document.createElement('h5');
-        title.classList.add('title');
-        title.textContent = program.name;
-        content.appendChild(title);
+                    @keyframes scrollLeft {
+                      0% {
+                        transform: translateX(0);
+                      }
+                      100% {
+                        transform: translateX(calc(-250px * 5));
+                      }
+                    }
 
-        const subtitle = document.createElement('p');
-        subtitle.classList.add('subtitle');
-        subtitle.textContent = program.category.name;
-        content.appendChild(subtitle);
+                    @keyframes scrollRight {
+                      0% {
+                        transform: translateX(0);
+                      }
+                      100% {
+                        transform: translateX(calc(250px * 5));
+                      }
+                    }
+                  </style>
 
-        const link = document.createElement('a');
-        link.href = '#';
-        link.classList.add('stretched-link');
-        content.appendChild(link);
-
-        card.appendChild(content);
-
-        return card;
-      };
-
-      const initCarousel = (containerId) => {
-        $(`#${containerId}`).slick({
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          autoplay: true,
-          autoplaySpeed: 0,
-          arrows: false,
-          responsive: [
-            {
-              breakpoint: 768,
-              settings: {
-                slidesToShow: 1,
-              },
-            },
-          ],
-        });
-      };
-
-      data.forEach((program, index) => {
-        const card = generateCard(program);
-        if (index % 3 === 0) {
-          toolsRow1.appendChild(card);
-        } else {
-          toolsRow2.appendChild(card);
-        }
-      });
-
-      initCarousel('toolsRow1');
-      initCarousel('toolsRow2');
-    })
-    .catch(error => {
-      console.error(error);
-    });
-</script>
-
+                  
                     </div>
                   </div>
         
@@ -356,24 +390,24 @@
 
           <div class="col-lg-6">
           <form method="post" id="contactForm" action="/api/contacts" class="php-email-form">
-  <div class="row gy-4">
-    <div class="col-md-6">
-      <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-    </div>
-    <div class="col-md-6">
-      <input type="email" name="email" class="form-control" placeholder="Your Email" required>
-    </div>
-    <div class="col-md-12">
-      <input type="tel" name="no_handphone" class="form-control" placeholder="Your No Handphone" required>
-    </div>
-    <div class="col-md-12">
-      <textarea name="description" class="form-control" rows="5" placeholder="Your Pesan" required></textarea>
-    </div>
-    <div class="col-md-12 text-center">
-      <button type="submit" class="btn btn-light">Kirim Pesan</button>
-    </div>
-  </div>
-</form>
+            <div class="row gy-4">
+              <div class="col-md-6">
+                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-6">
+                <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+              </div>
+              <div class="col-md-12">
+                <input type="tel" name="no_handphone" class="form-control" placeholder="Your No Handphone" required>
+              </div>
+              <div class="col-md-12">
+                <textarea name="description" class="form-control" rows="5" placeholder="Your Pesan" required></textarea>
+              </div>
+              <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-light">Kirim Pesan</button>
+              </div>
+            </div>
+          </form>
 
 <script>
   document.getElementById('contactForm').addEventListener('submit', function(event) {

@@ -19,9 +19,24 @@
 
             @include('frontend.includes.messages')
         </div>
+        {{-- <div class="sm:w-8/12">
+            @php
+            $images = explode(',', $$module_name_singular->featured_image);
+            @endphp
+        
+            @if (!empty($images))
+                @foreach ($images as $image)
+                    <img class="object-cover object-center rounded shadow-md" alt="{{ $$module_name_singular->name }}" src="{{ $image }}">
+                @endforeach
+            @else
+                <img class="object-cover object-center rounded shadow-md" alt="{{ $$module_name_singular->name }}" src="{{ $$module_name_singular->featured_image }}">
+            @endif
+        </div>
+         --}}
         <div class="sm:w-8/12">
             <img class="object-cover object-center rounded shadow-md" alt="{{$$module_name_singular->name}}" src="{{$$module_name_singular->featured_image}}">
         </div>
+
     </div>
 </section>
 

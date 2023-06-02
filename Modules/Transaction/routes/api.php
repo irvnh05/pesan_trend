@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/transactions', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/checkout', 'Modules\Transaction\Http\Controllers\Frontend\TransactionsController@checkout')->name('checkout');
