@@ -164,5 +164,15 @@ class TransactionsController extends Controller
             "transaction::frontend.$module_name.succes"
         );
     }
+    public function confirm_payment()
+    {
+        $module_title = $this->module_title;
+        $module_name = $this->module_name;
+
+        // Redirect to Midtrans payment page
+        return view(
+            "transaction::frontend.$module_name.confirm_payment"
+        );
+    }
     
 }

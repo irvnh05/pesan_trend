@@ -36,6 +36,9 @@ Route::group(['namespace' => '\Modules\Transaction\Http\Controllers\Frontend', '
     Route::get("/checkout", ['as' => "$module_name.checkout", 'uses' => "$controller_name@checkout"]);
     Route::get("/checkout-manual", ['as' => "$module_name.checkout-manual", 'uses' => "$controller_name@checkoutManual"]);
     Route::get("transaction/success", ['as' => "$module_name.success", 'uses' => "$controller_name@succes"]);
+    // Route::get("transaction/confirm_payment", ['as' => "$module_name.confirm_payment", 'uses' => "$controller_name@confirm_payment"]);
+    Route::get("transaction/confirm_payment", ['as' => "$module_name.confirm_payment", 'uses' => "$controller_name@confirm_payment"]);
+    
 
 });
 
@@ -67,4 +70,5 @@ Route::group(['namespace' => '\Modules\Transaction\Http\Controllers\Backend', 'a
     Route::get("$module_name/trashed", ['as' => "$module_name.trashed", 'uses' => "$controller_name@trashed"]);
     Route::patch("$module_name/trashed/{id}", ['as' => "$module_name.restore", 'uses' => "$controller_name@restore"]);
     Route::resource("$module_name", "$controller_name");
+    
 });

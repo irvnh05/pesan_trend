@@ -284,6 +284,7 @@
             $required = "required";
             ?>
             {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
+            <span class="text-danger">Max 5</span>
             <div class="input-group mb-3">
                 {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required", 'aria-label'=>'Image', 'aria-describedby'=>'button-image']) }}
                 <div class="input-group-append">

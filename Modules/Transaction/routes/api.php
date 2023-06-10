@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Modules\Transaction\Models\Transaction;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,21 @@ Route::middleware('auth:api')->get('/transactions', function (Request $request) 
 });
 
 Route::post('/checkout', 'Modules\Transaction\Http\Controllers\Frontend\TransactionsController@checkout')->name('checkout');
+Route::post('/confirm_payment', function (Request $request) {
+    // Validasi data yang diterima dari permintaan
+    $validatedData = $request->validate([
+        'no_transaksi' => 'required|string',
+    ]);
+
+    // Cari data berdasarkan nomor transaksi
+    $transaction = Transaction::findOrFail($validatedData['no_transaksi'])->first();
+
+    if ($transaction) {
+        // Data ditemukan, kirimkan respons dengan data transaksi
+        return response()->json($transaction, 200);
+    } else {
+        // Data tidak ditemukan, kirimkan respons dengan pesan error
+        return response()->json(['message' => 'No transaction found'], 404);
+    }
+});
+

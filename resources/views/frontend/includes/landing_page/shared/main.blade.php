@@ -461,10 +461,44 @@
               <p>Segera periksa pesana Anda sekarang juga dengan memasukkan kode transaksi.</p>
             </div>
             <div class="col-lg-6">
-              <form action="" method="post"> 
-                <input type="email" name="email">
+              <form method="post" id="confirm_payment" action="/api/confirm_payment" class="php-email-form">
+                <input type="text" name="no_transaksi" class="form-control" placeholder="No Transaksi" required>
                 <input type="submit" value="Periksa Pesanan">
               </form>
+              
+              <script>
+                document.getElementById('confirm_payment').addEventListener('submit', function(event) {
+                  event.preventDefault(); // Prevent the form from submitting
+
+                  var form = event.target;
+                  var formData = new FormData(form);
+
+                  fetch('/api/confirm_payment', {
+                      method: 'POST',
+                      body: formData,
+                      headers: {
+                          'Accept': 'application/json', // Menentukan header 'Accept' sebagai 'application/json'
+                      },
+                  })
+                  .then(function(response) {
+                      if (!response.ok) {
+                          throw new Error('Request failed: ' + response.status);
+                      }
+                      return response.json();
+                  })
+                  .then(function(data) {
+                      // console.log(data);
+                      alert('Ditemukan');
+                      window.location.href = "http://pesan_trend.test/transaction/confirm_payment/";
+                      // Handle the successful response here
+                  })
+                  .catch(function(error) {
+                    alert('Data Transaksi Tidak Ditemukan.');
+                      // Handle any errors that occur during the request
+                  });
+                });
+              </script>
+
             </div>
           </div>
         </div>

@@ -407,7 +407,18 @@
                         // console.log('Form is valid. Proceed with payment.');
                         if (event.target === confirmationButton) {
                           // Submit the form programmatically
-                          form.submit();
+                          // form.submit();
+                          // Redirect to the checkout page using the href from confirmationmidtransButton
+                          const formData = new FormData(form);
+                          const url = new URL(confirmationButton.href);
+                          
+                          // Tambahkan nilai-nilai formulir sebagai parameter query
+                          for (const [name, value] of formData.entries()) {
+                            url.searchParams.append(name, value);
+                          }
+                          
+                          // Arahkan pengguna ke halaman checkout dengan URL yang sudah diperbarui
+                          window.location.href = url.href;
                         } else if (event.target === confirmationmidtransButton) {
                           // Redirect to the checkout page using the href from confirmationmidtransButton
                           const formData = new FormData(form);

@@ -22,19 +22,16 @@
                         <div id="controls-carousel" class="relative w-full" data-carousel="static">
                             <!-- Carousel wrapper -->
                             <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-                              <!-- Video 1 -->
-                              <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/QffKKgOVtZ0?start=3" frameborder="0" allowfullscreen></iframe>
-                              </div>
-                              <!-- Video 2 -->
-                              <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/3A_xGCaoYq8" frameborder="0" allowfullscreen></iframe>
-                              </div>
-                              <!-- Video 3 -->
-                              <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/yAB7DG0wrl4" frameborder="0" allowfullscreen></iframe>
-                              </div>
-                          </div>
+                                @php
+                                    $videos = json_decode($$module_name_singular->featured_video);
+                                @endphp
+                                @foreach($videos as $video)
+                                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                        <iframe width="100%" height="100%" src="{{ $video }}" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                @endforeach
+                            </div>
+                            
                           
                             <!-- Slider controls -->
                             <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
@@ -52,22 +49,16 @@
                         </div>
                         
                         <div class="grid grid-cols-5 gap-4">
-                            <div>
-                                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-                            </div>
-                            <div>
-                                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
-                            </div>
-                            <div>
-                                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
-                            </div>
-                            <div>
-                                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
-                            </div>
-                            <div>
-                                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" alt="">
-                            </div>
+                            @php
+                                $images = explode(',', $$module_name_singular->featured_image);
+                            @endphp
+                            @foreach($images as $image)
+                                <div>
+                                    <img class="h-auto max-w-full rounded-lg" src="{{ $image }}" alt="">
+                                </div>
+                            @endforeach
                         </div>
+                        
                         
                         <div class="overflow-hidden">
                           <p class="mb-3 text-gray-500 dark:text-gray-400 text-base md:text-lg whitespace-pre-wrap">
