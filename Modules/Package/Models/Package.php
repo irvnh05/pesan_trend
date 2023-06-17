@@ -22,4 +22,9 @@ class Package extends BaseModel
     {
         return \Modules\Package\database\factories\PackageFactory::new();
     }
+        // Define the relationship with Transaction
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

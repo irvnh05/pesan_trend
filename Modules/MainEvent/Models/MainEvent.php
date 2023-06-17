@@ -53,5 +53,10 @@ class MainEvent extends BaseModel
     {
         return $this->hasMany(\Modules\Transaction\Models\Transaction::class, 'mainevent_id', 'id');
     }
+        // Define the relationship with Transaction
+    // public function transactions()
+    // {
+    //     return $this->hasMany(Transaction::class);
+    // }
 
 }

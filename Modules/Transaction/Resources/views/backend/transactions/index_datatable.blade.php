@@ -52,13 +52,31 @@
                                 #
                             </th>
                             <th>
-                                @lang("transaction::text.name")
+                               No Transaksi
                             </th>
                             <th>
-                                @lang("transaction::text.updated_at")
+                               Event
+                            </th>
+                            <th>
+                               Package
+                            </th>
+                            <th>
+                                Total Pembayaran
+                            </th>
+                            <th>
+                                Metode Pembayaran
+                            </th>
+                            <th>
+                                Status Pembayaran
+                            </th>
+                            <th>
+                                User
+                            </th>
+                            <th>
+                                Tanggal Transaksi
                             </th>
                             <th class="text-end">
-                                @lang("transaction::text.action")
+                               Action
                             </th>
                         </tr>
                     </thead>
@@ -95,23 +113,60 @@
 <script type="module" src="{{ asset('vendor/datatable/datatables.min.js') }}"></script>
 
 <script type="module">
+    function renderRelatedData(data) {
+        return data ?? 'N/A';
+    }
+
     $('#datatable').DataTable({
         processing: true,
         serverSide: true,
         autoWidth: true,
         responsive: true,
         ajax: '{{ route("backend.$module_name.index_data") }}',
-        columns: [{
+        columns: [
+            {
                 data: 'id',
                 name: 'id'
             },
             {
-                data: 'name',
-                name: 'name'
+                data: 'no_transaksi',
+                name: 'no_transaksi',
+                render: renderRelatedData
             },
             {
-                data: 'updated_at',
-                name: 'updated_at'
+                data: 'mainevent.name',
+                name: 'mainevent.name',
+                render: renderRelatedData
+            },
+            {
+                data: 'package.name',
+                name: 'package.name',
+                render: renderRelatedData
+            },
+            {
+                data: 'no_transaksi',
+                name: 'no_transaksi',
+                render: renderRelatedData
+            },
+            {
+                data: 'metode_pembayaran',
+                name: 'metode_pembayaran',
+                render: renderRelatedData
+            },
+            {
+                data: 'status_pembayaran',
+                name: 'status_pembayaran',
+                render: renderRelatedData
+            },
+            {
+                data: 'user.email',
+                name: 'user.email',
+                render: renderRelatedData
+            },
+            {
+                data: 'tanggal_transaksi',
+                name: 'tanggal_transaksi',
+                render: renderRelatedData
             },
             {
                 data: 'action',
@@ -122,4 +177,5 @@
         ]
     });
 </script>
+
 @endpush

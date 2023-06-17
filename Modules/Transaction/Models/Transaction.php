@@ -22,7 +22,23 @@ class Transaction extends BaseModel
     {
         return \Modules\Transaction\database\factories\TransactionFactory::new();
     }
+    // Define the relationship with Mainevent
+    public function mainevent()
+    {
+        return $this->belongsTo(\Modules\MainEvent\Models\Mainevent::class);
+    }
 
+    // Define the relationship with Package
+    public function package()
+    {
+        return $this->belongsTo(\Modules\Package\Models\Package::class);
+    }
+
+    // Define the relationship with User
+    public function user()
+    {
+        return $this->belongsTo(\app\Models\User::class);
+    }
 
 
     
