@@ -70,7 +70,7 @@
                                 Status Pembayaran
                             </th>
                             <th>
-                                User
+                                Email User
                             </th>
                             <th>
                                 Tanggal Transaksi

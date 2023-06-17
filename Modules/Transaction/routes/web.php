@@ -38,6 +38,7 @@ Route::group(['namespace' => '\Modules\Transaction\Http\Controllers\Frontend', '
     Route::get("transaction/success", ['as' => "$module_name.success", 'uses' => "$controller_name@succes"]);
     // Route::get("transaction/confirm_payment", ['as' => "$module_name.confirm_payment", 'uses' => "$controller_name@confirm_payment"]);
     Route::get("transaction/confirm_payment", ['as' => "$module_name.confirm_payment", 'uses' => "$controller_name@confirm_payment"]);
+    Route::get("transaction/reservation", ['as' => "$module_name.reservation", 'uses' => "$controller_name@reservation"]);
     
 
 });
