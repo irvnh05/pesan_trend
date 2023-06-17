@@ -218,4 +218,22 @@ return [
         ],
 
     ],
+    'Button Whatsapp Transaction' => [
+        'title' => 'Button Whatsapp Transaction',
+        'desc' => 'Button Whatsapp Transaction settings for app - example (6282115655377)',
+        'icon' => 'fas fa-envelope',
+
+        'elements' => [
+            [
+                'type' => 'text', // input fields type
+                'data' => 'string', // data type, string, int, boolean
+                'name' => 'whatsapp', // unique name for field
+                'label' => 'Whatsapp', // you know what label it is
+                'rules' => '', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => '62', // default value if you want
+            ],
+        ],
+
+    ],
 ];

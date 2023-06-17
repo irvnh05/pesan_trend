@@ -12,6 +12,8 @@ use App\Models\UserProfile;
 use App\Models\User;
 use Modules\MainEvent\Models\MainEvent;
 use Modules\Transaction\Models\Transaction;
+use Illuminate\Support\Carbon;
+
 
 class TransactionsController extends Controller
 {
@@ -100,6 +102,7 @@ class TransactionsController extends Controller
     {
 
         
+
         // Set up Midtrans configuration
         \Midtrans\Config::$serverKey = 'SB-Mid-server-KyYB5hjIDPn_Vc8k_rlqPV9_';
         \Midtrans\Config::$isProduction = false;
@@ -110,6 +113,19 @@ class TransactionsController extends Controller
         $email = $request->input('email');
         $first_name = $request->input('nama_depan');
         $last_name = $request->input('nama_belakang');
+        $tanggal_lahir = $request->input('tanggal_lahir');
+        $provinsi = $request->input('provinsi');
+        $kota_kab = $request->input('kota_kab');
+        $kecamatan = $request->input('kecamatan');
+        $kelurahan = $request->input('kelurahan');
+        $kode_pos = $request->input('kode_pos');
+        $alamat_rumah = $request->input('alamat_rumah');
+        $no_handphone = $request->input('no_handphone');
+        $alamat_rumah = $request->input('alamat_rumah');
+        $no_handphone = $request->input('no_handphone');
+        // params query
+        $mainevent = $request->query('mainevent');
+        $package = $request->query('package');
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return redirect()->back()->withInput()->withErrors(['email' => 'Invalid email format']);
         }
@@ -122,11 +138,34 @@ class TransactionsController extends Controller
         
         $userProfile = UserProfile::updateOrCreate(
             ['user_id' => $user->id],
-            ['email' => $email, 'first_name' => $first_name],
+            [
+                'email' => $email,
+                'first_name' => $first_name,
+                'last_name' => $last_name,
+                'date_of_birth' => $tanggal_lahir,
+                'provinsi' => $provinsi,
+                'kota_kab' => $kota_kab,
+                'kecamatan' => $kecamatan,
+                'kelurahan' => $kelurahan,
+                'kode_pos' => $kode_pos,
+                'address' => $alamat_rumah,
+                'mobile' => $no_handphone,
+            ]
             // ['name' => $first_name . ' ' . $last_name]
         );
         
-        $params = array(
+        $transactions = Transaction::updateOrCreate(
+            [
+                'mainevent_id' => 2,
+                'package_id' => 2,
+                'tanggal_transaksi' => Carbon::now(),
+                'metode_pembayaran' => "Midtrans",
+                'status_pembayaran' => "Pending",
+                'no_transaksi' => 1,
+                'user_id' => $user->id,
+            ]
+        );
+        $params = array(    
             'transaction_details' => array(
                 'order_id' => uniqid(),
                 'gross_amount' => 10000,
@@ -148,9 +187,65 @@ class TransactionsController extends Controller
     }
     
     
-    public function checkoutManual()
+    public function checkoutManual(Request $request)
     {
 
+       // Validate email format
+       $email = $request->input('email');
+       $first_name = $request->input('nama_depan');
+       $last_name = $request->input('nama_belakang');
+       $tanggal_lahir = $request->input('tanggal_lahir');
+       $provinsi = $request->input('provinsi');
+       $kota_kab = $request->input('kota_kab');
+       $kecamatan = $request->input('kecamatan');
+       $kelurahan = $request->input('kelurahan');
+       $kode_pos = $request->input('kode_pos');
+       $alamat_rumah = $request->input('alamat_rumah');
+       $no_handphone = $request->input('no_handphone');
+       $alamat_rumah = $request->input('alamat_rumah');
+       $no_handphone = $request->input('no_handphone');
+       // params query
+       $mainevent = $request->query('mainevent');
+       $package = $request->query('package');
+       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+           return redirect()->back()->withInput()->withErrors(['email' => 'Invalid email format']);
+       }
+
+       $user = User::updateOrCreate(
+           ['email' => $email],
+           ['first_name' => $first_name],
+           // ['name' => $first_name . ' ' . $last_name]
+       );
+       
+       $userProfile = UserProfile::updateOrCreate(
+           ['user_id' => $user->id],
+           [
+               'email' => $email,
+               'first_name' => $first_name,
+               'last_name' => $last_name,
+               'date_of_birth' => $tanggal_lahir,
+               'provinsi' => $provinsi,
+               'kota_kab' => $kota_kab,
+               'kecamatan' => $kecamatan,
+               'kelurahan' => $kelurahan,
+               'kode_pos' => $kode_pos,
+               'address' => $alamat_rumah,
+               'mobile' => $no_handphone,
+           ]
+           // ['name' => $first_name . ' ' . $last_name]
+       );
+       
+       $transactions = Transaction::updateOrCreate(
+           [
+               'mainevent_id' => 2,
+               'package_id' => 2,
+               'tanggal_transaksi' => Carbon::now(),
+               'metode_pembayaran' => "Manual",
+               'status_pembayaran' => "Pending",
+               'no_transaksi' => 1,
+               'user_id' => $user->id,
+           ]
+       );
         // Redirect to success page
         return redirect('/transaction/success');
     }

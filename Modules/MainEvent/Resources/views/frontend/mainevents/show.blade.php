@@ -142,9 +142,27 @@
                               Quota Sudah Habis
                           </a>
                       @else
-                          <a href="{{ route("frontend.$module_name.package", [encode_id($$module_name_singular->id), $$module_name_singular->slug]) }}" class="block bg-blue-600 hover:bg-blue-700 text-white text-center font-semibold py-3 px-4 round">
-                              Bergabung Sekarang
-                          </a>
+                          <?php $whatsappValue = DB::table('settings')->where('name', 'whatsapp')->value('val'); ?>
+                          @if ($whatsappValue !== null) 
+
+                            <?php
+                                // Retrieve the WhatsApp number from the database
+                                $whatsappNumber = $whatsappValue; // Replace this with your actual code to fetch the number from the database
+                                
+                                // Get the dynamic module name
+                                $dynamicModuleName = $$module_name_singular->slug;
+                                
+                                // Generate the WhatsApp link
+                                $whatsappLink = "https://api.whatsapp.com/send?phone=" . $whatsappNumber . "&text=Halo%2C%20saya%20ingin%20bergabung%20dengan%20program%20" . urlencode($dynamicModuleName);
+                            ?>
+                            <a href="<?php echo $whatsappLink; ?>" class="block bg-green-500 hover:bg-green-600 text-white text-center font-semibold py-3 px-4 rounded">
+                                Bergabung Sekarang
+                            </a>
+                          @else
+                            <a href="{{ route("frontend.$module_name.package", [encode_id($$module_name_singular->id), $$module_name_singular->slug]) }}" class="block bg-blue-600 hover:bg-blue-700 text-white text-center font-semibold py-3 px-4 round">
+                                Bergabung Sekarang 
+                            </a>
+                          @endif
                       @endif
                       </div>
                   </div>
